@@ -4,20 +4,8 @@
 <title>{% block title %}Welcome{% endblock %} — 12factor-lektor</title>
 <body>
   <header>
-    <h1>12factor-lektor</h1>
-    <nav>
-      <ul class="nav navbar-nav">
-        <li{% if this._path == '/' %} class="active"{% endif
-          %}><a href="{{ '/'|url }}">Welcome</a></li>
-        {% for href, title in [
-          ['/projects', 'Projects'],
-          ['/about', 'About']
-        ] %}
-          <li{% if this.is_child_of(href) %} class="active"{% endif
-            %}><a href="{{ href|url }}">{{ title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
+    <h1>
+      <a href="/">The 12-Factor App</a></h1>
   </header>
   <div class="page">
     {% block body %}{% endblock %}

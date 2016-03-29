@@ -1,6 +1,22 @@
 {% extends "layout.html" %}
+
 {% block title %}{{ this.title }}{% endblock %}
+
 {% block body %}
-  <h2>{{ this.title }}</h2>
-  {{ this.body }}
-{% endblock %}
+  <article>
+    <h2>{{ this.title }}</h2>
+    {{ this.body }}
+  </article>
+
+  <section id="the-factors">
+    <h3>The 12 Factors</h3>
+    <ul>
+      {% for child in this.children %}
+	<li>
+	  <a href="{{ child._id }}">
+	    {{ child.title }}
+	  </a>
+	</li>
+      {% endfor %}
+    </ul>
+  {% endblock %}
