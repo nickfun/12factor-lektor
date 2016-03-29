@@ -2,7 +2,6 @@ title: XI. Logs
 ---
 body:
 
-### Treat logs as event streams
 
 *Logs* provide visibility into the behavior of a running app.  In server-based environments they are commonly written to a file on disk (a "logfile"); but this is only an output format.
 
@@ -20,3 +19,5 @@ The event stream for an app can be routed to a file, or watched via realtime tai
 
 ---
 factor_number: 11
+---
+subtitle: Treat logs as event streams

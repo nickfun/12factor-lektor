@@ -2,7 +2,7 @@ title: VI. Processes
 ---
 body:
 
-### Execute the app as one or more stateless processes
+
 
 The app is executed in the execution environment as one or more *processes*.
 
@@ -19,3 +19,5 @@ Some web systems rely on ["sticky sessions"](http://en.wikipedia.org/wiki/Load_b
 
 ---
 factor_number: 6
+---
+subtitle: Execute the app as one or more stateless processes

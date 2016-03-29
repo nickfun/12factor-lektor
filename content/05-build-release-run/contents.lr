@@ -2,7 +2,6 @@ title: V. Build, release, run
 ---
 body:
 
-### Strictly separate build and run stages
 
 A [codebase](./codebase) is transformed into a (non-development) deploy through three stages:
 
@@ -23,3 +22,5 @@ Builds are initiated by the app's developers whenever new code is deployed.  Run
 
 ---
 factor_number: 5
+---
+subtitle: Strictly separate build and run stages

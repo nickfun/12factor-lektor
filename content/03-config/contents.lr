@@ -2,8 +2,6 @@ title: III. Config
 ---
 body:
 
-### Store config in the environment
-
 An app's *config* is everything that is likely to vary between [deploys](./codebase) (staging, production, developer environments, etc).  This includes:
 
 * Resource handles to the database, Memcached, and other [backing services](./backing-services)
@@ -26,3 +24,5 @@ In a twelve-factor app, env vars are granular controls, each fully orthogonal to
 
 ---
 factor_number: 3
+---
+subtitle: Store config in the environment
