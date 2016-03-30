@@ -3,4 +3,14 @@
 {% block body %}
   <h2>{{ this.title }}</h2>
   {{ this.body }}
+
+  {% set siblings = this.get_siblings() %}
+
+  {% if siblings.prev_page %}
+    <a href="{{ siblings.prev_page|url }}">previous</a>
+  {% endif %}
+  
+  {% if siblings.next_page %}
+    <a href="{{ siblings.next_page|url }}">next</a>
+  {% endif %}
 {% endblock %}
