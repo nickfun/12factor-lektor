@@ -1,16 +1,24 @@
 {% extends "layout.html" %}
 {% block title %}{{ this.title }}{% endblock %}
 {% block body %}
-  <h2>{{ this.title }}</h2>
-  {{ this.body }}
+  <article>
+    <h2>{{ this.title }}</h2>
+    {{ this.body }}
+  </article>
 
   {% set siblings = this.get_siblings() %}
 
-  {% if siblings.prev_page %}
-    <a href="{{ siblings.prev_page|url }}">previous</a>
-  {% endif %}
-  
-  {% if siblings.next_page %}
-    <a href="{{ siblings.next_page|url }}">next</a>
-  {% endif %}
+  <div class="pager">
+    <div class="prev">
+      {% if siblings.prev_page %}
+	<a href="{{ siblings.prev_page|url }}">&laquo; Previous</a>
+      {% endif %}
+    </div>
+    
+    <div class="next">
+      {% if siblings.next_page %}
+	<a href="{{ siblings.next_page|url }}">Next &raquo;</a>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
