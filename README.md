@@ -1,6 +1,6 @@
 # 12factor-lektor
 
-Reimplent the [https://github.com/heroku/12factor](12factor website) in [https://github.com/lektor/lektor](Lektor).
+Reimplent the [12factor website](https://github.com/heroku/12factor) in [Lektor](https://github.com/lektor/lektor).
 
 ## Goals
 
