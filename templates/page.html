@@ -3,17 +3,10 @@
 {% block title %}{{ this.title }}{% endblock %}
 
 {% block body %}
-  <article>
-    <h2>{{ this.title }}</h2>
-    {{ this.body }}
-  </article>
+  
+  {% if this.title %}
+    <h1>{{ this.title }}</h1>
+  {% endif %}
+  {{ this.body }}
 
-  <section id="the-factors">
-    <h3>The 12 Factors</h3>
-    <dl>
-      {% for child in this.children %}
-	<dt><a href="{{ child._id }}">{{ child.title }}</a></dt>
-	<dd>{{ child.subtitle }}</dd>
-      {% endfor %}
-    </dl>
-  {% endblock %}
+{% endblock %}
