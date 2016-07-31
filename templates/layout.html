@@ -2,30 +2,30 @@
 <meta charset="utf-8">
 <meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
 <link rel="stylesheet" href="{{ '/static/style.css'|url }}">
-<title>{% block title %}Welcome{% endblock %} — 12factor-lektor</title>
+<title>[LEKTOR] The Twelve-Factor App</title>
 <body>
-  <header>
-    <h1>
-      <a href="/">The Twelve-Factor App</a>
-    </h1>
-  </header>
-  <section class="abstract">
-    <article>
+	<header>
+		<h1>
+			<a href="/">The Twelve-Factor App</a>
+		</h1>
+	</header>
+	<section class="abstract">
+		<article>
       {% block body %}{% endblock %}
-    </article>
-  </section>
+		</article>
+	</section>
 
-  <section class="concrete">
-    <h3>The 12 Factors</h3>
-    <dl>
+	<section class="concrete">
+		<article>
+			<h1>The 12 Factors</h1>
       {% for child in this.children %}
-	<dt><a href="{{ child._id }}">{{ child.title }}</a></dt>
-      <dd>{{ child.subtitle }}</dd>
-    {% endfor %}
-    </dl>
-  </section>
+			<h2><a href="{{ child._id }}">{{ child.title }}</a></h2>
+			<h3>{{ child.subtitle }}</h3>
+      {% endfor %}
+		</article>
+	</section>
   
-  <footer>
+	<footer>
     &copy; Copyright 2016 by Nicholas Funnell.
-  </footer>
+	</footer>
 </body>
