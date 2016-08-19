@@ -1,2 +1,4 @@
 [project]
 name = 12factor-lektor
+url = /docs
+url_style = relative
