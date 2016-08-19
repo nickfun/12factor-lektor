@@ -1,0 +1,62 @@
+
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+	<header>
+		<h1>
+			<a href="/">The Twelve-Factor App</a>
+		</h1>
+	</header>
+	<section class="abstract">
+		<article>
+      
+  <article>
+    <h2>V. Build, release, run</h2>
+    <p>A <a href="../05-build-release-run/codebase">codebase</a> is transformed into a (non-development) deploy through three stages:</p>
+<ul>
+<li>The <em>build stage</em> is a transform which converts a code repo into an executable bundle known as a <em>build</em>.  Using a version of the code at a commit specified by the deployment process, the build stage fetches vendors <a href="../05-build-release-run/dependencies">dependencies</a> and compiles binaries and assets.</li>
+<li>The <em>release stage</em> takes the build produced by the build stage and combines it with the deploy's current <a href="../05-build-release-run/config">config</a>.  The resulting <em>release</em> contains both the build and the config and is ready for immediate execution in the execution environment.</li>
+<li>The <em>run stage</em> (also known as "runtime") runs the app in the execution environment, by launching some set of the app's <a href="../05-build-release-run/processes">processes</a> against a selected release.</li>
+</ul>
+<p><img src="../images/release.png" alt="Code becomes a build, which is combined with config to create a release."></p>
+<p><strong>The twelve-factor app uses strict separation between the build, release, and run stages.</strong>  For example, it is impossible to make changes to the code at runtime, since there is no way to propagate those changes back to the build stage.</p>
+<p>Deployment tools typically offer release management tools, most notably the ability to roll back to a previous release.  For example, the <a href="https://github.com/capistrano/capistrano/wiki">Capistrano</a> deployment tool stores releases in a subdirectory named <code>releases</code>, where the current release is a symlink to the current release directory.  Its <code>rollback</code> command makes it easy to quickly roll back to a previous release.</p>
+<p>Every release should always have a unique release ID, such as a timestamp of the release (such as <code>2011-04-06-20:32:17</code>) or an incrementing number (such as <code>v100</code>).  Releases are an append-only ledger and a release cannot be mutated once it is created.  Any change must create a new release.</p>
+<p>Builds are initiated by the app's developers whenever new code is deployed.  Runtime execution, by contrast, can happen automatically in cases such as a server reboot, or a crashed process being restarted by the process manager.  Therefore, the run stage should be kept to as few moving parts as possible, since problems that prevent an app from running can cause it to break in the middle of the night when no developers are on hand.  The build stage can be more complex, since errors are always in the foreground for a developer who is driving the deploy.</p>
+
+  </article>
+
+  
+
+  <div class="pager">
+    <div class="prev">
+      
+	<a href="../04-backing-services/">&laquo; Previous</a>
+      
+    </div>
+    
+    <div class="next">
+      
+	<a href="../06-processes/">Next &raquo;</a>
+      
+    </div>
+  </div>
+
+		</article>
+	</section>
+
+	<section class="concrete">
+		<article>
+			<h1>The 12 Factors</h1>
+      
+		</article>
+	</section>
+  
+	<footer>
+    &copy; Copyright 2016 by Nicholas Funnell.
+	</footer>
+</body>

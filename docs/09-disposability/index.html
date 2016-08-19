@@ -1,0 +1,56 @@
+
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+	<header>
+		<h1>
+			<a href="/">The Twelve-Factor App</a>
+		</h1>
+	</header>
+	<section class="abstract">
+		<article>
+      
+  <article>
+    <h2>IX. Disposability</h2>
+    <p><strong>The twelve-factor app's <a href="../09-disposability/processes">processes</a> are <em>disposable</em>, meaning they can be started or stopped at a moment's notice.</strong>  This facilitates fast elastic scaling, rapid deployment of <a href="../09-disposability/codebase">code</a> or <a href="../09-disposability/config">config</a> changes, and robustness of production deploys.</p>
+<p>Processes should strive to <strong>minimize startup time</strong>.  Ideally, a process takes a few seconds from the time the launch command is executed until the process is up and ready to receive requests or jobs.  Short startup time provides more agility for the <a href="../09-disposability/build-release-run">release</a> process and scaling up; and it aids robustness, because the process manager can more easily move processes to new physical machines when warranted.</p>
+<p>Processes <strong>shut down gracefully when they receive a <a href="http://en.wikipedia.org/wiki/SIGTERM">SIGTERM</a></strong> signal from the process manager.  For a web process, graceful shutdown is achieved by ceasing to listen on the service port (thereby refusing any new requests), allowing any current requests to finish, and then exiting.  Implicit in this model is that HTTP requests are short (no more than a few seconds), or in the case of long polling, the client should seamlessly attempt to reconnect when the connection is lost.</p>
+<p>For a worker process, graceful shutdown is achieved by returning the current job to the work queue.  For example, on <a href="http://www.rabbitmq.com/">RabbitMQ</a> the worker can send a <a href="http://www.rabbitmq.com/amqp-0-9-1-quickref.html#basic.nack"><code>NACK</code></a>; on <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>, the job is returned to the queue automatically whenever a worker disconnects.  Lock-based systems such as <a href="https://github.com/collectiveidea/delayed_job#readme">Delayed Job</a> need to be sure to release their lock on the job record.  Implicit in this model is that all jobs are <a href="http://en.wikipedia.org/wiki/Reentrant_%28subroutine%29">reentrant</a>, which typically is achieved by wrapping the results in a transaction, or making the operation <a href="http://en.wikipedia.org/wiki/Idempotence">idempotent</a>.</p>
+<p>Processes should also be <strong>robust against sudden death</strong>, in the case of a failure in the underlying hardware.  While this is a much less common occurrence than a graceful shutdown with <code>SIGTERM</code>, it can still happen.  A recommended approach is use of a robust queueing backend, such as Beanstalkd, that returns jobs to the queue when clients disconnect or time out.  Either way, a twelve-factor app is architected to handle unexpected, non-graceful terminations.  <a href="http://lwn.net/Articles/191059/">Crash-only design</a> takes this concept to its <a href="http://docs.couchdb.org/en/latest/intro/overview.html">logical conclusion</a>.</p>
+
+  </article>
+
+  
+
+  <div class="pager">
+    <div class="prev">
+      
+	<a href="../08-concurrency/">&laquo; Previous</a>
+      
+    </div>
+    
+    <div class="next">
+      
+	<a href="../10-dev-prod-parity/">Next &raquo;</a>
+      
+    </div>
+  </div>
+
+		</article>
+	</section>
+
+	<section class="concrete">
+		<article>
+			<h1>The 12 Factors</h1>
+      
+		</article>
+	</section>
+  
+	<footer>
+    &copy; Copyright 2016 by Nicholas Funnell.
+	</footer>
+</body>
