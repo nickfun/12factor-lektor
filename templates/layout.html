@@ -15,17 +15,31 @@
 		</article>
 	</section>
 
+	{% if this.children %}
 	<section class="concrete">
 		<article>
-			<h1>The 12 Factors</h1>
+			<h1>The Twelve Factors</h1>
       {% for child in this.children %}
 			<h2><a href="{{ child._id }}">{{ child.title }}</a></h2>
 			<h3>{{ child.subtitle }}</h3>
       {% endfor %}
 		</article>
 	</section>
+	{% endif %}
   
 	<footer>
-    &copy; Copyright 2016 by Nicholas Funnell.
+		<div id="locales">
+			<a href="#">Language 1</a> |
+			<a href="#">Language 1</a> |
+			<a href="#">Language 1</a> |
+			<a href="#">Language 1</a> |
+			<a href="#">Language 1</a>
+		</div>
+		<div>Written by Adam Wiggins</div>
+		<div>Last updated ????</div>
+		<div>Source code</div>
+		<div>Download epub book</div>
+		<div>Privacy Policy</div>
+		<div>&copy; Copyright 2016 by Nicholas Funnell.</div>
 	</footer>
 </body>

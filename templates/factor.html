@@ -1,26 +1,60 @@
 {# factor.html controls the 12 factor pages #}
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="{{ '/static/style.css'|url }}">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
 
-{% extends "layout.html" %}
-{% block title %}{{ this.title }}{% endblock %}
-{% block body %}
-  <article>
-    <h2>{{ this.title }}</h2>
-    {{ this.body }}
-  </article>
+  <section class="abstract" id="factor">
+    <article>
+      <h2>{{this.title}}</h2>
+
+      <h3>{{this.subtitle}}</h3>
+	
+      {{ this.body }}
+    </article>
+  </section>
 
   {% set siblings = this.get_siblings() %}
 
-  <div class="pager">
-    <div class="prev">
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a>
+      </div>
       {% if siblings.prev_page %}
-	<a href="{{ siblings.prev_page|url }}">&laquo; Previous</a>
+	<div id="prev"><a href="{{ siblings.prev_page|url }}">&laquo; Previous</a></div>
       {% endif %}
-    </div>
-    
-    <div class="next">
       {% if siblings.next_page %}
-	<a href="{{ siblings.next_page|url }}">Next &raquo;</a>
+	<div id="next"><a href="{{ siblings.next_page|url }}">&raquo; Next</a></div>
       {% endif %}
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a>
     </div>
-  </div>
-{% endblock %}
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

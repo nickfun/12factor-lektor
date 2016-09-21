@@ -1,14 +1,49 @@
 {# page.html controls the homepage #}
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="{{ '/static/style.css'|url }}">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
 
-{% extends "layout.html" %}
+  <section class="abstract">
+    <article>
+      {% if this.title %}
+	<h1>{{ this.title }}</h1>
+      {% endif %}
+      {{ this.body }}
+    </article>
+  </section>
 
-{% block title %}{{ this.title }}{% endblock %}
-
-{% block body %}
-  
-  {% if this.title %}
-    <h1>{{ this.title }}</h1>
-  {% endif %}
-  {{ this.body }}
-
-{% endblock %}
+  <section class="concrete">
+    <article>
+      <h1 id="the_twelve_factors">The Twelve Factors</h1>
+      {% for child in this.children %}
+	<h2><a href="{{ child._id }}">{{ child.title }}</a></h2>
+	<h3>{{ child.subtitle }}</h3>
+      {% endfor %}
+    </article>
+  </section>
+	
+  <footer>
+    <div id="locales">
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a>
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

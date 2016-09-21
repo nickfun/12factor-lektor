@@ -1,22 +1,23 @@
 
-
 <!doctype html>
 <meta charset="utf-8">
 <meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
 <link rel="stylesheet" href="../static/style.css">
 <title>[LEKTOR] The Twelve-Factor App</title>
 <body>
-	<header>
-		<h1>
-			<a href="/">The Twelve-Factor App</a>
-		</h1>
-	</header>
-	<section class="abstract">
-		<article>
-      
-  <article>
-    <h2>III. Config</h2>
-    <p>An app's <em>config</em> is everything that is likely to vary between <a href="../03-config/codebase">deploys</a> (staging, production, developer environments, etc).  This includes:</p>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>III. Config</h2>
+
+      <h3>Store config in the environment</h3>
+	
+      <p>An app's <em>config</em> is everything that is likely to vary between <a href="../03-config/codebase">deploys</a> (staging, production, developer environments, etc).  This includes:</p>
 <ul>
 <li>Resource handles to the database, Memcached, and other <a href="../03-config/backing-services">backing services</a></li>
 <li>Credentials to external services such as Amazon S3 or Twitter</li>
@@ -30,35 +31,43 @@
 <p>Another aspect of config management is grouping.  Sometimes apps batch config into named groups (often called "environments") named after specific deploys, such as the <code>development</code>, <code>test</code>, and <code>production</code> environments in Rails.  This method does not scale cleanly: as more deploys of the app are created, new environment names are necessary, such as <code>staging</code> or <code>qa</code>.  As the project grows further, developers may add their own special environments like <code>joes-staging</code>, resulting in a combinatorial explosion of config which makes managing deploys of the app very brittle.</p>
 <p>In a twelve-factor app, env vars are granular controls, each fully orthogonal to other env vars.  They are never grouped together as "environments", but instead are independently managed for each deploy.  This is a model that scales up smoothly as the app naturally expands into more deploys over its lifetime.</p>
 
-  </article>
+    </article>
+  </section>
 
   
 
-  <div class="pager">
-    <div class="prev">
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a>
+      </div>
       
-	<a href="../02-dependencies/">&laquo; Previous</a>
+	<div id="prev"><a href="../02-dependencies/">&laquo; Previous</a></div>
       
-    </div>
-    
-    <div class="next">
       
-	<a href="../04-backing-services/">Next &raquo;</a>
+	<div id="next"><a href="../04-backing-services/">&raquo; Next</a></div>
       
-    </div>
-  </div>
+    </nav>
+  </section>
 
-		</article>
-	</section>
-
-	<section class="concrete">
-		<article>
-			<h1>The 12 Factors</h1>
-      
-		</article>
-	</section>
-  
-	<footer>
-    &copy; Copyright 2016 by Nicholas Funnell.
-	</footer>
+  <footer>
+    <div id="locales">
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a>
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
 </body>
+</html>

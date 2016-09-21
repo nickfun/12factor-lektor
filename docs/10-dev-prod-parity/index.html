@@ -1,22 +1,23 @@
 
-
 <!doctype html>
 <meta charset="utf-8">
 <meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
 <link rel="stylesheet" href="../static/style.css">
 <title>[LEKTOR] The Twelve-Factor App</title>
 <body>
-	<header>
-		<h1>
-			<a href="/">The Twelve-Factor App</a>
-		</h1>
-	</header>
-	<section class="abstract">
-		<article>
-      
-  <article>
-    <h2>X. Dev/prod parity</h2>
-    <p>Historically, there have been substantial gaps between development (a developer making live edits to a local <a href="../10-dev-prod-parity/codebase">deploy</a> of the app) and production (a running deploy of the app accessed by end users).  These gaps manifest in three areas:</p>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>X. Dev/prod parity</h2>
+
+      <h3>Keep development, staging, and production as similar as possible</h3>
+	
+      <p>Historically, there have been substantial gaps between development (a developer making live edits to a local <a href="../10-dev-prod-parity/codebase">deploy</a> of the app) and production (a running deploy of the app accessed by end users).  These gaps manifest in three areas:</p>
 <ul>
 <li><strong>The time gap:</strong> A developer may work on code that takes days, weeks, or even months to go into production.</li>
 <li><strong>The personnel gap</strong>: Developers write code, ops engineers deploy it.</li>
@@ -81,35 +82,43 @@
 <p>Lightweight local services are less compelling than they once were.  Modern backing services such as Memcached, PostgreSQL, and RabbitMQ are not difficult to install and run thanks to modern packaging systems, such as <a href="http://mxcl.github.com/homebrew/">Homebrew</a> and <a href="https://help.ubuntu.com/community/AptGet/Howto">apt-get</a>.  Alternatively, declarative provisioning tools such as <a href="http://www.opscode.com/chef/">Chef</a> and <a href="http://docs.puppetlabs.com/">Puppet</a> combined with light-weight virtual environments such as <a href="http://vagrantup.com/">Vagrant</a> allow developers to run local environments which closely approximate production environments. The cost of installing and using these systems is low compared to the benefit of dev/prod parity and continuous deployment.</p>
 <p>Adapters to different backing services are still useful, because they make porting to new backing services relatively painless.  But all deploys of the app (developer environments, staging, production) should be using the same type and version of each of the backing services.</p>
 
-  </article>
+    </article>
+  </section>
 
   
 
-  <div class="pager">
-    <div class="prev">
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a>
+      </div>
       
-	<a href="../09-disposability/">&laquo; Previous</a>
+	<div id="prev"><a href="../09-disposability/">&laquo; Previous</a></div>
       
-    </div>
-    
-    <div class="next">
       
-	<a href="../11-logs/">Next &raquo;</a>
+	<div id="next"><a href="../11-logs/">&raquo; Next</a></div>
       
-    </div>
-  </div>
+    </nav>
+  </section>
 
-		</article>
-	</section>
-
-	<section class="concrete">
-		<article>
-			<h1>The 12 Factors</h1>
-      
-		</article>
-	</section>
-  
-	<footer>
-    &copy; Copyright 2016 by Nicholas Funnell.
-	</footer>
+  <footer>
+    <div id="locales">
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a>
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
 </body>
+</html>

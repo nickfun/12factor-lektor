@@ -1,57 +1,66 @@
 
-
 <!doctype html>
 <meta charset="utf-8">
 <meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
 <link rel="stylesheet" href="../static/style.css">
 <title>[LEKTOR] The Twelve-Factor App</title>
 <body>
-	<header>
-		<h1>
-			<a href="/">The Twelve-Factor App</a>
-		</h1>
-	</header>
-	<section class="abstract">
-		<article>
-      
-  <article>
-    <h2>VIII. Concurrency</h2>
-    <p>Any computer program, once run, is represented by one or more processes.  Web apps have taken a variety of process-execution forms.  For example, PHP processes run as child processes of Apache, started on demand as needed by request volume.  Java processes take the opposite approach, with the JVM providing one massive uberprocess that reserves a large block of system resources (CPU and memory) on startup, with concurrency managed internally via threads.  In both cases, the running process(es) are only minimally visible to the developers of the app.</p>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VIII. Concurrency</h2>
+
+      <h3>Scale out via the process model</h3>
+	
+      <p>Any computer program, once run, is represented by one or more processes.  Web apps have taken a variety of process-execution forms.  For example, PHP processes run as child processes of Apache, started on demand as needed by request volume.  Java processes take the opposite approach, with the JVM providing one massive uberprocess that reserves a large block of system resources (CPU and memory) on startup, with concurrency managed internally via threads.  In both cases, the running process(es) are only minimally visible to the developers of the app.</p>
 <p><img src="../images/process-types.png" alt="Scale is expressed as running processes, workload diversity is expressed as process types."></p>
 <p><strong>In the twelve-factor app, processes are a first class citizen.</strong>  Processes in the twelve-factor app take strong cues from <a href="http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/">the unix process model for running service daemons</a>.  Using this model, the developer can architect their app to handle diverse workloads by assigning each type of work to a <em>process type</em>.  For example, HTTP requests may be handled by a web process, and long-running background tasks handled by a worker process.</p>
 <p>This does not exclude individual processes from handling their own internal multiplexing, via threads inside the runtime VM, or the async/evented model found in tools such as <a href="http://rubyeventmachine.com/">EventMachine</a>, <a href="http://twistedmatrix.com/trac/">Twisted</a>, or <a href="http://nodejs.org/">Node.js</a>.  But an individual VM can only grow so large (vertical scale), so the application must also be able to span multiple processes running on multiple physical machines.</p>
 <p>The process model truly shines when it comes time to scale out.  The <a href="../08-concurrency/processes">share-nothing, horizontally partitionable nature of twelve-factor app processes</a> means that adding more concurrency is a simple and reliable operation.  The array of process types and number of processes of each type is known as the <em>process formation</em>.</p>
 <p>Twelve-factor app processes <a href="http://dustin.github.com/2010/02/28/running-processes.html">should never daemonize</a> or write PID files.  Instead, rely on the operating system's process manager (such as <a href="http://upstart.ubuntu.com/">Upstart</a>, a distributed process manager on a cloud platform, or a tool like <a href="http://blog.daviddollar.org/2011/05/06/introducing-foreman.html">Foreman</a> in development) to manage <a href="../08-concurrency/logs">output streams</a>, respond to crashed processes, and handle user-initiated restarts and shutdowns.</p>
 
-  </article>
+    </article>
+  </section>
 
   
 
-  <div class="pager">
-    <div class="prev">
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a> |
+	<a href="#">Language Z</a>
+      </div>
       
-	<a href="../07-port-binding/">&laquo; Previous</a>
+	<div id="prev"><a href="../07-port-binding/">&laquo; Previous</a></div>
       
-    </div>
-    
-    <div class="next">
       
-	<a href="../09-disposability/">Next &raquo;</a>
+	<div id="next"><a href="../09-disposability/">&raquo; Next</a></div>
       
-    </div>
-  </div>
+    </nav>
+  </section>
 
-		</article>
-	</section>
-
-	<section class="concrete">
-		<article>
-			<h1>The 12 Factors</h1>
-      
-		</article>
-	</section>
-  
-	<footer>
-    &copy; Copyright 2016 by Nicholas Funnell.
-	</footer>
+  <footer>
+    <div id="locales">
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a> |
+      <a href="#">Language 1</a>
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
 </body>
+</html>
