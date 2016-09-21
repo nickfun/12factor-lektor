@@ -15,5 +15,5 @@ You need Lektor master branch or Lektor 2.0 to build this project.
 
 ## On github pages
 
-- http://nickfun.github.io/12factork-lektor
+- http://nickfun.github.io/12factor-lektor
 - use `build-for-gh.sh` to have lektor build the site and output to `/docs`
