@@ -12,3 +12,43 @@ locale = en_US
 name = French
 url_prefix = /fr/
 locale = fr
+
+[alternatives.de]
+name = German
+url_prefix = /de/
+locale = de
+
+[alternatives.es]
+name = Spanish
+url_prefix = /es/
+locale = es
+
+[alternatives.it]
+name = Italian
+url_prefix = /it/
+locale = it
+
+[alternatives.ja]
+name = Japanese
+url_prefix = /ja/
+locale = ja
+
+[alternatives.ko]
+name = Korean
+url_prefix = /ko/
+locale = ko
+
+[alternatives.pt_br]
+name = Brazilian Portguese
+url_prefix = /pt_br/
+locale = pt_br
+
+[alternatives.ru]
+name = Russian
+url_prefix = /ru/
+locale = ru
+
+[alternatives.zh_cn]
+name = Chinese
+url_prefix = /zh_cn/
+locale = zh_cn

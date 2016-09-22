@@ -1,0 +1,83 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>III. Konfiguration</h2>
+
+      <h3>Die Konfiguration in Umgebungsvariablen ablegen</h3>
+	
+      <p>Die <em>Konfiguration</em> einer App ist alles, was sich wahrscheinlich zwischen den <a href="../../de/03-config/codebase">Deploys</a> ändern wird (Staging, Produktion, Entwicklungsumgebungen, usw.). Dies umfasst:</p>
+<ul>
+<li>Resource-Handles für Datenbanken, Memcached und andere <a href="../../de/03-config/backing-services">unterstützende Dienste</a></li>
+<li>Credentials für externe Dienste wie Amazon S3 oder Twitter</li>
+<li>Direkt vom Deploy abhängige Werte wie der kanonische Hostname für den Deploy</li>
+</ul>
+<p>Manchmal speichern Apps die Konfiguration als Konstanten im Code. Dies ist eine Verletzung der zwölf Faktoren, sie fordern <strong>strikte Trennung der Konfiguration vom Code</strong>. Die Konfiguration ändert sich deutlich von Deploy zu Deploy, ganz im Gegensatz zu Code.</p>
+<p>Ein Lackmustest ob eine App die Konfiguration vollständig ausgelagert hat ist, ob die Codebase jederzeit als Open Source veröffentlicht werden könnte ohne Credentials preiszugeben.</p>
+<p>Es sei darauf hingewiesen, dass diese Definition von "Konfiguration" die interne Anwendungskonfiguration <strong>nicht einschließt</strong> wie <code>config/routes.rb</code> in Rails oder wie Code-Module <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html">mit Spring verdrahtet sind</a>. Diese Art von Konfiguration ändert sich nicht von Deploy zu Deploy und gehört daher zum Code.</p>
+<p>Als Konfiguration könnte man auch Dateien verwenden, die nicht ins Versionsmanagement eingecheckt sind wie <code>config/database.yml</code> in Rails. Dies ist eine deutliche Verbesserung gegenüber der Verwendung von Konstanten, die ins Versionsmanagement eingecheckt sind. Es hat aber Schwächen: Es ist einfach, versehentlich eine Konfigurationsdatei ins Repo einzuchecken; es gibt die Tendenz, dass Konfigurationsdateien an verschiedenen Orten und in verschiedenen Format verstreut werden. Das macht es schwer die Konfiguration von einem Punkt aus zu managen. Desweiteren sind diese Formate of Sprach- oder Plattform-spezifisch.</p>
+<p><strong>Die Zwölf-Faktor-App speichert die Konfiguration in <em>Umgebungsvariablen</em></strong> (kurz auch <em>env vars</em> oder <em>env</em>). Umgebungsvariablen von Deploy zu Deploy zu ändern ist einfach; im Gegensatz zu Konfigurationsdateien ist es unwahrscheinlich, dass sie versehentlich ins Code Repository eingecheckt werden und im Gegensatz zu speziellen Konfigurationsdateien oder anderen Konfigurationsmechanismen wie den Java Properties sind sie Sprach- und Betriebssystemunabhängig.</p>
+<p>Ein anderer Aspekt des Konfigurationsmanagements ist die Gruppierung. Manchmal sammeln Apps die Konfiguration in benannten Gruppen (oft "Umgebungen" genannt)- benannt nach bestimmten Deploys wie zum Beispiel die Umgebungen <code>development</code>, <code>test</code> und <code>production</code> in Rails. Diese Methode skaliert nicht sauber: Je mehr Deploys einer App es gibt, desto mehr environment-Namen werden benötigt, wie zum Beispiel <code>staging</code> oder <code>qa</code>. Wenn das Projekt noch weiter wächst könnten Entwickler ihre eigenen speziellen Umgebungen wie <code>joes-staging</code> hinzufügen. Am Ende explodiert die Konfiguration kombinatorisch und die Verwaltung der Deploys wird fehleranfällig.</p>
+<p>In einer Zwölf-Faktor-App sind Umgebungsvariablen greifbare Kontrollschrauben und vollständig orthogonal zueinander. Sie werden nie als "Umgebungen" zusammengefasst, sondern können für jeden Deploy unabhängig verwaltet werden. Dieses Modell skaliert reibungslos aufwärts, wenn die App sich natürlicherweise über ihre Lebenszeit hinweg auf mehr Deploys ausdehnt.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../de/02-dependencies/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../de/04-backing-services/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../03-config/">En</a>
+	u&#39;en&#39;
+	 | 
+      
+	<a href="../../fr/03-config/">Fr</a>
+	u&#39;fr&#39;
+	 | 
+      
+	<a href="../../de/03-config/">De</a>
+	u&#39;de&#39;
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

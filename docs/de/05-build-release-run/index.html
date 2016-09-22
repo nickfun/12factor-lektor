@@ -1,0 +1,83 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>V. Build, release, run</h2>
+
+      <h3>Build- und Run-Phase strikt trennen</h3>
+	
+      <p>Eine <a href="../../de/05-build-release-run/codebase">Codebase</a> durch drei Phasen in einen (Nicht-Entwicklungs)-Deploy transformiert:</p>
+<ul>
+<li>Die <em>Build-Phase</em> ist eine Transformation, die ein Code-Repository in ein ausführbarers Code-Bündel übersetzt, das man auch <em>Build</em> nennt. Ausgehend von einer Code-Version eines Commits, der im Deployment-Prozess festgelegt wurde, holt sie <a href="../../de/05-build-release-run/dependencies">Abhängigkeiten</a>, verpackt sie zum Mitliefern, und kompiliert Binaries und Assets.</li>
+<li><p>Die <em>Release-Phase</em> übernimmt den Build von der Build-Phase und kombiniert ihn mit der zum Deploy passenden <a href="../../de/05-build-release-run/config">Konfiguration</a>. Der so erzeugte <em>Release</em> enthält sowohl den Build, als auch die Konfiguration und kann direkt in einer Ausführungsumgebung ausgeführt werden.</p>
+</li>
+<li><p>Die <em>Run-Phase</em> (auch "Laufzeit" genannt) führt die App in einer Ausführungsumgebung aus indem sie eine Menge der <a href="../../de/05-build-release-run/processes">Prozesse</a> der App gegen einen ausgewählten Release ausführt.
+<img src="../../images/release.png" alt="Code wird zum Build und zusammen mit einer Konfiguration ergibt sich ein Release"></p>
+</li>
+</ul>
+<p><strong>Die Zwölf-Faktor-App trennt strikt zwischen Build-, Release- und Run-Phase.</strong> Es ist  nicht möglich, Code-Änderungen zur Laufzeit zu machen, weil es keinen Weg gibt, diese Änderungen zurück in die Build-Phase zu schicken.</p>
+<p>Deployment-Werkzeuge bieten meist eine Release-Verwaltung an. Am bekanntesten ist die Fähigkeit auf einen früheren Release zurückzusetzen. Zum Beispiel speichert das Deployment-Werkzeug <a href="https://github.com/capistrano/capistrano/wiki">Capistrano</a> Releases in einem Unterverzeichnis mit Namen <code>releases</code>. Der aktuelle Release ist ein symbolischer Link auf aktuelle Release-Verzeichnis. Mit dem Kommando <code>rollback</code> kann einfach und schnell auf einen früheren Release zurückgesetzt werden.</p>
+<p>Jeder Release sollte eine eindeutige Release-ID haben, wie zum Beispiel einen Zeitstempel des Releases (<code>2011-04-06-20:32:17</code>) oder eine laufende Nummer (<code>v100</code>). Releases werden nie gelöscht und ein Release kann nicht verändert werden, wenn er einmal angelegt ist. Jede Änderung erzeugt einen neuen Release.</p>
+<p>Builds werden durch die Entwickler der App angestoßen, wenn neuer Code deployt wird. Im Gegensatz dazu kann die Ausführung zur Laufzeit automatisch erfolgen, wenn ein Server neu gebootet wird oder ein abgestürzter Prozess von der Prozessverwaltung neu gestartet wird. Deswegen sollte die Run-Phase auf so wenig bewegliche Teile wie möglich beschränkt sein, denn Probleme, die eine App vom Laufen abhalten, können sie mitten in der Nacht zusammenbrechen lassen, wenn keine Entwickler zur Verfügung stehen. Die Build-Phase kann komplexer sein, denn Fehler sind immer sichtbar für den Entwickler, der den Deploy vorantreibt.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../de/04-backing-services/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../de/06-processes/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../05-build-release-run/">En</a>
+	u&#39;en&#39;
+	 | 
+      
+	<a href="../../fr/05-build-release-run/">Fr</a>
+	u&#39;fr&#39;
+	 | 
+      
+	<a href="../../de/05-build-release-run/">De</a>
+	u&#39;de&#39;
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

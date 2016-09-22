@@ -1,0 +1,98 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract">
+    <article>
+      
+      <h1>Introduction</h1>
+<p>In the modern era, software is commonly delivered as a service: called <em>web apps</em>, or <em>software-as-a-service</em>.  The twelve-factor app is a methodology for building software-as-a-service apps that:</p>
+<ul>
+<li>Use <strong>declarative</strong> formats for setup automation, to minimize time and cost for new developers joining the project;</li>
+<li>Have a <strong>clean contract</strong> with the underlying operating system, offering <strong>maximum portability</strong> between execution environments;</li>
+<li>Are suitable for <strong>deployment</strong> on modern <strong>cloud platforms</strong>, obviating the need for servers and systems administration;</li>
+<li><strong>Minimize divergence</strong> between development and production, enabling <strong>continuous deployment</strong> for maximum agility;</li>
+<li>And can <strong>scale up</strong> without significant changes to tooling, architecture, or development practices.</li>
+</ul>
+<p>The twelve-factor methodology can be applied to apps written in any programming language, and which use any combination of backing services (database, queue, memory cache, etc).</p>
+<h1>Background</h1>
+<p>The contributors to this document have been directly involved in the development and deployment of hundreds of apps, and indirectly witnessed the development, operation, and scaling of hundreds of thousands of apps via our work on the <a href="http://www.heroku.com/">Heroku</a> platform.</p>
+<p>This document synthesizes all of our experience and observations on a wide variety of software-as-a-service apps in the wild.  It is a triangulation on ideal practices for app development, paying particular attention to the dynamics of the organic growth of an app over time, the dynamics of collaboration between developers working on the app's codebase, and <a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">avoiding the cost of software erosion</a>.</p>
+<p>Our motivation is to raise awareness of some systemic problems we've seen in modern application development, to provide a shared vocabulary for discussing those problems, and to offer a set of broad conceptual solutions to those problems with accompanying terminology.  The format is inspired by Martin Fowler's books <em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture</a></em> and <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring</a></em>.</p>
+<h1>Who should read this document?</h1>
+<p>Any developer building applications which run as a service.  Ops engineers who deploy or manage such applications.</p>
+
+    </article>
+  </section>
+
+  <section class="concrete">
+    <article>
+      <h1 id="the_twelve_factors">The Twelve Factors</h1>
+      
+	<h2><a href="01-codebase">I. Codebase</a></h2>
+	<h3>Eine im Versionsmanagementsystem verwaltete Codebase, viele Deployments</h3>
+      
+	<h2><a href="02-dependencies">II. Abhängigkeiten</a></h2>
+	<h3>Abhängigkeiten explizit deklarieren und isolieren</h3>
+      
+	<h2><a href="03-config">III. Konfiguration</a></h2>
+	<h3>Die Konfiguration in Umgebungsvariablen ablegen</h3>
+      
+	<h2><a href="04-backing-services">IV. Unterstützende Dienste</a></h2>
+	<h3>Unterstützende Dienste als angehängte Ressourcen behandeln</h3>
+      
+	<h2><a href="05-build-release-run">V. Build, release, run</a></h2>
+	<h3>Build- und Run-Phase strikt trennen</h3>
+      
+	<h2><a href="06-processes">VI. Prozesse</a></h2>
+	<h3>Die App als einen oder mehrere Prozesse ausführen</h3>
+      
+	<h2><a href="07-port-binding">VII. Bindung an Ports</a></h2>
+	<h3>Dienste durch das Binden von Ports exportieren</h3>
+      
+	<h2><a href="08-concurrency">VIII. Nebenläufigkeit</a></h2>
+	<h3>Mit dem Prozess-Modell skalieren</h3>
+      
+	<h2><a href="09-disposability">IX. Einweggebrauch</a></h2>
+	<h3>Robuster mit schnellem Start und problemlosen Stopp</h3>
+      
+	<h2><a href="10-dev-prod-parity"></a></h2>
+	<h3>Entwicklung, Staging und Produktion so ähnlich wie möglich halten</h3>
+      
+	<h2><a href="11-logs">XI. Logs</a></h2>
+	<h3>Logs als Strom von Ereignissen behandeln</h3>
+      
+	<h2><a href="12-admin-processes">XII. Admin-Prozesse</a></h2>
+	<h3>Admin/Management-Aufgaben als einmalige Vorgänge behandeln</h3>
+      
+    </article>
+  </section>
+	
+  <footer>
+    <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,76 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VI. Prozesse</h2>
+
+      <h3>Die App als einen oder mehrere Prozesse ausführen</h3>
+	
+      <p>Die App wird als ein oder mehrere <em>Prozesse</em> ausgeführt.</p>
+<p>Im einfachsten Fall ist der Code ein Stand-alone-Skript, die Ausführungsumgebung ist der lokale Laptop eines Entwicklers mit einer installierten Laufzeitumgebung einer Sprache, und der Prozess wird von der Kommandozeile gestartet (zum Beispiel <code>python my_script.py</code>). Am anderen Ende des Spektrums kann eine hochentwickelte App viele <a href="../../de/06-processes/concurrency">Prozesstypen benutzen, die in keinen oder mehreren Prozessen laufen</a>.</p>
+<p><strong>Zwölf-Faktor-Apps sind zustandslos und <a href="https://de.wikipedia.org/wiki/Shared_Nothing_Architecture">Shared Nothing</a>.</strong>  Alle Daten werden in <a href="../../de/06-processes/backing-services">unterstützenden Diensten</a> gespeichert, normalerweise einer Datenbank.</p>
+<p>Der RAM oder das Dateisystem des Prozesses kann als kurzfristiger Cache für die Dauer einer Transaktion verwendet werden. Zum Beispiel kann ein Prozess eine Datei herunterladen, sie verarbeiten und die Ergebnisse in einer Datenbank speichern. Die Zwölf-Faktor-App geht nie davon aus, dass irgend etwas aus dem RAM oder im Dateisystem zwischengespeichertes für einen künftigen Request oder Job verfügbar sein wird. Es ist gut möglich, das ein künftiger Request von einem anderen Prozess bedient wird. Selbst wenn nur ein Prozess läuft, wird ein Neustart (verursacht durch Code Deployment, Konfigurationsänderung oder der Verlagerung der Ausführungsumgebung auf einen anderen physikalischen Ort) den gesamten lokalen Zustand (RAM und Dateisystem) löschen.</p>
+<p>Asset-Paketierer (wie <a href="http://documentcloud.github.com/jammit/">Jammit</a> oder <a href="http://django-compressor.readthedocs.org/">django-compressor</a>) benutzen das Dateisystem als cache für kompilierte Assets. Eine Zwölf-Faktor-App wie die <a href="http://guides.rubyonrails.org/asset_pipeline.html">Rails asset pipeline</a> würde dies Art von Kompilation eher in der <a href="../../de/06-processes/build-release-run">Build-Phase</a> erledigen anstatt zur Laufzeit.</p>
+<p>Manche Web-Systeme verlassen sich auf <a href="http://en.wikipedia.org/wiki/Load_balancing_%28computing%29#Persistence">"Sticky Sessions"</a> -- sie cachen Benutzer-Session-Daten im RAM des App-Prozesses und erwarten, dass künftige Requests desselben Benutzers zum selben Prozess geschickt werden. Sticky Sessions sind eine Verletzung der zwölf Faktoren und eine guter Kandidat für einen Datenspeicher, der ein zeitabhängiges Löschen anbietet, wie <a href="http://memcached.org/">Memcached</a> oder <a href="http://redis.io/">Redis</a>.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../de/05-build-release-run/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../de/07-port-binding/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../06-processes/">En</a>
+	u&#39;en&#39;
+	 | 
+      
+	<a href="../../fr/06-processes/">Fr</a>
+	u&#39;fr&#39;
+	 | 
+      
+	<a href="../../de/06-processes/">De</a>
+	u&#39;de&#39;
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>IX. Einweggebrauch</h2>
+
+      <h3>Robuster mit schnellem Start und problemlosen Stopp</h3>
+	
+      <p><strong>Die Prozesse einer Zwölf-Faktor-App</strong> können <strong>weggeworfen</strong> werden, sie können also schnell gestartet und gestoppt werden.** Dies erleichtert schnelles elastisches Skalieren, schnelles Deployment von <a href="../../de/09-disposability/codebase">Code</a> oder <a href="../../de/09-disposability/config">Konfigurationsänderungen</a> und macht Produktionsdeployments robuster.</p>
+<p>Prozesse sollten <strong>möglichst geringe Startup-Zeiten</strong> haben. Idealerweise braucht ein Prozess wenige Sekunden vom Startkommando bis der Prozess läuft und Requests oder Jobs entgegennehmen kann. Eine kurz Startup-Zeit gibt dem <a href="../../de/09-disposability/build-release-run">Release-Prozess</a> und der Skalierung mehr Agilität; sie hilft der Robustheit weil ein Prozessmanager bei Bedarf einfacher Prozesse auf neue physikalische Maschinen verschieben kann.</p>
+<p>Prozesse <strong>fahren ohne Schwierigkeiten herunter, wenn sie ein <a href="http://en.wikipedia.org/wiki/SIGTERM">SIGTERM-Signal</a></strong> vom Prozessmanager bekommen. Für einen Web-Prozess kann ein problemloses Herunterfahren erreicht werden, indem er aufhört an seinem Service-Port zu lauschen (und damit alle neuen Requests ablehnt), die laufenden Requests zuende bearbeitet und sich dann beendet. Diesem Modell eigen ist, dass HTTP-Requests kurz sind (höchstens ein paar Sekunden) oder im Falle von Long-Polling, der Client sich nahtlos neu verbindet wenn die Verbindung verloren geht.</p>
+<p>Für einen Worker-Prozess wird ein problemloser Stopp erreicht, indem er seinen laufenden Job an die Workqueue zurück gibt. Zum Beispiel kann bei <a href="http://www.rabbitmq.com/">RabbitMQ</a> ein Worker einen <a href="http://www.rabbitmq.com/amqp-0-9-1-quickref.html#basic.nack"><code>NACK</code></a>; bei <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a> wird der Job automatisch an die Queue zurückgegeben wenn ein Worker die Verbindung beendet. Lock-basierte Systeme wie <a href="https://github.com/collectiveidea/delayed_job#readme">Delayed Job</a> sollten sicherstellen, dass ihr Lock im Job-Record freigegeben wird. Diesem Modell eigen ist, dass alle Jobs <a href="http://en.wikipedia.org/wiki/Reentrant_%28subroutine%29">reentrant</a> sind, was üblicherweise erreicht wird indem man die Ergebnisse in eine Transaktion einpackt oder den Vorgang <a href="https://de.wikipedia.org/wiki/Idempotenz">idempotent</a> gestaltet.</p>
+<p>Prozesse sollte auch <strong>robust gegen plötzlichen Tod</strong> sein - falls die zugrundeliegende Hardware versagt. Auch wenn dies viel seltener ist als ein reguläres Herunterfahren mit <code>SIGTERM</code>, so kommt es dennoch vor. Wir empfehlen ein robustes Queue-Backend wie Beanstalkd, das Jobs an die Queue zurückgibt falls Clients die Verbindung beenden oder nicht mehr antworten. Wie auch immer ist eine Zwölf-Faktor-App darauf ausgelegt mit unerwarteten, irregulären Stopps umgehen zu können. <a href="http://lwn.net/Articles/191059/">Crash-only design</a> führt dieses Konzept zu seinem <a href="http://docs.couchdb.org/en/latest/intro/overview.html">logischen Schluss</a>.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../de/08-concurrency/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../de/10-dev-prod-parity/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../09-disposability/">En</a>
+	u&#39;en&#39;
+	 | 
+      
+	<a href="../../fr/09-disposability/">Fr</a>
+	u&#39;fr&#39;
+	 | 
+      
+	<a href="../../de/09-disposability/">De</a>
+	u&#39;de&#39;
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

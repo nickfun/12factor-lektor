@@ -1,4 +1,9 @@
+
 title: VII. Associations de ports
+---
+subtitle: Exportez les services via des associations de ports
+---
+factor_number: 7
 ---
 body:
 
@@ -15,7 +20,3 @@ HTTP n'est pas le seul service qui peut être exporté à l'aide d'association d
 
 Notez également que l'approche par association de port signifie qu'une application peut devenir le [service externe](./backing-services) d'une autre application, en fournissant l'URL de l'application externe dans la configuration de l'application qui la consomme.
 
----
-factor_number: 7
----
-subtitle: Exportez les services via des associations de ports

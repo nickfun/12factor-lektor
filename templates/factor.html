@@ -42,8 +42,8 @@
 
   <footer>
     <div id="locales">
-      {% for language, fragment in bag('languages').iteritems() %}
-	<a href="{{fragment}}">{{language}}</a>
+      {% for alt in get_alts(this) %}
+	<a href="{{ '.'|url(alt=alt) }}">{{alt|title}}</a>
 	{% if not loop.last %} | {% endif %}
       {% endfor %}
     </div>

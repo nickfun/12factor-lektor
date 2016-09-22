@@ -1,6 +1,12 @@
+
 title: II. Dépendances
 ---
+subtitle: Déclarez explicitement et isolez les dépendances
+---
+factor_number: 2
+---
 body:
+
 
 La plupart des languages de programmation offrent des systèmes pour créer des paquets à partir de bibliothèques afin de les distribuer, tel que [CPAN](http://www.cpan.org/) pour Perl ou [Rubygems](http://rubygems.org/) pour Ruby. Les bibliothèques installées à travers un système de packaging peuvent être installés à travers tout le système, ou bien limités au répertoire contenant l'application (que l'on appelle les "vendor" ou "bundles")
 
@@ -12,7 +18,3 @@ Un des bénéfices de la déclaration explicite des dépendances est que cela si
 
 Les applications 12 facteurs ne s'appuient pas sur l'existence implicite d'outils système, comme par exemple ImageMagick ou `curl`. Bien que ces outils puissent exister sur beaucoup voire la plupart des systèmes d'exploitations, il n'y a pas de garantie qu'ils existeront sur tous les systèmes où l'application sera exécutée à l'avenir, ou si la version disponible sur un système futur sera compatible avec l'application. Si l'application dépend d'un outil système, cet outil doit être distribué avec l'application.
 
----
-factor_number: 2
----
-subtitle: Déclarez explicitement et isolez les dépendances

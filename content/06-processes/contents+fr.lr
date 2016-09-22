@@ -1,6 +1,12 @@
+
 title: VI. Processus
 ---
+subtitle: Exécutez l'application comme un ou plusieurs processus sans état
+---
+factor_number: 6
+---
 body:
+
 
 L'application est exécutée dans l'environnement d'exécution comme un ou plusieurs *processus*.
 
@@ -15,7 +21,4 @@ Des outils de création de paquets de ressources (ou "asset packagers") (tel que
 Certains systèmes web s'appuient sur des ["sessions persistantes" (en)](http://en.wikipedia.org/wiki/Load_balancing_%28computing%29#Persistence) -- c'est-à-dire, mettre en cache les données de session utilisateur dans le processus de l'application et attendre que les requêtes futures du même visiteur seront routées dans le même processus. Les sessions persistantes sont une violation des 12 facteurs, qu'il ne faudrait jamais utiliser.
 Les états de session sont de bons candidats pour un datastore qui offre des dates d'expiration, comme [Memcached](http://memcached.org/) ou [Redis](http://redis.io/).
 
----
-factor_number: 6
----
-subtitle: Exécutez l'application comme un ou plusieurs processus sans état
+

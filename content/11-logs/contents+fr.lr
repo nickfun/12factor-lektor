@@ -1,6 +1,12 @@
+
 title: XI. Logs
 ---
+subtitle: Traitez les logs comme des flux d'évènements
+---
+factor_number: 11
+---
 body:
+
 
 Les *logs* fournissent de la visibilité au comportement de l'application qui s'exécute. Dans des environnements de type serveur, ils sont généralement écrits sur un fichier, sur le disque (dans un fichier de log). Mais c'est simplement un format de sortie.
 
@@ -16,7 +22,3 @@ Le flux d'événements d'une application peut être routé dans un fichier, ou s
 * Faire des graphiques à grande échelle des tendances (comme les requêtes par minutes)
 * Lever des alertes, à partir d'heuristiques définies par l'utilisateur (comme alerter dès que la quantité d'erreurs par minutes dépasse un certain seuil)
 
----
-factor_number: 11
----
-subtitle: Traitez les logs comme des flux d'évènements

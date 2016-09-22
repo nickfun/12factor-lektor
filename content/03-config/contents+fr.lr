@@ -1,6 +1,12 @@
+
 title: III. Configuration
 ---
+subtitle: Stockez la configuration dans l'environnement
+---
+factor_number: 3
+---
 body:
+
 
 La *configuration* d'une application est tout ce qui est susceptible de varier entre des [déploiements](./codebase) (validation, production, environnement de développement, etc). Cela inclue :
 
@@ -22,7 +28,3 @@ Un autre aspect de la gestion de configuration est le groupage. Parfois les appl
 
 Dans une application 12 facteurs, les variables d'environnement permettent un contrôle granulaire, chacune complètement orthogonale aux autres variables d'environnement. Elles ne sont jamais groupées ensemble en "environnements", mais sont plutôt gérées indépendamment pour chaque déploiement. C'est un modèle qui permet de grossir verticalement en souplesse, lorsque l'application grossit naturellement en un plus grand nombre de déploiements au cours de sa vie.
 
----
-factor_number: 3
----
-subtitle: Stockez la configuration dans l'environnement

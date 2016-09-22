@@ -1,6 +1,12 @@
+
 title: I. Base de code
 ---
+subtitle: Une base de code suivie avec un système de contrôle de version, plusieurs déploiements
+---
+factor_number: 1
+---
 body:
+
 
 Une application 12 facteurs est toujours suivie dans un système de contrôle de version, tel que [Git](http://git-scm.com/), [Mercurial](http://mercurial.selenic.com/), ou [Subversion](http://subversion.apache.org/). Une copie de la base de données de suivi des révisions est appelée *dépôt de code*, souvent raccourci en *dépôt*. Le terme anglais *code repository*, raccourci en *repository* et *repo* est également utilisé.
 
@@ -18,7 +24,3 @@ Il y a seulement une base de code par application, mais il y aura plusieurs dép
 La base de code est la même à travers tous les déploiements, bien que différentes versions puissent être actives dans chaque déploiement. Par exemple, un développeur a des commits qui ne sont pas encore déployés dans l'environnement de validation. L'environnement de validation a des commits qui ne sont pas encore déployés en production. Par contre, ils partagent tous la même base de code, ce qui les identifie comme étant des déploiements différents d'une même application.
 
 
----
-factor_number: 1
----
-subtitle: Une base de code suivie avec un système de contrôle de version, plusieurs déploiements

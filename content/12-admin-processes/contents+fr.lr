@@ -1,6 +1,12 @@
+
 title: XII. Processus d'administration
 ---
+subtitle: Lancez les processus d'administration et de maintenance comme des one-off-processes
+---
+factor_number: 12
+---
 body:
+
 
 La [formation de processus](./concurrency) est la liste des processus qui sont utilisés pour le fonctionnement normal de l'application (comme gérer les requêtes web) lorsqu'elle tourne. Les développeurs vont souvent vouloir effectuer des tâches occasionnelles d'administration ou de maintenance, comme :
 
@@ -14,7 +20,3 @@ La même technique d'[isolation de dépendances](./dependencies) doit être util
 
 Les applications 12 facteurs préfèrent les languages qui fournissent un terminal REPL prêt à l'emploi, et qui facilitent l'exécution de scripts ponctuels. Dans un déploiement local, les développeurs invoquent les processus ponctuels d'administration depuis le terminal, par une commande directement dans le répertoire où se trouve l'application. Dans un déploiement de production, les développeurs peuvent utiliser ssh ou d'autres mécanismes d'exécution de commandes fournis par l'environnement d'exécution de ce déploiement pour exécuter un tel processus.
 
----
-factor_number: 12
----
-subtitle: Lancez les processus d'administration et de maintenance comme des one-off-processes

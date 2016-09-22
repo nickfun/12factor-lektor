@@ -1,0 +1,76 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VII. Bindung an Ports</h2>
+
+      <h3>Dienste durch das Binden von Ports exportieren</h3>
+	
+      <p>Webapps laufen manchmal in einem Webserver als Container. Zum Beispiel laufen PHP-Apps als Modul in <a href="http://httpd.apache.org/">Apache HTTPD</a>, oder Java-Apps laufen manchmal in <a href="http://tomcat.apache.org/">Tomcat</a>.</p>
+<p><strong>Die Zwölf-Faktor-App ist vollständig eigenständig</strong> und verlässt sich nicht darauf, dass ein externer Webserver zur Laufzeit injiziert wird um dem Web einen Dienst zur Verfügung zu stellen. Die Webapp <strong>exportiert HTTP als Dienst, indem sie sich an einen Port bindet</strong> und wartet an diesem Port auf Requests.</p>
+<p>In einer lokalen Entwicklungsumgebung besucht ein Entwickler eine Dienst-URL wie <code>http://localhost:5000/</code> um auf den Dienst der App zuzugreifen. Beim Deployment sorgt eine Routing-Schicht dafür, dass Requests von einem öffentlich sichtbaren Hostnamen zu den an die Ports gebundenen Prozessen kommen.</p>
+<p>Üblicherweise wird dies mittels <a href="../../de/07-port-binding/dependencies">Abhängigkeitsdeklaration</a> implementiert. Zu der App fügt man eine Webserver-Bibliothek hinzu wie <a href="http://www.tornadoweb.org/">Tornado</a> für Python, <a href="http://code.macournoyer.com/thin/">Thin</a> für Ruby oder <a href="http://jetty.codehaus.org/jetty/">Jetty</a> für Java und andere JVM-basierenden Sprachen. Dies findet vollständig im <em>User Space</em> statt, also im Code der App. Der Vertrag mit der Laufzeitumgebung ist das Binden an einen Port um Requests zu bedienen.</p>
+<p>HTTP ist nicht der einzige Dienst, der durch Portbindung exportiert werden kann. Fast jede Server-Software kann betrieben werden, indem ein Prozess an einen Port gebunden wird und auf ankommende Requests wartet. Einige Beispiele sind <a href="http://www.ejabberd.im/">ejabberd</a> (spricht <a href="http://xmpp.org/">XMPP</a>) und <a href="http://redis.io/">Redis</a> (spricht das <a href="http://redis.io/topics/protocol">Redis-Protokoll</a>).</p>
+<p>Es sei auch erwähnt, dass durch Portbindung eine App ein <a href="../../de/07-port-binding/backing-services">unterstützender Dienst</a> für eine andere App werden kann, indem die URL der unterstützenden App der konsumierenden App als Resource-Handle zur Verfügung gestellt wird.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../de/06-processes/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../de/08-concurrency/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../07-port-binding/">En</a>
+	u&#39;en&#39;
+	 | 
+      
+	<a href="../../fr/07-port-binding/">Fr</a>
+	u&#39;fr&#39;
+	 | 
+      
+	<a href="../../de/07-port-binding/">De</a>
+	u&#39;de&#39;
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

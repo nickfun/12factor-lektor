@@ -1,0 +1,80 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>XI. Logs</h2>
+
+      <h3>Logs als Strom von Ereignissen behandeln</h3>
+	
+      <p><em>Logs</em> machen das Verhalten einer laufenden App sichtbar. In Server-basierten Umgebungen werden sie üblicherweise in eine Datei auf der Platte geschrieben (eine Logdatei) - das ist aber nur ein Ausgabeformat.</p>
+<p>Logs sind der <a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/">Stream</a> von aggregierten, nach Zeit sortierten Ereignissen und zusammengefasst aus den Output Streams aller laufenden Prozesse und unterstützenden Dienste. Logs in ihrer rohen Form sind üblicherweise ein Textformat mit einem Ereignis pro Zeile (obwohl Backtraces von Exceptions über mehrere Zeilen gehen können)</p>
+<p><strong>Eine Zwölf-Faktor-App kümmert sich nie um das Routing oder die Speicherung ihres Output Streams.</strong> Sie sollte nicht versuchen, in Logdateien zu schreiben oder sie zu verwalten. Statt dessen schreibt jeder laufende Prozess seinen Stream von Ereignissen ungepuffert auf <code>stdout</code>. Bei einem lokalen Deployment sichtet ein Entwickler diesen Stream im Vordergrund seines Terminals um das Verhalten der App zu beobachten.</p>
+<p>Auf Staging- oder Produktionsdeploys werden die Streams aller Prozesse von der Laufzeitumgebung erfasst, mit allen anderen Streams der App zusammengefasst und zu einem oder mehreren Zielen geleitet, zur Ansicht oder langzeitigen Archivierung. Diese Archivierungsziele sind für die App weder sichtbar noch konfigurierbar - sie werden vollständig von der Laufzeitumgebung aus verwaltet. Open-Source Log Router (wie <a href="https://github.com/heroku/logplex">Logplex</a> und <a href="https://github.com/fluent/fluentd">Fluent</a>) stehen dafür zur Verfügung.</p>
+<p>Der Stream von Ereignissen für eine App kann in eine Datei geleitet werden oder mit einem Echtzeit-Tail in einem Terminal beobachtet werden. Sehr bedeutsam ist es, das der Stream in ein Log-Indexierungs und Analyse-System wie <a href="http://www.splunk.com/">Splunk</a> oder in ein allgemein verwendbares Data Warehouse System wie <a href="http://hive.apache.org/">Hadoop/Hive</a> gelenkt werden kann. Mit diesen System kann das Verhalten einer App leistungsfähig und flexibel beobachtet werden. Dies schließt ein:</p>
+<ul>
+<li>Bestimmte Ereignisse in der Vergangenheit zu finden.</li>
+<li>Umfangreiche graphische Darstellungen (wie Requests pro Minute).</li>
+<li>Aktives Alarmieren aufgrund benutzerdefinierter Heuristiken (wie ein Alarm wenn die Anzahl von Fehlern pro Minute eine gewisse Grenze überschreitet).</li>
+</ul>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../de/10-dev-prod-parity/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../de/12-admin-processes/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../11-logs/">En</a>
+	u&#39;en&#39;
+	 | 
+      
+	<a href="../../fr/11-logs/">Fr</a>
+	u&#39;fr&#39;
+	 | 
+      
+	<a href="../../de/11-logs/">De</a>
+	u&#39;de&#39;
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>I. Codebase</h2>
+
+      <h3>Eine im Versionsmanagementsystem verwaltete Codebase, viele Deployments</h3>
+	
+      <p>Eine Zwölf-Faktor-App wird immer in einem Versionsmanagementsystem verwaltet, wie zum Beispiel <a href="http://git-scm.com/">Git</a>, <a href="http://mercurial.selenic.com/">Mercurial</a> oder <a href="http://subversion.apache.org/">Subversion</a>. Eine Kopie der Versionsdatenbank wird <em>Code Repository</em> genannt, kurz <em>Code Repo</em> oder auch nur <em>Repo</em>.</p>
+<p>Eine <em>Codebase</em> ist jedes einzelne Repo (in einem zentralisierten Versionsmanagementsystem wie Subversion) oder jede Menge von Repos, die einen ursprünglichen Commit teilen (in dezentralisierten Versionsmanagementsystemen wie git).</p>
+<p><img src="../../images/codebase-deploys.png" alt="Eine Codebase bildet sich in viele Deploys ab."></p>
+<p>Es gibt immer eine eineindeutige Korrelation zwischen einer Codebase und einer App:</p>
+<ul>
+<li>Wenn es mehrere Codebases gibt, ist es keine App -- sondern ein verteiltes System. Jede Komponente in einem verteilten System ist eine App, und Jede kann für sich den zwölf Faktoren entsprechen.</li>
+<li>Wenn mehrere Apps denselben Code teilen, verletzt dies die zwölf Faktoren. Lösen lässt sich dies indem man den gemeinsamen Code in Libraries auslagert, der über die <a href="../../de/01-codebase/dependencies">Abhängigkeitsverwaltung</a> geladen werden kann.</li>
+</ul>
+<p>Es gibt nur eine Codebase pro App aber viele Deploys der App. Ein <em>Deploy</em> ist eine laufende Instanz der App. Meist gibt es ein Produktionssystem und eines oder mehrere Staging-Systeme. Zusätzlich hat jeder Entwickler eine Kopie der App in seiner lokalen Entwicklungsumgebung, das sind auch Deploys.</p>
+<p>Die Codebase ist über alle diese Deploys hinweg dieselbe, auch wenn bei jedem Deploy unterschiedliche Versionen aktiv sind. So hat zum Beispiel ein Entwickler manche Commits noch nicht nach Staging deployt; Staging hat manche Commits noch nicht nach Produktion deployt. Aber alle teilen dieselbe Codebase, was sie als verschiedene Deploys derselben App auszeichnet.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+      
+	<div id="next"><a href="../../de/02-dependencies/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../01-codebase/">En</a>
+	u&#39;en&#39;
+	 | 
+      
+	<a href="../../fr/01-codebase/">Fr</a>
+	u&#39;fr&#39;
+	 | 
+      
+	<a href="../../de/01-codebase/">De</a>
+	u&#39;de&#39;
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>
