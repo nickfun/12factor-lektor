@@ -1,0 +1,71 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>XII. Processus d&#39;administration</h2>
+
+      <h3>Lancez les processus d&#39;administration et de maintenance comme des one-off-processes</h3>
+	
+      <p>La <a href="../../fr/12-admin-processes/concurrency">formation de processus</a> est la liste des processus qui sont utilisés pour le fonctionnement normal de l'application (comme gérer les requêtes web) lorsqu'elle tourne. Les développeurs vont souvent vouloir effectuer des tâches occasionnelles d'administration ou de maintenance, comme :</p>
+<ul>
+<li>Lancer les migrations de base de données (par ex. <code>manage.py migrate</code> avec Django, <code>rake db:migrate</code> avec Rails).</li>
+<li>Lancer une console (également appelée terminal <a href="http://en.wikipedia.org/wiki/Read-eval-print_loop">REPL</a>) pour exécuter du code arbitraire ou inspecter les modèles de l'application dans la base de donnée. La plupart des langages fournissent un terminal REPL en lançant l'interpréteur sans arguments (par exemple <code>python</code> ou <code>perl</code>), ou dans certains cas à l'aide d'une commande dédiée (par ex. <code>irb</code> pour Ruby, <code>rails console</code> pour Rails).</li>
+<li>Exécuter des scripts ponctuels inclus dans le dépot de code (par ex. <code>php scripts/fix_bad_records.php</code>).</li>
+</ul>
+<p>Les processus ponctuels d'administration devraient être lancés dans un environnement identique à ceux des <a href="../../fr/12-admin-processes/processes">processus standards</a> de l'application. Ils s'exécutent sur une <a href="../../fr/12-admin-processes/build-release-run">release</a>, en utilisant la même <a href="../../fr/12-admin-processes/codebase">base de code</a> et <a href="../../fr/12-admin-processes/config">configuration</a> que tout processus qui tourne pour cette release. Le code d'administration doit être livré avec le code de l'application afin d'éviter les problèmes de synchronisation.</p>
+<p>La même technique d'<a href="../../fr/12-admin-processes/dependencies">isolation de dépendances</a> doit être utilisée sur tous les types de processus. Par exemple, si le processus web de Ruby utilise la commande <code>bundle exec thin start</code>, alors une migration de base de données devrait être faite via <code>bundle exec rake db:migrate</code>. De la même manière, un programme Python qui utilise Virtualenv devrait utiliser la commande incluse <code>bin/python</code> pour lancer à la fois le serveur web Tornado et tout processus administrateur <code>manage.py</code>.</p>
+<p>Les applications 12 facteurs préfèrent les languages qui fournissent un terminal REPL prêt à l'emploi, et qui facilitent l'exécution de scripts ponctuels. Dans un déploiement local, les développeurs invoquent les processus ponctuels d'administration depuis le terminal, par une commande directement dans le répertoire où se trouve l'application. Dans un déploiement de production, les développeurs peuvent utiliser ssh ou d'autres mécanismes d'exécution de commandes fournis par l'environnement d'exécution de ce déploiement pour exécuter un tel processus.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../fr/11-logs/">&laquo; Previous</a></div>
+      
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

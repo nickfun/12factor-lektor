@@ -1,0 +1,70 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VIII. Concurrence</h2>
+
+      <h3>Grossissez à l&#39;aide du modèle de processus</h3>
+	
+      <p>Tout programme informatique, lorsqu'il s'exécute, est représenté par un ou plusieurs processus. Les applications web ont adopté différentes approches d'exécution de processus. Par exemple, les processus PHP s'exécutent comme des processus fils d'Apache, démarrés à la demande lorsque c'est requis par le volume de requêtes. Les processus Java ont adopté l'approche inverse, avec une machine virtuelle qui fournit un super-processus massif qui réserve un gros bloc de ressources système (processeur et mémoire) au démarrage, et la concurrence est gérée en interne à l'aide de threads. Dans les deux cas, les processus qui tournent sont à peine visibles aux développeurs de l'application.</p>
+<p><img src="../../images/process-types.png" alt="La scalabilité est exprimée par des processus qui s&#39;exécutent, la diversité de la charge de travail est exprimée par les types de processus"></p>
+<p><strong>Dans une application 12 facteurs, les processus sont des élèves modèles</strong>. Les processus dans une application 12 facteurs s'inspirent fortement du <a href="http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/">modèle de processus unix pour faire fonctionner les daemon (en)</a>. En utilisant ce modèle, les développeurs peuvent structurer l'application pour gérer différents types de charge en assignant chaque type de travail à un <em>type de processus</em>. Par exemple, les requêtes HTTP peuvent être gérées par un processus web, et les tâches d'arrière plan ayant une longue durée d'exécution peuvent être des processus dits "worker".</p>
+<p>Chaque processus peut malgré tout et individuellement, gérer son propre multiplexage interne, avec des threads à l'intérieur de la machine virtuelle d'exécution, ou à l'aide du modèle d'évènements asynchrone que l'on retrouve dans des outils comme <a href="http://rubyeventmachine.com/">EventMachine</a>, <a href="http://twistedmatrix.com/trac/">Twisted</a>, ou <a href="http://nodejs.org/">Node.js</a>. Mais une machine virtuelle a individuellement une taille limitée (grandissement vertical), donc l'application doit également pouvoir déclencher plusieurs processus qui tournent sur plusieurs machines physiques.</p>
+<p>Le modèle de processus prend de l'envergure dès qu'il est question de grossir. La <a href="../../fr/08-concurrency/processes">nature sans partage, avec une partition horizontale des processus des applications 12 facteurs</a> signifie qu'ajouter plus de concurrence est une opération simple et fiable. La liste des types de processus et le nombre de processus de chaque type est appelée <em>formation de processus</em>.</p>
+<p>Les processus des applications 12 facteurs ne devraient <a href="http://dustin.github.com/2010/02/28/running-processes.html">jamais être des daemons (en)</a> ou écrire des fichiers PID. A la place, utilisez le gestionnaire de processus du système d'exploitation (tel qu'<a href="http://upstart.ubuntu.com/">Upstart</a>, un gestionnaire de processus distribué sur une plateforme cloud, ou un outil comme <a href="http://blog.daviddollar.org/2011/05/06/introducing-foreman.html">Foreman (en)</a> durant le développement) pour gérer les <a href="../../fr/08-concurrency/logs">flux de sortie</a>, répondre à un processus qui plante, et gérer les redémarrages et les arrêts initiés par les utilisateurs.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../fr/07-port-binding/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../fr/09-disposability/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

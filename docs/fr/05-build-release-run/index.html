@@ -1,0 +1,75 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>V. Assemblez, publiez, exécutez</h2>
+
+      <h3>Séparez strictement les étapes d&#39;assemblage et d&#39;exécution</h3>
+	
+      <p>Une <a href="../../fr/05-build-release-run/codebase">base de code</a> est transformée en un déploiement (non-développement) à travers les étapes suivantes :</p>
+<ul>
+<li>L'<em>étapes d'assemblage</em> (ou "build") est une transformation qui convertit un dépôt de code en un paquet autonome exécutable appelé l'assemblage (ou "build"). En utilisant une version du code référencée par un commit spécifié lors du processus de déploiement, l'étape d'assemblage va chercher toutes les <a href="../../fr/05-build-release-run/dependencies">dépendances externes</a> et compile les fichiers binaires et les ressources.</li>
+<li>L'<em>étape de publication </em> (ou "release") prend l'assemblage produit à l'étape précédente et le combine avec la <a href="../../fr/05-build-release-run/config">configuration</a> de déploiement courante. La release résultante contient à la fois l'assemblage et la configuration, et elle est prête pour une exécution immédiate dans l'environnement d'exécution.</li>
+<li>L'<em>étape d'exécution</em> (ou "runtime") fait fonctionner l'application dans l'environnement d'exécution, en lançant un ensemble de <a href="../../fr/05-build-release-run/processes">processus</a> de l'application associée à la release considérée.</li>
+</ul>
+<p><img src="../../images/release.png" alt="Le code devient un assemblage, qui est combiné à la configuration pour créer une release"></p>
+<p><strong>Les applications 12 facteurs ont une séparation stricte entre les étapes d'assemblage, de publication et d'exécution.</strong> Par exemple, il est impossible de faire des changements dans le code au moment de son exécution, car il n'y a pas moyen de propager ces changements vers l'étape de build.</p>
+<p>Les outils de déploiement offrent généralement des outils de gestion de release, permettant notamment de revenir à une release antérieure. Par exemple, l'outil de déploiement <a href="https://github.com/capistrano/capistrano/wiki">Capistrano</a> stocke les releases dans un sous-répertoire appelé <code>releases</code>, où la release courante est un lien symbolique vers le répertoire de release courante. Sa commande <code>rollback</code> permet de facilement revenir à une release précédente.</p>
+<p>Chaque release devrait toujours avoir un identifiant unique, comme un horodatage (timestamp) de la release (tel que <code>2011-04-06-20:32:17</code>) ou un nombre incrémental (tel que <code>v100</code>). Les liste des releases est accessible en écriture uniquement, et il n'est pas possible de modifier une release une fois qu'elle a été réalisée. Tout changement doit créer une nouvelle release.</p>
+<p>Les assemblages sont initiées par le développeur de l'application dès que du nouveau code est déployé. Son exécution, au contraire, peut avoir lieu automatiquement en cas d'un reboot du serveur, ou du crash d'un processus qui est relancé par le gestionnaire de processus. De ce fait, l'étape d'exécution doit se limiter à un nombre minimal de parties mobiles, car les problèmes qui empêchent une application de fonctionner peuvent entrainer des dysfonctionnements au milieu de la nuit alors qu'aucun développeur ne sera là pour les corriger. L'étape d'assemblage peut être plus complexe, car les erreurs pourront toujours être résolues par le développeur qui réalise le déploiement.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../fr/04-backing-services/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../fr/06-processes/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

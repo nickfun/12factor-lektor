@@ -1,0 +1,96 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract">
+    <article>
+      
+      <h1>Introduction</h1>
+<p>À l'époque actuelle, les logiciels sont régulièrement délivrés en tant que services : on les appelle des <em>applications web</em> (web apps), ou <em>logiciels en tant que service</em> (<em>software-as-a-service</em>). L'application 12 facteurs est une méthodologie pour concevoir des logiciels en tant que service qui :</p>
+<ul>
+<li>Utilisent des formats déclaratifs pour mettre en oeuvre l'automatisation, pour minimiser le temps et les coûts pour que de nouveaux développeurs rejoignent le projet;</li>
+<li>Ont un <strong>contrat propre</strong> avec le système d'exploitation sous-jacent, offrant une <strong>portabilité maximum</strong> entre les environnements d'exécution;</li>
+<li>Sont adaptés à des <strong>déploiements</strong> sur des <strong>plateformes cloud</strong> modernes, rendant inutile le besoin de serveurs et de l'administration de systèmes;</li>
+<li><strong>Minimisent la divergence</strong> entre le développement et la production, ce qui permet le <em>déploiement continu</em> pour une agilité maximum;</li>
+<li>et peuvent <strong>grossir verticalement</strong> sans changement significatif dans les outils, l'architecture ou les pratiques de développement;</li>
+</ul>
+<p>La méthodologie 12 facteurs peut être appliquée à des applications écrites dans tout langage de programmation, et qui utilisent tout type de services externes (base de données, file, cache mémoire, etc.)</p>
+<h1>Contexte</h1>
+<p>Les contributeurs de ce document ont été directement impliqués dans le développement et le déploiement de centaines d'applications, et ont vu, indirectement, le développement, la gestion et le grossissement de centaines de milliers d'applications via le travail fait sur la plateforme <a href="http://www.heroku.com/">Heroku</a>.</p>
+<p>Ce document fait la synthèse de toutes nos expériences et observations sur une large variété d'applications software-as-a-service. C'est la triangulation de pratiques idéales pour le développement d'applications, en portant un soin tout particulier aux dynamiques de la croissance organique d'une application au cours du temps, les dynamiques de la collaboration entre les développeurs qui travaillent sur le code de l'application, en <a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">évitant le coût de la lente détérioration du logiciel dans un environnement qui évolue (en)</a>.</p>
+<p>Notre motivation est de faire prendre conscience de certains problèmes systémiques que nous avons rencontrés dans le développement d'applications modernes, afin de fournir un vocabulaire partagé pour discuter ces problèmes, et pour offrir un ensemble de solutions conceptuelles générales à ces problèmes, ainsi que la terminologie correspondante. Le format est inspiré par celui des livres de Martin Fowler <em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture (en)</a></em> et <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring (en)</a></em>.</p>
+
+    </article>
+  </section>
+
+  <section class="concrete">
+    <article>
+      <h1 id="the_twelve_factors">The Twelve Factors</h1>
+      
+	<h2><a href="01-codebase">I. Base de code</a></h2>
+	<h3>Une base de code suivie avec un système de contrôle de version, plusieurs déploiements</h3>
+      
+	<h2><a href="02-dependencies">II. Dépendances</a></h2>
+	<h3>Déclarez explicitement et isolez les dépendances</h3>
+      
+	<h2><a href="03-config">III. Configuration</a></h2>
+	<h3>Stockez la configuration dans l&#39;environnement</h3>
+      
+	<h2><a href="04-backing-services">IV. Services externes</a></h2>
+	<h3>Traitez les services externes comme des ressources attachées</h3>
+      
+	<h2><a href="05-build-release-run">V. Assemblez, publiez, exécutez</a></h2>
+	<h3>Séparez strictement les étapes d&#39;assemblage et d&#39;exécution</h3>
+      
+	<h2><a href="06-processes">VI. Processus</a></h2>
+	<h3>Exécutez l&#39;application comme un ou plusieurs processus sans état</h3>
+      
+	<h2><a href="07-port-binding">VII. Associations de ports</a></h2>
+	<h3>Exportez les services via des associations de ports</h3>
+      
+	<h2><a href="08-concurrency">VIII. Concurrence</a></h2>
+	<h3>Grossissez à l&#39;aide du modèle de processus</h3>
+      
+	<h2><a href="09-disposability">IX. Jetable</a></h2>
+	<h3>Maximisez la robustesse avec des démarrages rapides et des arrêts gracieux</h3>
+      
+	<h2><a href="10-dev-prod-parity">X. Parité dev/prod</a></h2>
+	<h3>Gardez le développement, la validation et la production aussi proches que possible</h3>
+      
+	<h2><a href="11-logs">XI. Logs</a></h2>
+	<h3>Traitez les logs comme des flux d&#39;évènements</h3>
+      
+	<h2><a href="12-admin-processes">XII. Processus d&#39;administration</a></h2>
+	<h3>Lancez les processus d&#39;administration et de maintenance comme des one-off-processes</h3>
+      
+    </article>
+  </section>
+	
+  <footer>
+    <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

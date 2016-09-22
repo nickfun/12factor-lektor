@@ -1,0 +1,69 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>IX. Jetable</h2>
+
+      <h3>Maximisez la robustesse avec des démarrages rapides et des arrêts gracieux</h3>
+	
+      <p><strong>Les <a href="../../fr/09-disposability/processes">processus</a> des applications 12 facteurs sont <em>jetables</em>, c'est à dire qu'ils peuvent être démarrés ou stoppés en un instant.</strong> Cela simplifie un rapide grossissement vertical, le déploiement rapide du <a href="../../fr/09-disposability/codebase">code</a> ou de changements dans la <a href="../../fr/09-disposability/config">configuration</a>, ainsi que la robustesse des déploiements de production.</p>
+<p>Les processus doivent viser à <strong>minimiser le temps de démarrage</strong>. Idéalement, un processus prend quelques secondes entre le moment où une commande le lance et celui où il est en marche et prêt à recevoir des requêtes ou du travail. Un court temps de démarrage rend plus agile les processus de <a href="../../fr/09-disposability/build-release-run">release</a> et de scalabilité verticale; il aide également à la robustesse, car les gestionnaires de processus peuvent plus facilement déplacer des processus vers de nouvelles machines physiques lorsque c'est nécessaire.</p>
+<p>Les processus <strong>s'éteignent gracieusement lorsqu'ils reçoivent un signal <a href="https://fr.wikipedia.org/wiki/SIGTERM">SIGTERM (fr)</a></strong> du gestionnaire de processus. Pour un processus web, s'éteindre en douceur se fait en arrêtant d'écouter sur le port de service (refusant, par la même occasion, toute nouvelle requête), en permettant à la requête courante de se terminer, et en quittant ensuite. Ce qui est implicite dans ce modèle, c'est que les requêtes sont courtes (pas plus de quelques secondes), ou dans le cas de longues requêtes, les clients doivent pouvoir tenter de se reconnecter sans problèmes lorsque la connection est perdue.</p>
+<p>Pour un processus de worker, s'éteindre gracieusement est réalisé en renvoyant le travail en cours dans la file de travaux. Par exemple, avec <a href="http://www.rabbitmq.com/">RabbitMQ</a> le worker peut envoyer un message <a href="http://www.rabbitmq.com/amqp-0-9-1-quickref.html#basic.nack"><code>NACK</code></a>; avec <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>, le travail est renvoyé dans la file automatiquement dès qu'un worker se déconnecte. Les systèmes basés sur des verrous, comme <a href="https://github.com/collectiveidea/delayed_job#readme">Delayed Job</a> doivent s'assurer de supprimer le verrou de leur travail en cours. Il est implicite dans ce modèle que toutes les tâches sont <a href="http://fr.wikipedia.org/wiki/R%C3%A9entrance">réentrantes (fr)</a>, ce qui est réalisé en englobant les résultats dans une transaction, ou en rendant l'opération <a href="http://fr.wikipedia.org/wiki/Idempotence">idempotente (fr)</a>.</p>
+<p>Les processus doivent également être <strong>robustes face aux morts subites</strong>, dans le cas d'une panne du hardware sous-jacent. Bien que ce soit bien moins courant qu'un arrêt gracieux avec <code>SIGTERM</code>, cela peut arriver malgré tout. L'approche recommandée est l'utilisation d'un backend robuste de files de messages, tel que Beanstalkd, capable de renvoyer les tâches dans la file lorsqu'un client se déconnecte ou ne répond plus. Dans les deux cas, une application 12 facteurs est structurée pour gérer des fins inattendues et non gracieuses. Le <a href="http://lwn.net/Articles/191059/">design crash-only (en)</a> amène ce concept à sa <a href="http://docs.couchdb.org/en/latest/intro/overview.html">conclusion logique (en)</a>.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../fr/08-concurrency/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../fr/10-dev-prod-parity/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

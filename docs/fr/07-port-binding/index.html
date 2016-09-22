@@ -1,0 +1,70 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VII. Associations de ports</h2>
+
+      <h3>Exportez les services via des associations de ports</h3>
+	
+      <p>Les applications web sont parfois exécutées à l'intérieur d'un container de serveur web. Par exemple, les applications PHP peuvent fonctionner comme un module à l'intérieur de <a href="http://httpd.apache.org/">HTTPD, d'Apache</a>, ou bien les applications Java peuvent fonctionner à l'intérieur de <a href="http://tomcat.apache.org/">Tomcat</a>.</p>
+<p><strong>Les applications 12 facteurs sont complètement auto-contenues</strong> et ne se basent pas sur l'injection au moment de l'exécution d'un serveur web dans l'environnement d'exécution pour créer les services exposés au web. L'application web <strong>expose HTTP comme un service en l'associant à un port</strong> et écoute les requêtes qui arrivent sur ce port.</p>
+<p>Dans un environnement de développement local, le développeur visite l'URL d'un service tel que <code>http://localhost:5000/</code> pour accéder au service exporté par leur application. Durant le déploiement, une couche de routage gère le routage des requêtes depuis un nom d'hôte qui s'expose au public, vers les processus sur lequel est associé le port.</p>
+<p>Ceci est typiquement implémenté en utilisant <a href="../../fr/07-port-binding/dependencies">la déclaration de dépendances</a> pour ajouter une bibliothèque de serveur web, tel que <a href="http://www.tornadoweb.org/">Tornado</a> pour Python, <a href="http://code.macournoyer.com/thin/">Thin</a> pour Ruby, ou <a href="http://jetty.codehaus.org/jetty/">Jetty</a> pour Java et autres langages basés sur la JVM. Cela se déroule entièrement dans l'espace utilisateur, c'est à dire, dans le code de l'application. Le contrat avec l'environnement d'exécution, c'est l'association de port pour servir les requêtes.</p>
+<p>HTTP n'est pas le seul service qui peut être exporté à l'aide d'association de ports. Presque tout type de serveur peut fonctionner à travers l'association à un port et l'écoute des requêtes entrantes. Il y a par exemple <a href="http://www.ejabberd.im/">ejabberd</a> (qui parle <a href="http://xmpp.org/">XMPP</a>), et <a href="http://redis.io/">Redis</a> (qui parle le <a href="http://redis.io/topics/protocol">protocole Redis</a>).</p>
+<p>Notez également que l'approche par association de port signifie qu'une application peut devenir le <a href="../../fr/07-port-binding/backing-services">service externe</a> d'une autre application, en fournissant l'URL de l'application externe dans la configuration de l'application qui la consomme.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../fr/06-processes/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../fr/08-concurrency/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>
