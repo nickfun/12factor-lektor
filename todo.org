@@ -1,5 +1,0 @@
-* Todo in project
-
-- [X] re-use same css from original 12factor.net
-- [ ] link between pages
-- [ ] pages in many languages, use "alternatives" from lektor
