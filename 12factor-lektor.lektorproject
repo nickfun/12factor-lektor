@@ -2,3 +2,13 @@
 name = 12factor-lektor
 url = /docs
 url_style = relative
+
+[alternatives.en]
+name = English
+primary = yes
+locale = en_US
+
+[alternatives.fr]
+name = French
+url_prefix = /fr/
+locale = fr
