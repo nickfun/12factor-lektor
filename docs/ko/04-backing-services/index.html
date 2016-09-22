@@ -1,0 +1,118 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>IV. 백엔드 서비스</h2>
+
+      <h3>백엔드 서비스를 연결된 리소스로 취급</h3>
+	
+      <p><em>백엔드 서비스</em>는 애플리케이션 정상 동작 중 네트워크를 통해 이용하는 모든 서비스입니다. 예를 들어, 데이터 저장소(예: <a href="http://dev.mysql.com/">MySQL</a>, <a href="http://couchdb.apache.org/">CouchDB</a>), 메시지 큐잉 시스템(예: <a href="http://www.rabbitmq.com/">RabbitMQ</a>, <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), 메일을 보내기 위한 SMTP 서비스 (예: <a href="http://www.postfix.org/">Postfix</a>), 캐시 시스템(예: <a href="http://memcached.org/">Memcached</a>) 등이 있습니다.</p>
+<p>데이터베이스와 같은 백엔드 서비스들은 통상적으로 배포된 애플리케이션과 같은 시스템 관리자에 의해서 관리되고 있었습니다.  애플리케이션은 이런 로컬에서 관리하는 서비스 대신, 서드파티에 의해서 제공되고 관리되는 서비스를 이용할 수 있습니다. 예를 들어, SMTP 서비스 (예: <a href="http://postmarkapp.com/">Postmark</a>), 지표 수집 서비스 (예: <a href="http://newrelic.com/">New Relic</a>, <a href="http://www.loggly.com/">Loggly</a>), 스토리지 서비스 (예: <a href="http://aws.amazon.com/s3/">Amazon S3</a>), API로 접근 가능한 소비자 서비스 (예: <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, <a href="http://www.last.fm/api">Last.fm</a>)등이 있습니다.</p>
+<p><strong>Twelve-Factor App의 코드는 로컬 서비스와 서드파티 서비스를 구별하지 않습니다.</strong> 애플리케이션에게는 양 쪽 모두 연결된 리소스이며, <a href="../../ko/04-backing-services/config">설정</a>에 있는 URL 혹은 다른 로케이터와 인증 정보를 사용해서 접근 됩니다. Twelve-Factor App의 <a href="../../ko/04-backing-services/codebase">배포</a>는 애플리케이션 코드를 수정하지 않고 로컬에서 관리되는 MySQL DB를 서드파티에서 관리되는 DB(예: <a href="http://aws.amazon.com/rds/">Amazon RDS</a>)로 전환할 수 있어야 합니다. 마찬가지로, 로컬 SMTP 서버는 서드파티 SMTP 서비스(예: Postmark)로 코드 수정 없이 전환이 가능해야 합니다. 두 경우 모두 설정에 있는 리소스 핸들만 변경하면 됩니다.</p>
+<p>각각의 다른 백엔드 서비스는 <em>리소스</em>입니다. 예를 들어, 하나의 MySQL DB는 하나의 리소스입니다. 애플리케이션 레이어에서 샤딩을 하는 두 개의 MySQL 데이터베이스는 두 개의 서로 다른 리소스라고 볼 수 있습니다. Twelve-Factor App은 이러한 데이터베이스들을 <em>첨부된(Attached) 리소스</em>으로 다룹니다. 이는 서로 느슨하게 결합된다는 점을 암시합니다.</p>
+<p><img src="/images/attached-resources.png" class="full" alt="4개의 백엔드 서비스가 연결된 production 배포." /></p>
+<p>리소스는 자유롭게 배포에 연결되거나 분리될 수 있습니다. 예를 들어, 애플리케이션의 데이터베이스가 하드웨어 이슈로 작용이 이상한 경우, 애플리케이션의 관리자는 최신 백업에서 새로운 데이터베이스 서버를 시작시킬 것입니다. 그리고 코드를 전혀 수정하지 않고 현재 운영에 사용하고 있는 데이터베이스를 분리하고 새로운 데이터베이스를 연결할 수 있습니다.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/zh_cn">Chinese</a>
+	 | 
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	 | 
+      
+	<a href="/de">German</a>
+	 | 
+      
+	<a href="/it">Italian</a>
+	 | 
+      
+	<a href="/ja">Japanese</a>
+	 | 
+      
+	<a href="/ko">Korean</a>
+	 | 
+      
+	<a href="/pt_br">Portuguese</a>
+	 | 
+      
+	<a href="/ru">Russian</a>
+	 | 
+      
+	<a href="/es">Spanish</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../ko/03-config/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../ko/05-build-release-run/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../04-backing-services/">En</a>
+	 | 
+      
+	<a href="../../fr/04-backing-services/">Fr</a>
+	 | 
+      
+	<a href="../../de/04-backing-services/">De</a>
+	 | 
+      
+	<a href="../../es/04-backing-services/">Es</a>
+	 | 
+      
+	<a href="../../it/04-backing-services/">It</a>
+	 | 
+      
+	<a href="../../ja/04-backing-services/">Ja</a>
+	 | 
+      
+	<a href="../../ko/04-backing-services/">Ko</a>
+	 | 
+      
+	<a href="../../pt_br/04-backing-services/">Pt_br</a>
+	 | 
+      
+	<a href="../../ru/04-backing-services/">Ru</a>
+	 | 
+      
+	<a href="../../zh_cn/04-backing-services/">Zh_cn</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

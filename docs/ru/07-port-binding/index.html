@@ -1,0 +1,118 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VII. Привязка портов (Port binding)</h2>
+
+      <h3>Экспортируйте сервисы через привязку портов</h3>
+	
+      <p>Иногда веб-приложения запускают внутри контейнера веб-сервера. Например, PHP-приложение может быть запущено как модуль внутри <a href="http://httpd.apache.org/">Apache HTTPD</a>, или Java-приложение может быть запущено внутри <a href="http://tomcat.apache.org/">Tomcat</a>.</p>
+<p><strong>Приложение двенадцати факторов является полностью самодостаточным</strong> и не полагается на инъекцию веб-сервера во время выполнения для того, чтобы создать веб-сервис. Веб-приложение <strong>экспортирует HTTP-сервис путем привязки к порту</strong> и прослушивает запросы, поступающих на этот порт.</p>
+<p>Во время локальной разработки разработчик переходит по URL-адресу вида <code>http://localhost:5000/</code>, чтобы получить доступ к сервису, предоставляемым его приложением. При развертывании слой маршрутизации обрабатывает запросы к общедоступному хосту и перенаправляет их к привязанному к порту веб приложению.</p>
+<p>Это обычно реализуется с помощью <a href="../../ru/07-port-binding/dependencies">объявления зависимости</a> для добавления библиотеки веб-сервера к приложению такой, как <a href="http://www.tornadoweb.org/">Tornado</a> в Python, <a href="http://code.macournoyer.com/thin/">Thin</a> в Ruby, и <a href="http://jetty.codehaus.org/jetty/">Jetty</a> в Java и других языках на основе JVM. Это происходит полностью в <em>пространстве пользователя</em>, то есть в коде приложения. Контрактом со средой исполнения является привязка приложения к порту для обработки запросов.</p>
+<p>HTTP -- это не единственный сервис, который может быть экспортирован посредством привязки порта. Почти любой тип серверного ПО может быть запущен как процесс, привязанный к порту и ожидающий входящих запросов. Примеры этого включают <a href="http://www.ejabberd.im/">ejabberd</a> (предоставляет <a href="http://xmpp.org/">XMPP протокол</a>) и <a href="http://redis.io/">Redis</a> (предоставляет <a href="http://redis.io/topics/protocol">Redis протокол</a>).</p>
+<p>Также обратите внимание, что подход привязки к порту означает, что одно приложение может выступать <a href="../../ru/07-port-binding/backing-services">сторонней службой</a> для другого приложения путём предоставления URL-адреса стороннего приложения как идентификатор ресурса в конфигурации потребляющего приложения.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/zh_cn">Chinese</a>
+	 | 
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	 | 
+      
+	<a href="/de">German</a>
+	 | 
+      
+	<a href="/it">Italian</a>
+	 | 
+      
+	<a href="/ja">Japanese</a>
+	 | 
+      
+	<a href="/ko">Korean</a>
+	 | 
+      
+	<a href="/pt_br">Portuguese</a>
+	 | 
+      
+	<a href="/ru">Russian</a>
+	 | 
+      
+	<a href="/es">Spanish</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../ru/06-processes/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../ru/08-concurrency/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../07-port-binding/">En</a>
+	 | 
+      
+	<a href="../../fr/07-port-binding/">Fr</a>
+	 | 
+      
+	<a href="../../de/07-port-binding/">De</a>
+	 | 
+      
+	<a href="../../es/07-port-binding/">Es</a>
+	 | 
+      
+	<a href="../../it/07-port-binding/">It</a>
+	 | 
+      
+	<a href="../../ja/07-port-binding/">Ja</a>
+	 | 
+      
+	<a href="../../ko/07-port-binding/">Ko</a>
+	 | 
+      
+	<a href="../../pt_br/07-port-binding/">Pt_br</a>
+	 | 
+      
+	<a href="../../ru/07-port-binding/">Ru</a>
+	 | 
+      
+	<a href="../../zh_cn/07-port-binding/">Zh_cn</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

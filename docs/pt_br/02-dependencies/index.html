@@ -1,0 +1,117 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>II. Dependências</h2>
+
+      <h3>Declare e isole explicitamente as dependências</h3>
+	
+      <p>A maioria das linguagens de programação oferecem um sistema de pacotes para a distribuição de bibliotecas de apoio, como o <a href="http://www.cpan.org/">CPAN</a> para Perl ou <a href="http://rubygems.org/">Rubygems</a> para Ruby. Bibliotecas instaladas por meio de um sistema de pacotes podem ser instaladas em todo o sistema (conhecidas como "site packages") ou com escopo dentro do diretório contendo a aplicação (conhecidas como "vendoring" ou "building").</p>
+<p><strong>Uma aplicação doze-fatores nunca confia na existência implícita de pacotes em todo o sistema.</strong> Ela declara todas as dependências, completa e exatamente, por meio de um manifesto de <em>declaração de dependência</em>. Além disso, ela usa uma ferramenta de <em>isolamento de dependência</em> durante a execução para garantir que não há dependências implícitas "vazamento" a partir do sistema circundante. A completa e explícita especificação de dependências é aplicada de maneira uniforme tanto para produção quanto para desenvolvimento.</p>
+<p>Por exemplo, <a href="http://gembundler.com/">Gem Bundler</a> para Ruby oferece o formato de manifesto <code>Gemfile</code> para declaração de dependência e <code>bundle exec</code> para isolamento das mesmas. Em Python existem duas ferramentas separadas para estas etapas -- <a href="http://www.pip-installer.org/en/latest/">Pip</a> é utilizado para declaração e <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> para isolamento. Mesmo C tem <a href="http://www.gnu.org/s/autoconf/">Autoconf</a> para declaração de dependência, e vinculação estática pode fornecer o isolamento. Não importa qual o conjunto de ferramentas, declaração de dependência e isolamento devem ser sempre usados juntos -- apenas um ou o outro não é suficiente para satisfazer doze-fatores.
+Um dos beneficios da declaração de dependência explícita é que simplifica a configuração  da aplicação para novos desenvolvedores. O novo desenvolvedor pode verificar a base de código do aplicativo em sua máquina de desenvolvimento, exigindo apenas runtime da linguagem e gerenciador de dependência instalado como pré-requisitos. Eles serão capazes de configurar tudo o que é necessário para rodar o código da aplicação com um determinístico <em>comando de build</em>. Por exemplo, o comando de build para Ruby/Bundler é <code>bundle install</code>, enquanto que para Clojure/<a href="https://github.com/technomancy/leiningen#readme">Leiningen</a> é <code>lein deps</code>.</p>
+<p>Aplicações doze-fatores também não contam com a existência implícita de todas as ferramentas do sistema. Exemplos incluem executar algum comando externo como do ImageMagick ou <code>curl</code>. Embora possam existir essas ferramentas em muitos ou mesmo na maioria dos sistemas, não há garantia de que eles vão existir em todos os sistemas em que a aplicação pode rodar no futuro, ou se a versão encontrada em um futuro sistema será compatível com a aplicação. Se a aplicação precisa executar alguma ferramenta do sistema, essa ferramenta deve ser vendorizada na aplicação.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/zh_cn">Chinese</a>
+	 | 
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	 | 
+      
+	<a href="/de">German</a>
+	 | 
+      
+	<a href="/it">Italian</a>
+	 | 
+      
+	<a href="/ja">Japanese</a>
+	 | 
+      
+	<a href="/ko">Korean</a>
+	 | 
+      
+	<a href="/pt_br">Portuguese</a>
+	 | 
+      
+	<a href="/ru">Russian</a>
+	 | 
+      
+	<a href="/es">Spanish</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../pt_br/01-codebase/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pt_br/03-config/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../02-dependencies/">En</a>
+	 | 
+      
+	<a href="../../fr/02-dependencies/">Fr</a>
+	 | 
+      
+	<a href="../../de/02-dependencies/">De</a>
+	 | 
+      
+	<a href="../../es/02-dependencies/">Es</a>
+	 | 
+      
+	<a href="../../it/02-dependencies/">It</a>
+	 | 
+      
+	<a href="../../ja/02-dependencies/">Ja</a>
+	 | 
+      
+	<a href="../../ko/02-dependencies/">Ko</a>
+	 | 
+      
+	<a href="../../pt_br/02-dependencies/">Pt_br</a>
+	 | 
+      
+	<a href="../../ru/02-dependencies/">Ru</a>
+	 | 
+      
+	<a href="../../zh_cn/02-dependencies/">Zh_cn</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

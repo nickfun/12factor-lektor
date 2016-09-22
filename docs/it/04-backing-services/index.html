@@ -1,0 +1,118 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>IV. Backing Service</h2>
+
+      <h3>Tratta i backing service come &#34;risorse&#34;</h3>
+	
+      <p>Un "backing service" è un qualsiasi servizio che l'applicazione consuma attraverso la rete durante la sua esecuzione. Alcuni esempi includono i database (come <a href="http://dev.mysql.com/">MySQL</a> o <a href="http://couchdb.apache.org/">CouchDB</a>), servizi di messaging/code (come <a href="http://www.rabbitmq.com/">RabbitMQ</a> oppure <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), servizi SMTP per la posta (come <a href="http://www.postfix.org/">Postfix</a>) e sistemi di cache (come <a href="http://memcached.org/">Memcached</a>).</p>
+<p>Un backing service (prendiamo ad esempio un database) è tradizionalmente gestito dallo stesso amministratore di sistema, al deploy dell'applicazione. In aggiunta a questi servizi gestiti in locale potrebbero esserne presenti altri, forniti da terze parti. Parliamo di servizi SMTP (come <a href="http://postmarkapp.com/">Postmark</a>), servizi di raccolta metriche (come <a href="http://newrelic.com/">New Relic</a> o <a href="http://www.loggly.com/">Loggly</a>), servizi per asset (come <a href="http://aws.amazon.com/s3/">Amazon S3</a>), ed anche servizi accessibili via API (come <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, o <a href="http://www.last.fm/api">Last.fm</a>).</p>
+<p><strong>Il codice di un'app twelve-factor non fa distinzioni tra servizi in locale o third party</strong>. Per l'applicazione, entrambi sono risorse connesse, accessibili via URL (o tramite un altro locator) e credenziali memorizzate nell'opportuno file di <a href="../../it/04-backing-services/config">configurazione</a>.  Ad un qualsiasi <a href="../../it/04-backing-services/codebase">deploy</a> di un'applicazione twelve-factor si deve poter permettere di passare velocemente da un database MySQL locale ad uno third party (come <a href="http://aws.amazon.com/rds/">Amazon RDS</a>) senza alcuna modifica al codice. Allo stesso modo, un server SMTP locale dovrebbe poter essere cambiato con uno third party (come Postmark). In entrambi i casi, a cambiare dovrebbero essere <strong>solo</strong> i file di configurazione necessari.</p>
+<p>Ogni backing service è quindi definibile come una "risorsa connessa". Un Database MySQL è una risorsa. Due database MySQL (utilizzati per lo sharding a livello di applicazione) saranno visti come due distinte risorse. Un'app twelve-factor vede questi database come <em>risorse</em> anche per sottolineare la separazione dal deploy a cui fanno riferimento.</p>
+<p><img src="/images/attached-resources.png" class="full" alt="Un deploy di produzione collegato a quattro backing service." /></p>
+<p>Le risorse possono essere collegate e scollegate da un deploy a piacimento. Ad esempio, supponiamo che il database dell'applicazione si comporti in modo anomalo per problemi hardware. L'amministratore potrebbe decidere di voler configurare un altro server di database ripreso da un recente backup. Il vecchio database verrebbe scollegato, quello nuovo connesso -- senza modifiche al codice.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/zh_cn">Chinese</a>
+	 | 
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	 | 
+      
+	<a href="/de">German</a>
+	 | 
+      
+	<a href="/it">Italian</a>
+	 | 
+      
+	<a href="/ja">Japanese</a>
+	 | 
+      
+	<a href="/ko">Korean</a>
+	 | 
+      
+	<a href="/pt_br">Portuguese</a>
+	 | 
+      
+	<a href="/ru">Russian</a>
+	 | 
+      
+	<a href="/es">Spanish</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../it/03-config/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../it/05-build-release-run/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../04-backing-services/">En</a>
+	 | 
+      
+	<a href="../../fr/04-backing-services/">Fr</a>
+	 | 
+      
+	<a href="../../de/04-backing-services/">De</a>
+	 | 
+      
+	<a href="../../es/04-backing-services/">Es</a>
+	 | 
+      
+	<a href="../../it/04-backing-services/">It</a>
+	 | 
+      
+	<a href="../../ja/04-backing-services/">Ja</a>
+	 | 
+      
+	<a href="../../ko/04-backing-services/">Ko</a>
+	 | 
+      
+	<a href="../../pt_br/04-backing-services/">Pt_br</a>
+	 | 
+      
+	<a href="../../ru/04-backing-services/">Ru</a>
+	 | 
+      
+	<a href="../../zh_cn/04-backing-services/">Zh_cn</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

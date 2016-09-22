@@ -1,0 +1,117 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>II. Dipendenze</h2>
+
+      <h3>Dipendenze dichiarate ed isolate</h3>
+	
+      <p>Molti linguaggi di programmazione offrono dei sistemi di packaging per la distribuzione delle proprie librerie, come <a href="http://www.cpan.org/">CPAN</a> per Perl o <a href="http://rubygems.org/">Rubygems</a> per Ruby. Le librerie installate attraverso questi sistemi, inoltre, possono essere identificate come "system-wide" (attive a livello di sistema), oppure posizionate nella directory della singola applicazione (in questo caso si parla di "vendoring" o "bundling").</p>
+<p><strong>Un'applicazione che aderisce alla twelve-factor non si basa mai sull'esistenza implicita di librerie system-wide</strong>. Le dipendenze vengono tutte dichiarate, tramite un manifest dedicato. Inoltre, viene contemplato anche l'uso di un tool di <em>isolamento delle dipendenze</em> durante l'esecuzione, in modo tale da assicurarsi che non ci siano delle "dipendenze implicite" che creino interferenze nel sistema in cui ci si trova. La specifica completa ed esplicita delle dipendenze si applica in modo uniforme: sia in production che in sviluppo.</p>
+<p>Ad esempio, <a href="http://gembundler.com/">Gem Bundler</a> per Ruby offre il supporto di un file-manifesto <code>Gemfile</code> da usare per la dichiarazione delle dipendenze e <code>bundle exec</code> per il loro isolamento. In Python invece troviamo altri due tool per questi scopi -- <a href="http://www.pip-installer.org/en/latest/">Pip</a> viene usato per la dichiarazione e <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> per l'isolamento. Anche C ha <a href="http://www.gnu.org/s/autoconf/">Autoconf</a> per la dichiarazione di dipendenze, mentre lo static linking si occupa dell'isolamento. Non importa quale sia il toolchain usato, le operazioni di dichiarazione ed isolamento vanno sempre effettuate. In caso contrario, l'applicazione non aderisce più alla metodologia.</p>
+<p>Un altro importante beneficio di una dichiarazione esplicita delle dipendenze sta nel fatto che semplifica di molto la configurazione iniziale per gli sviluppatori appena entrati a lavorare al progetto. Il nuovo arrivato non dovrà fare altro che effettuare un check out della codebase nella propria macchina di sviluppo, occupandosi di dover installare solo ed esclusivamente le dipendenze, appunto, dichiarate. Molto spesso è inoltre presente un <em>build command</em> che permette di automatizzare il processo. Per Ruby/Bundler si usa <code>bundle install</code>, mentre per Clojure/<a href="https://github.com/technomancy/leiningen#readme">Leiningen</a> c'è <code>lein deps</code>.</p>
+<p>Ogni applicazione che aderisce alla metodologia twelve-factor, inoltre, non si basa mai sull'esistenza di un qualsiasi tool di sistema. Alcuni esempi sono <em>ImageMagick</em> o <em>curl</em>. Nonostante questi software esistano già su buona parte dei sistemi in circolazione, non è comunque detto che siano presenti su tutti quelli su cui girerà l'applicazione in futuro. Se l'app non può fare a meno di questo tool, si dovrebbe prendere in considerazione l'idea di "vendorizzarlo" nell'applicazione stessa.</p>
+
+    </article>
+  </section>
+
+  
+
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+      
+	<a href="/zh_cn">Chinese</a>
+	 | 
+      
+	<a href="/">English</a>
+	 | 
+      
+	<a href="/fr">French</a>
+	 | 
+      
+	<a href="/de">German</a>
+	 | 
+      
+	<a href="/it">Italian</a>
+	 | 
+      
+	<a href="/ja">Japanese</a>
+	 | 
+      
+	<a href="/ko">Korean</a>
+	 | 
+      
+	<a href="/pt_br">Portuguese</a>
+	 | 
+      
+	<a href="/ru">Russian</a>
+	 | 
+      
+	<a href="/es">Spanish</a>
+	
+      
+      </div>
+      
+	<div id="prev"><a href="../../it/01-codebase/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../it/03-config/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+
+  <footer>
+    <div id="locales">
+      
+	<a href="../../02-dependencies/">En</a>
+	 | 
+      
+	<a href="../../fr/02-dependencies/">Fr</a>
+	 | 
+      
+	<a href="../../de/02-dependencies/">De</a>
+	 | 
+      
+	<a href="../../es/02-dependencies/">Es</a>
+	 | 
+      
+	<a href="../../it/02-dependencies/">It</a>
+	 | 
+      
+	<a href="../../ja/02-dependencies/">Ja</a>
+	 | 
+      
+	<a href="../../ko/02-dependencies/">Ko</a>
+	 | 
+      
+	<a href="../../pt_br/02-dependencies/">Pt_br</a>
+	 | 
+      
+	<a href="../../ru/02-dependencies/">Ru</a>
+	 | 
+      
+	<a href="../../zh_cn/02-dependencies/">Zh_cn</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>
