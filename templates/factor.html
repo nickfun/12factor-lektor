@@ -26,8 +26,9 @@
   <section class="concrete">
     <nav>
       <div id="locales">
-	{% for language, displayName in bag('languages').iteritems() %}
-	  <a href="{{language}}">{{displayName}}</a>
+	{% set langLookup = bag('languages') %}
+	{% for alt in get_alts(this) %}
+	  <a href="{{ '.'|url(alt=alt) }}">{{langLookup.get(alt)|title}}</a>
 	  {% if not loop.last %} | {% endif %}
 	{% endfor %}
       </div>

@@ -2,7 +2,6 @@
 
 SRCDIR = "/Users/nfunnell/junk/12factor/content/"
 
-locale = "de"
 localelist = [
     "de",
     "es",
@@ -12,7 +11,8 @@ localelist = [
     "ko",
     "pt_br",
     "ru",
-    "zh_cn"
+    "zh_cn",
+    "pl"
 ]
 
 LEKDIR = "/Users/nfunnell/junk/12factor-lektor/content/"
