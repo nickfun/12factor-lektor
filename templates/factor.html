@@ -22,14 +22,14 @@
   </section>
 
   {% set siblings = this.get_siblings() %}
-
+  
   <section class="concrete">
     <nav>
       <div id="locales">
-      {% for language, fragment in bag('languages').iteritems() %}
-	<a href="{{fragment}}">{{language}}</a>
-	{% if not loop.last %} | {% endif %}
-      {% endfor %}
+	{% for language, displayName in bag('languages').iteritems() %}
+	  <a href="{{language}}">{{displayName}}</a>
+	  {% if not loop.last %} | {% endif %}
+	{% endfor %}
       </div>
       {% if siblings.prev_page %}
 	<div id="prev"><a href="{{ siblings.prev_page|url }}">&laquo; Previous</a></div>
@@ -39,11 +39,12 @@
       {% endif %}
     </nav>
   </section>
-
+  
   <footer>
     <div id="locales">
+      {% set langLookup = bag('languages') %}
       {% for alt in get_alts(this) %}
-	<a href="{{ '.'|url(alt=alt) }}">{{alt|title}}</a>
+	<a href="{{ '.'|url(alt=alt) }}">{{langLookup.get(alt)|title}}</a>
 	{% if not loop.last %} | {% endif %}
       {% endfor %}
     </div>

@@ -32,8 +32,8 @@
 	
   <footer>
     <div id="locales">
-      {% for language, fragment in bag('languages').iteritems() %}
-	<a href="{{fragment}}">{{language}}</a>
+      {% for language, displayName in bag('languages').iteritems() %}
+	<a href="{{language}}">{{displayName}}</a>
 	{% if not loop.last %} | {% endif %}
       {% endfor %}
     </div>
