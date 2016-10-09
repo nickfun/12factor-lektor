@@ -1,0 +1,127 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>XII. Zarządzanie aplikacją</h2>
+
+      <h3>Uruchamiaj zadania administracyjne jako jednorazowe procesy</h3>
+	
+      <p><a href="../../pl/12-admin-processes/concurrency">Formacja</a> jest zestawem procesów używanych przez aplikację podczas jej działania (np. obsługi zapytań z sieci). Do często wykonywanych zadań administracyjnych należą:</p>
+<ul>
+<li>Wykonanie migracji bazy danych (np. <code>manage.py migrate</code> w Django, <code>rake db:migrate</code> w Railsach).</li>
+<li>Uruchomienie konsoli (znanej również jako powłoka <a href="http://pl.wikipedia.org/wiki/REPL">REPL</a>) by wykonać frament kodu lub podejrzeć modele działającej bazy danych. Większość środowisk języków programowania udostępnia REPL poprzez wywołanie interpretera bez dodatkowych argumentów (np. <code>python</code> lub <code>perl</code>). W innych przypadkach przeznaczone są do tego osobne polecenia (np. <code>irb</code> w Ruby, <code>rails console</code> w Railsach).</li>
+<li>Wykonywanie pojedynczych skryptów znajdujących się w repozytorium kodu aplikacji (np. <code>php scripts/fix_bad_records.php</code>).</li>
+</ul>
+<p>Pojedyncze zadania powinny być uruchamiane w identycznym środowisku jak <a href="../../pl/12-admin-processes/processes">długoterminowe procesy</a> aplikacji. Działają w ramach tego samego <a href="../../pl/12-admin-processes/build-release-run">wdrożenia</a>, używając tego samego <a href="../../pl/12-admin-processes/codebase">kodu</a> i <a href="../../pl/12-admin-processes/config">konfiguracji</a> jak każdy inny działający proces. Kod zadania administracyjnego musi zostać dołączony do kodu aplikacji by uniknąć problemów z synchronizacją.</p>
+<p>Te same techniki <a href="../../pl/12-admin-processes/dependencies">izolacji zależności</a> powinny być używane dla wszystkich typów procesów. Dla przykładu, jeśli proces sieciowy Ruby używa polecenia <code>bundle exec thin start</code>, wtedy do migracji bazy danych powinno się użyć <code>bundle exec rake db:migrate</code>. Podobnie program napisany w Pythonie używający Virtualenv powinien używać dołączonego <code>bin/python</code> by uruchomić zarówno webserver Tornado lub <code>manage.py</code> do procesów zarządzania.</p>
+<p>Aplikacja 12factor zaleca używanie języków programowania, które udostępniają powłokę REPL oraz takich w których można łatwo uruchomić pojedynczy skrypt. W środowisku lokalnym developerzy uruchamiają zadania zarządzające aplikacją poprzez bezpośrednie wywołanie polecenia w konsoli w katalogu roboczym aplikacji. We wdrożeniu produkcyjnym, developer może użyć ssh lub innego mechanizmu służącego do zdalnego wykonywania poleceń, by uruchomić ten sam proces.</p>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../12-admin-processes/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/12-admin-processes/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/12-admin-processes/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/12-admin-processes/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/12-admin-processes/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/12-admin-processes/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/12-admin-processes/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/12-admin-processes/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/12-admin-processes/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/12-admin-processes/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/12-admin-processes/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/11-logs/">&laquo; Previous</a></div>
+      
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../12-admin-processes/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/12-admin-processes/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/12-admin-processes/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/12-admin-processes/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/12-admin-processes/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/12-admin-processes/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/12-admin-processes/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/12-admin-processes/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/12-admin-processes/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/12-admin-processes/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/12-admin-processes/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

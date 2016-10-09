@@ -1,0 +1,126 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VIII. Współbieżność</h2>
+
+      <h3>Skaluj przez odpowiednio dobrane procesy</h3>
+	
+      <p>Każdy program komputerowy od momentu uruchomienia jest reprezentowany przez jeden lub więcej procesów. Aplikacje internetowe mogą być uruchamiane w różnorodny sposób. Dla przykładu -  procesy PHP uruchamiane są na żądanie (w zależności od potrzeby obsługi odpowiednio dużej liczby zapytań) się jako podrzędne procesy Apache'a. W Javie procesy obsługiwane są zupełnie inaczej, z JVM zapewniającym jeden nadrzędny proces, który rezerwuje zasoby systemu (CPU oraz pamięć) na starcie oraz współbieżnością zarządzaną wewnętrznie i opartą na wątkach. Dla developerów aplikacji różnica jednak nie będzie szczególnie odczuwalna.</p>
+<p><img src="../../images/process-types.png" alt="Skala wyrażana jest przez działające procesy, natomiast różnorodność obciążenia wyrażana jest w typach procesów"></p>
+<p><strong>W aplikacji 12factor, procesy są typem pierwszoklasowym</strong>  Zachowanie tych procesów jest mocno wzorowane na  <a href="https://adam.herokuapp.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/">modelu procesów unixowych dla usług działających w wewnątrz systemu operacyjnego</a>.  Używając tego modelu programista może zaprojektować aplikację by radziła sobie z różnorodnym obciążeniem przez przypisywanie każdej czynności do <em>typu procesu</em>. Przykłady to m.in obsługa procesów sieciowych przez HTTP oraz długotrwałe działanie zadań w tle opierających się na procesach roboczych.</p>
+<p>Mimo tego procesy wciąż mogą się zwielokrotnić przez wątki w środowisku maszyny wirtualnej lub w asynchronicznym modelu wydarzeń, którego implementację możemy znaleźć wśród narzędzi takich jak <a href="http://rubyeventmachine.com/">EventMachine</a>, <a href="http://twistedmatrix.com/trac/">Twisted</a>, albo <a href="http://nodejs.org/">Node.js</a>. Należy pamiętać, że pojedyncza maszyna wirtualna może z czasem wymagać coraz więcej zasobów (skala pionowa), dlatego aplikacja musi być również w stanie pracować w oparciu o wiele procesów działających na wielu fizycznych maszynach.</p>
+<p>Największa zaleta modelu procesów objawia się w momencie skalowania.  <a href="../../pl/08-concurrency/processes">Niezależność oraz dzielenie się na podprocesy</a> umożliwia proste i bezproblemowe dodawanie wiekszej liczby równolegle działajacych procesów. Tablica typów procesów i liczba procesów nazywana jest ich <em>formacją</em>.</p>
+<p>Procesy aplikacji 12factor <a href="http://dustin.github.com/2010/02/28/running-processes.html">nigdy nie powinny być uruchamiane w tle</a> i nie mogą zapisywać plików PID. Zamiast tego opierają się na narzędziach systemu operacyjnego: do zarządzania procesami (np. <a href="http://upstart.ubuntu.com/">Upstart</a>, do zarządzania rozproszonymi procesami w chmurze, lub <a href="http://blog.daviddollar.org/2011/05/06/introducing-foreman.html">Foreman</a> w developmencie) do zarządzania <a href="../../pl/08-concurrency/logs">stumieniami wyjściowymi</a>, do obsługi zatrzymanych procesów, restartu i zakończenia działań zainicjowanych przez użytkownika.</p>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../08-concurrency/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/08-concurrency/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/08-concurrency/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/08-concurrency/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/08-concurrency/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/08-concurrency/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/08-concurrency/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/08-concurrency/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/08-concurrency/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/08-concurrency/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/08-concurrency/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/07-port-binding/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pl/09-disposability/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../08-concurrency/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/08-concurrency/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/08-concurrency/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/08-concurrency/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/08-concurrency/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/08-concurrency/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/08-concurrency/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/08-concurrency/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/08-concurrency/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/08-concurrency/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/08-concurrency/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

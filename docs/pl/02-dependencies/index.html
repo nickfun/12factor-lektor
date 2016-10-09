@@ -1,0 +1,125 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>II. Dependencies</h2>
+
+      <h3>Jawnie zadeklaruj i wydziel zależności</h3>
+	
+      <p>Większość języków programowania oferuje narzędzia do dystrybucji dodatkowych bibliotek, takie jak <a href="http://www.cpan.org/">CPAN</a> dla Perla lub <a href="http://rubygems.org/">Rubygems</a> dla języka Ruby. Biblioteki zainstalowane w ten sposób mogą być dostępne dla całego systemu (określane jako "site packages") lub zakres ich działania może być ograniczony dla pojedynczego projektu lub aplikacji (określane jako "vendoring" lub "bundling").</p>
+<p><strong>Aplikacja 12factor nigdy nie jest zależna od bibliotek zainstalowanych dla całego systemu.</strong> Wszystkie zależności są dokładnie określone przez dokument zawierający ich kompletną listę (<em>dependency declaration manifest</em>). Ponadto taka aplikacja korzysta   z narzędzia służącego do izolacji tych zależności podczas działania aplikacji. W ten sposób ma się pewność, że np. jakaś biblioteka nie jest przypadkiem jedną z tych zainstalowanych w zewnętrznym środowisku, w którym działa aplikacja. Inaczej podobna sytuacja mogłaby uniemożliwiać poprawne działanie aplikacji w innym środowisku, gdzie takiej biblioteki by brakowało. Pełna i dokładna specyfikacja bibliotek używanych przez aplikację jest identyczna dla zarówno środowiska developerskiego jak i produkcyjnego.</p>
+<p>Np. <a href="http://gembundler.com/">Gem Bundler</a> dla Ruby'ego używa pliku <code>Gemfile</code> dla deklaracji bibliotek z których korzysta aplikacja oraz komendę <code>bundle exec</code> do izolacji tych zależności. W Pythonie istnieją dwa oddzielne narzędzia dla tych zadań -- <a href="http://www.pip-installer.org/en/latest/">Pip</a> jest używany do deklaracji oraz <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> do izolacji. Nawet język C posiada narzędzie <a href="http://www.gnu.org/s/autoconf/">Autoconf</a> do deklaracji zależności, a statyczne wiązania mogą zapewnić izolację zalenożności. Bez względu na użyte narzędzia, deklaracja i izolacja zależności muszą być zawsze stosowane razem. Użycie tylko jednej z nich nie jest wystarczające by spełnić wymogi 12factor.</p>
+<p>Jedną z niewątpliwych korzyści deklaracji zależności jest uproszczenie początkowej konfiguracji aplikacji dla developera. Nowy programista może pobrać kod źródłowy z repozytorium. Następnie, posiadając wcześniej skonfigurowane środowisko danego języka i narzędzie do zarządzania jego bibliotekami, jest w stanie zainstalować wszystkie moduły i biblioteki potrzebne dla działania aplikacji przy pomocy jednej komendy. Taką komendą np. dla Ruby'ego/Bundlera jest <code>bundle install</code>, a dla Clojure/<a href="https://github.com/technomancy/leiningen#readme">Leiningen</a> jest to <code>lein deps</code>.</p>
+<p>Aplikacje zgodne z 12factor również nie są zależne od systemowych narzędzi. Wśród przykładów można wymienić ImageMagick czy też <code>curl</code>.  Pomimo, że narzędzia te mogą być dostępne na wielu lub nawet większości systemów, nie ma gwarancji, że będą istniały na wszystkich środowiskach, w których będzie uruchamiana aplikacja w przyszłości lub że ich wersja będzie kompatybilna. Jeśli aplikacja korzysta z jakiegokolwiek systemowego narzędzia, powinno być ono osobno do niej dołąćzone.</p>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../02-dependencies/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/02-dependencies/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/02-dependencies/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/02-dependencies/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/02-dependencies/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/02-dependencies/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/02-dependencies/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/02-dependencies/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/02-dependencies/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/02-dependencies/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/02-dependencies/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/01-codebase/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pl/03-config/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../02-dependencies/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/02-dependencies/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/02-dependencies/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/02-dependencies/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/02-dependencies/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/02-dependencies/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/02-dependencies/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/02-dependencies/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/02-dependencies/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/02-dependencies/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/02-dependencies/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>V.  Buduj, publikuj, uruchamiaj</h2>
+
+      <h3>Oddzielaj etap budowania od uruchamiania</h3>
+	
+      <p><a href="../../pl/05-build-release-run/codebase">Codebase</a> jest przetwarzany we wdrożenie w trzech etapach (poza lokalnym środowiskiem).</p>
+<ul>
+<li>Podczas <em>etapu budowania</em> kod z repozytorium konwertowany jest do wykonywalnej paczki tzw. <em>buildu</em>. Używając wersji kodu zdefiniowanej przez commit w procesie deploymentu, w tym etapie pobiera i dołącza się do projektu <a href="../../pl/05-build-release-run/dependencies">zależności</a> oraz kompiluje niezbędne zasoby.</li>
+<li>Podczas <em>etapu publikacji</em> aplikacji używany jest build stworzony w poprzednim etapie i konfigurowany na podstawie <a href="../../pl/05-build-release-run/config">ustawień</a> obecnego wdrożenia.  Stworzony w ten sposób <em>release</em> zawiera zbudowane źródło kodu, jego konfigurację i jest gotowy do uruchomienia w wybranym środowisku.</li>
+<li><em>Etap uruchamiania</em> (znany również jako "runtime") startuje aplikację w środowisku wykonawczym przez uruchomienie zestawu <a href="../../pl/05-build-release-run/processes">procesów</a> w oparciu o wcześniej przygotowany release.</li>
+</ul>
+<p><img src="../../images/release.png" alt="Kod staje się buildem, jeśli zostanie połączony z konfiguracją by stworzyć release"></p>
+<p><strong>Aplikacja 12factor ściśle rozgranicza etapy budowy, publikacji i uruchomiania</strong>  Kiedy aplikacja została już uruchomiona, nie można zmienić jej kodu w inny sposób niż zbudować ją na nowo na podstawie wcześniej naniesionych zmian.</p>
+<p>Narzędzia do obsługi wdrożeń zazwyczaj oferują moduły do zarządzania releasami, w tym możliwość do powrotu do poprzedniej wersji (rollback). Np. narzędzie <a href="https://github.com/capistrano/capistrano/wiki">Capistrano</a> przechowuje releasy w podkatalogu <code>releases</code>, gdzie obecna wersja opublikowanej aplikacji jest symlinkowana do jednej z wersji przechowywanej w katalogu Capistrano. Komenda <code>rollback</code> pozwala na szybką zmianę  wersji opublikowanej aplikacji na jedną z poprzednich.</p>
+<p>Każdy release powinien zawsze posiadać unikalny identyfikator, jak np. data publikacji aplikacji (taka jak <code>2011-04-06-20:32:17</code>) lub inkrementowany numer (np. <code>v100</code>). Do rejestru opublikowanych wersji aplikacji można jedynie dodawać jej nowe wersje, jego zawartość nie może być zmieniana w żaden inny sposób.</p>
+<p>Aplikacja może zostać zbudowana gdy developer zdecyduje o wdrożeniu zmian do kodu. Uruchomienie aplikacji może natomiast nastąpić automatycznie po restarcie serwera lub jednego z procesów aplikacji po błędzie krytycznym. Dlatego też etap uruchamiania aplikacji powinien być jak najbardziej jednolity minimalizując równocześnie ryzyko wystąpienia problemów ze startem aplikacji - mogą one spowodować zaprzestanie działania aplikacji np. w nocy, kiedy to nie ma żadnego developera "pod ręką". Etap budowy aplikacji może być bardziej złożony, ponieważ ewentualne błędy są zawsze widoczne dla developera, który nadzoruje ten proces.</p>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../05-build-release-run/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/05-build-release-run/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/05-build-release-run/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/05-build-release-run/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/05-build-release-run/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/05-build-release-run/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/05-build-release-run/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/05-build-release-run/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/05-build-release-run/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/05-build-release-run/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/05-build-release-run/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/04-backing-services/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pl/06-processes/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../05-build-release-run/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/05-build-release-run/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/05-build-release-run/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/05-build-release-run/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/05-build-release-run/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/05-build-release-run/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/05-build-release-run/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/05-build-release-run/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/05-build-release-run/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/05-build-release-run/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/05-build-release-run/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

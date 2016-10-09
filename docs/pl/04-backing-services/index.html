@@ -1,0 +1,126 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>IV. Usługi wspierające</h2>
+
+      <h3>Traktuj usługi wspierające jako przydzielone zasoby</h3>
+	
+      <p>Usługą wspierającą jest każda, z której aplikacja korzysta przez sieć jako część normalnego działania. Zaliczamy do nich np. magazyny danych (takie jak <a href="http://dev.mysql.com/">MySQL</a> albo <a href="http://couchdb.apache.org/">CouchDB</a>), systemy wysyłania/kolejkowania wiadomości (takie jak <a href="http://www.rabbitmq.com/">RabbitMQ</a> czy <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), usługi SMTP do zewnętrznej wysyłki emaili (np. <a href="http://www.postfix.org/">Postfix</a>) oraz systemy cachowania pamięci (np. <a href="http://memcached.org/">Memcached</a>).</p>
+<p>Usługa wspierająca taka jak baza danych jest zazwyczaj zarządzana przez tych samych programistów, którzy zajmują się wdrażaniem aplikacji. Dodatkowo aplikacja może również korzystać z usług oferowanych przez osoby trzecie. Do przykładów zaliczają się usługi SMTP (<a href="http://postmarkapp.com/">Postmark</a>),usługi zbierające metryki (<a href="http://newrelic.com/">New Relic</a> czy <a href="http://www.loggly.com/">Loggly</a>), usługi przechowywania danych (takie jak <a href="http://aws.amazon.com/s3/">Amazon S3</a>), czy również usługi dostępne przez publiczne API (jak np. <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, lub <a href="http://www.last.fm/api">Last.fm</a>).</p>
+<p><strong>Aplikacje 12factor nie rozróżniają usług lokalnych od zewnętrznych.</strong> Dla aplikacji wszystkie są załączonymi zasobami, dostepnymi przez adres URL lub inny standard zdefiniowany w <a href="../../pl/04-backing-services/config">konfiguracji</a>. Przy <a href="../../pl/04-backing-services/codebase">wdrożeniu</a> aplikacji nie może być problemów ze zmianą lokalnej bazy MySQL na oferowaną przez zewnętrznego usługodawcę (np. <a href="http://aws.amazon.com/rds/">Amazon RDS</a>) bez żadnych zmian w kodzie aplikacji. Podobnie lokalny serwer SMTP może być zamieniony na zewnętrzną usługę SMTP (taką jak Postmark) bez zmian kodu. W obu przypadkach zmiana powinna wystąpić jedynie w konfiguracji aplikacji.</p>
+<p>Każda usługa jest traktowana jako <em>zasób</em>. Zasobem będzie np. baza MySQL; dwie bazy danych (używane do <a href="https://en.wikipedia.org/wiki/Shard_(database_architecture">shardingu</a>) w warstwie aplikacji) kwalifikują się jako dwa odrębne zasoby. Aplikacja 12factor traktuje te bazy danych jako <em>załączone zasoby</em>, co wskazuje, że nie są z nią trwale powiązane.</p>
+<p><img src="/images/attached-resources.png" class="full" alt="Produkcyjne wdrożenie aplikacji korzystajace z czterech usług wspierających." /></p>
+<p>Zasoby mogą być dołączane i odłączane jeśli zajdzie taka potrzeba. W momencie gdy baza danych aplikacji z powodu usterek sprzętowych nie działa poprawnie, administrator może przełączyć bazę danych aplikacji na nowy serwer odtworzoną z ostatniego zapisu przywracania danych. Obecna produkcyjna baza może więc zostać przełączona bez żadnych zmian w kodzie aplikacji.</p>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../04-backing-services/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/04-backing-services/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/04-backing-services/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/04-backing-services/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/04-backing-services/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/04-backing-services/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/04-backing-services/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/04-backing-services/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/04-backing-services/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/04-backing-services/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/04-backing-services/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/03-config/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pl/05-build-release-run/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../04-backing-services/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/04-backing-services/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/04-backing-services/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/04-backing-services/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/04-backing-services/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/04-backing-services/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/04-backing-services/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/04-backing-services/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/04-backing-services/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/04-backing-services/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/04-backing-services/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>VI. Procesy</h2>
+
+      <h3>Uruchamiaj aplikację jako jeden lub więcej bezstanowych procesów</h3>
+	
+      <p>Aplikacja jest uruchamiana w środowisku wykonawczym w postaci jednego lub kilku <em>procesów</em>.</p>
+<p>W najprostszym przypadku kod aplikacji jest samodzielnym skryptem, środowiskiem wykonawczym jest laptop developera z wsparciem dla języka programowania a proces jest uruchamiany za pomocą linii komend (na przykład <code>python my_script.py</code>). Innym razem wdrożenie produkcyjne mocno rozwiniętej aplikacji może wymagać wiele <a href="../../pl/06-processes/concurrency">różnych rodzajów procesów</a>.</p>
+<p><strong>Wg zasad 12factor, procesy są bezstanowe i <a href="http://en.wikipedia.org/wiki/Shared_nothing_architecture">nie-współdzielące</a>.</strong>  Jakiekolwiek dane wymagające zapisu musza być zmagazynowane w "trwałej" <a href="../../pl/06-processes/backing-services">usłudze wspierającej</a>, najczęściej będącą bazą danych.</p>
+<p>Przestrzeń adresowa lub system plików procesu mogą być używane jako tymczasowy cache dla pojedynczych operacji. Przykładem jest pobieranie dużych plików, działanie na nich, a następnie zapisywanie wyników operacji w bazie danych. Aplikacja dwunastu aspektów nigdy nie zakłada, że jakiś fragment informacji zapisany w pamięci lub dysku będzie dostępny w przyszłości podczas jakiegokolwiek zapytania -- wraz z wieloma aktywnymi procesami rośnie szansa, że przyszłe zapytanie zostanie obsłużone przez zupełnie inny proces. Nawet w przypadku pojedynczego procesu, restart (spowodowany przez deployment kodu, zmianę konfiguracji lub relokacja procesu do innej fizycznej lokalizacji wykonana przez środowisko wykonawcze) zazwyczaj usunie wszystkie dane z lokalnego stanu aplikacji (system plików, pamięć podręczna).</p>
+<p>Narzędzie do pakowania plików, z których korzysta aplikacja (takie jak <a href="http://documentcloud.github.com/jammit/">Jammit</a> lub <a href="http://django-compressor.readthedocs.org/">django-compressor</a>) używają systemu plików jako cache dla skompilowanych zasobów.  Wg 12factor taka kompilacja powinna mieć miejsce podczas <a href="../../pl/06-processes/build-release-run">etapu budowy aplikacji</a>, jak to się dzieje np. w <a href="http://guides.rubyonrails.org/asset_pipeline.html">Rails asset pipeline</a>.</p>
+<p>Niektóre systemy sieciowe polegają na tzw. <a href="http://en.wikipedia.org/wiki/Load_balancing_%28computing%29#Persistence">"sticky sessions"</a> -- oznacza to, że sesja użytkownika jest zapisywana tymczasowo w pamięci procesu aplikacji, zakładając, że kolejne zapytania dotyczące użytkownika będą kierowane do tego samego procesu. "Sticky sessions" są złamaniem zasad aplikacji 12factor i nigdy nie powinny być używane jako źródło informacji. Dane sesji nadają się bardziej do zapisu w magazynie oferującym wygasanie danych w czasie, jak np. <a href="http://memcached.org/">Memcached</a> czy <a href="http://redis.io/">Redis</a>.</p>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../06-processes/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/06-processes/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/06-processes/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/06-processes/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/06-processes/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/06-processes/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/06-processes/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/06-processes/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/06-processes/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/06-processes/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/06-processes/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/05-build-release-run/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pl/07-port-binding/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../06-processes/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/06-processes/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/06-processes/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/06-processes/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/06-processes/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/06-processes/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/06-processes/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/06-processes/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/06-processes/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/06-processes/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/06-processes/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

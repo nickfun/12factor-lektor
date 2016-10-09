@@ -1,0 +1,133 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>III. Konfiguracja</h2>
+
+      <h3>Przechowuj konfigurację w środowisku</h3>
+	
+      <p><em>Konfiguracja</em> to jedyny element, który może się różnić pomiędzy <a href="../../pl/03-config/codebase">wdrożeniami</a> aplikacji (staging, produkcja, środowisko developerskie, etc). W jej skład wchodzą:</p>
+<ul>
+<li>Ustawienia połączeń do baz danych, Memcached, i innych <a href="../../pl/03-config/backing-services">usług wspierających</a></li>
+<li>Dane uwierzytelniające zewnętrznych usług takich jak Amazon S3 czy Twitter</li>
+<li>Wartości różne dla każdego wdrożenia, jak np. kanoniczna nazwa hosta</li>
+</ul>
+<p>Aplikacja czasem przechowuje konfigurację jako stałe wartości w kodzie źródłowym. Niestety jest to złamanie zasady 12factor wg której konfiguracja jest <strong>ściśle oddzielona od kodu aplikacji</strong>.</p>
+<p>Dowodem na to, czy aplikacja posiada swoją konfigurację oddzieloną od kodu jest to, czy można ją udostępnić na zasadach open source bez równoczesnego udostępniania np. danych uwierzytelniających.</p>
+<p>Należy pamiętać, że definicja "konfiguracji" <strong>nie</strong> dotyczy wewnętrznych ustawień aplikacji takich jak np. plik <code>config/routes.rb</code> w Railsach lub to jak <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html">są połączone moduły kodu</a> w <a href="http://spring.io/">Springu</a>. Konfiguracja tego typu nie zmienia się pomiędzy wdrożeniami co sprawia, że najbardziej odpowiednim miejscem do jej przechowywania jest kod aplikacji.</p>
+<p>Innym podejściem do konfiguacji jest korzystanie z plików, które nie znajdują się w repozytorium i nie są wersjonowane, jak np. <code>config/database.yml</code> w Railsach. Jest to duże usprawnienie względem używania stałych wartości, które są zapisywane w repozytorium. Minusem tego rozwiązania jest możliwość przypadkowego umieszczenia pliku konfiguracyjnego w repo. Ponadto można spotkać się z tendencją do rozrzucania takich plików w różnych katalogach i różnych formatach, co czyni je trudnymi do znalezienia i zarządzania z jednego miejsca.</p>
+<p><strong>Aplikacja 12factor przechowuje konfigurację w <em>zmiennych środowiskowych</em></strong> (czasem nazywane z języka angielskiego <em>env vars</em> lub <em>env</em>). W tej sytuacji można łatwo modyfikować zmienne środowiskowe pomiędzy wdrożeniami bez zmiany kodu aplikacji. W odróżnieniu do plików konfiguracyjnych istnieje mała szansa by zostały umieszczone przypadkowo w repozytorium. Ich kolejną zaletą jest to, że nie są powiązane z językiem programowania, frameworkiem, jak np. Java System Properties, czy też systemem operacyjnym.</p>
+<p>Kolejnym zagadnieniem zarządzania konfiguracją jest jej grupowanie. Czasem aplikacje gromadzą konfigurację w grupach (czasem nazywane "środowiskami") nazywanych od nazwy wdrożenia, takie jak <code>development</code>, <code>test</code>, czy <code>produkcja</code> w Railsach. Ten sposób organizacji jest niestety nieskalowalny. Im więcej różnych wdrożeń, tym większa potrzeba nazw, jak np. <code>staging</code> czy <code>qa</code>. Wraz z rozwojem projektu programiści mogą dodawać swoje specjalne konfiguracje, jak <code>staging-józefa</code>. Efektem tego mogą być niezliczone kombinacje nazw plików konfiguracyjnych, co utrudniać będzie zarządzanie wdrożonymi aplikacji.</p>
+<p>W aplikacji 12factor zmienne środowiskowe służą do precyzyjnej kontroli poszczególnych ustawień, posiadając różne, nie mylące się ze sobą nazwy. Nigdy nie są zgrupowane w "środowiskach", tylko niezależnie ustawiane dla każdego wdrożenia. Taki model konfiguracji skaluje się bez problemu, nawet jeśli aplikacja będzie potrzebowała w przyszłości więcej zróżnicowanych wdrożeń.</p>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../03-config/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/03-config/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/03-config/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/03-config/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/03-config/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/03-config/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/03-config/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/03-config/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/03-config/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/03-config/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/03-config/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/02-dependencies/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pl/04-backing-services/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../03-config/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/03-config/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/03-config/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/03-config/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/03-config/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/03-config/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/03-config/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/03-config/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/03-config/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/03-config/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/03-config/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<meta name="generator" content="Lektor 2; http://github.com/lektor/lektor">
+<link rel="stylesheet" href="../../static/style.css">
+<title>[LEKTOR] The Twelve-Factor App</title>
+<body>
+  <header>
+    <h1>
+      <a href="/">The Twelve-Factor App</a>
+    </h1>
+  </header>
+
+  <section class="abstract" id="factor">
+    <article>
+      <h2>XI. Logi</h2>
+
+      <h3>Traktuj logi jako strumień zdarzeń</h3>
+	
+      <p><em>Logi</em> zapewniają wgląd w zachowanie działającej aplikacji. W środowiskach korzystających z serwera zazwyczaj są zapisywane na dysku (plik "logfile"); jednak jest to tylko wybrany format zapisu.</p>
+<p>Logi są listą zaagregowanych i uporządkowanych w czasie <a href="https://adam.herokuapp.com/past/2011/4/1/logs_are_streams_not_files/">zdarzeń</a> zebranych ze strumieni wyjściowych wszystkich uruchomionych procesów i usług wspierających. Logi w swojej pierwotnej formie występują zazwyczaj w formacie tekstowym, gdzie jedno zdarzenie zajmuje jedną linię w pliku (wyjątkiem jest jednak <a href="https://en.wikipedia.org/wiki/Stack_trace">backtrace</a>, który może zajmować wiele linii). Logi nie mają określonego początku ani końca, napływają nieustannie podczas działania aplikacji.</p>
+<p><strong>Aplikacja 12factor nie odpowiada za przekierowywanie i zapis swojego strumienia wyjściowego.</strong> Nie powinna też zapisywać czy zarządzać plikami logów. Zamiast tego, każdy działający proces zapisuje swój niebuforowany strumień zdarzeń do <code>stdout</code>. Podczas pracy w lokalnym środowisku developer może obserwować zachowanie aplikacji przeglądając strumień w oknie terminala</p>
+<p>We wdrożeniu stagingowym czy produkcyjnym, każdy strumień procesów zostanie przechwycony przez środowisko wykonawcze, dołączony do pozostałych i skierowany do jednego lub wielu miejsc w celu przeglądania i długoterminowego zapisu. Miejsca zapisu nie są widoczne ani konfigurowane przez aplikację - w całości zarządza nimi środowisko wykonawcze. W tym celu można skorzystać z narzędzi do obsługi logów (takich jak <a href="https://github.com/heroku/logplex">Logplex</a> lub <a href="https://github.com/fluent/fluentd">Fluent</a>) dostępnych na licencji open-source.</p>
+<p>Strumień zdarzeń aplikacji może być skierowany do pliku lub obserwowany w czasie rzeczywistym przy pomocy komendy <code>tail</code> w terminalu. Przeważnie strumień jest wysyłany do systemu indeksowania i analizowania jak np. <a href="http://www.splunk.com/">Splunk</a>, albo do systemu magazynowania danych jak <a href="http://hive.apache.org/">Hadoop/Hive</a>. Wymienione systemy oferują duże możliwości i elastyczność obserwacji i badania zachowań aplikacji w czasie, w tym:</p>
+<ul>
+<li>Wyszukiwanie konkretnych zdarzeń z przeszłości.</li>
+<li>Wizualizację masowych statystyk (np. zapytania na minutę).</li>
+<li>Wysyłanie powiadomień na podstawie wcześniej zdefiniowanych heurystyk (np. o tym, że liczba błędów przekroczyła dozwoloną wartość).</li>
+</ul>
+
+    </article>
+  </section>
+
+  
+  
+  <section class="concrete">
+    <nav>
+      <div id="locales">
+	
+	
+	  <a href="../../11-logs/">English (en)</a>
+	   | 
+	
+	  <a href="../../fr/11-logs/">Français (fr)</a>
+	   | 
+	
+	  <a href="../../de/11-logs/">Deutsch (de)</a>
+	   | 
+	
+	  <a href="../../es/11-logs/">Español (es)</a>
+	   | 
+	
+	  <a href="../../it/11-logs/">Italiano (it)</a>
+	   | 
+	
+	  <a href="../../ja/11-logs/">日本語 (ja)</a>
+	   | 
+	
+	  <a href="../../ko/11-logs/">한국어 (ko)</a>
+	   | 
+	
+	  <a href="../../pt_br/11-logs/">Brazilian Portuguese (pt_br)</a>
+	   | 
+	
+	  <a href="../../ru/11-logs/">Русский (ru)</a>
+	   | 
+	
+	  <a href="../../zh_cn/11-logs/">简体中文 (zh_cn)</a>
+	   | 
+	
+	  <a href="../../pl/11-logs/">Polski (pl)</a>
+	  
+	
+      </div>
+      
+	<div id="prev"><a href="../../pl/10-dev-prod-parity/">&laquo; Previous</a></div>
+      
+      
+	<div id="next"><a href="../../pl/12-admin-processes/">Next &raquo;</a></div>
+      
+    </nav>
+  </section>
+  
+  <footer>
+    <div id="locales">
+      
+      
+	<a href="../../11-logs/">English (en)</a>
+	 | 
+      
+	<a href="../../fr/11-logs/">Français (fr)</a>
+	 | 
+      
+	<a href="../../de/11-logs/">Deutsch (de)</a>
+	 | 
+      
+	<a href="../../es/11-logs/">Español (es)</a>
+	 | 
+      
+	<a href="../../it/11-logs/">Italiano (it)</a>
+	 | 
+      
+	<a href="../../ja/11-logs/">日本語 (ja)</a>
+	 | 
+      
+	<a href="../../ko/11-logs/">한국어 (ko)</a>
+	 | 
+      
+	<a href="../../pt_br/11-logs/">Brazilian Portuguese (pt_br)</a>
+	 | 
+      
+	<a href="../../ru/11-logs/">Русский (ru)</a>
+	 | 
+      
+	<a href="../../zh_cn/11-logs/">简体中文 (zh_cn)</a>
+	 | 
+      
+	<a href="../../pl/11-logs/">Polski (pl)</a>
+	
+      
+    </div>
+    <div>Written by Adam Wiggins</div>
+    <div>Last updated ????</div>
+    <div>Source code</div>
+    <div>Download epub book</div>
+    <div>Privacy Policy</div>
+    <div>&copy; Copyright 2016 by Nicholas Funnell.</div>
+  </footer>
+</body>
+</html>
