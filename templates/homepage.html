@@ -14,7 +14,7 @@
   <section class="abstract">
     <article>
       {% if this.title %}
-	<h1>{{ this.title }}</h1>
+        <h1>{{ this.title }}</h1>
       {% endif %}
       {{ this.body }}
     </article>
@@ -24,17 +24,22 @@
     <article>
       <h1 id="the_twelve_factors">The Twelve Factors</h1>
       {% for child in this.children %}
-	<h2><a href="{{ child._id }}">{{ child.title }}</a></h2>
-	<h3>{{ child.subtitle }}</h3>
+        <h2><a href="{{ child._id }}">{{ child.title }} [{{ child._id }}]</a></h2>
+        <h3>{{ child.subtitle }}</h3>
       {% endfor %}
     </article>
   </section>
-	
+
   <footer>
     <div id="locales">
-      {% for language, displayName in bag('languages').iteritems() %}
-	<a href="{{language}}">{{displayName}}</a>
-	{% if not loop.last %} | {% endif %}
+      {% for language, displayName in bag('languages').items() %}
+        {% if language == "en" %}
+          {% set link = '' %}
+        {% else %}
+          {% set link = language %}
+        {% endif %}
+        <a href="/{{link}}">{{displayName}}</a>
+        {% if not loop.last %} | {% endif %}
       {% endfor %}
     </div>
     <div>Written by Adam Wiggins</div>
