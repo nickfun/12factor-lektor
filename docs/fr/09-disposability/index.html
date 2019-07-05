@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../fr/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IX. Jetable</h2>
 
       <h3>Maximisez la robustesse avec des démarrages rapides et des arrêts gracieux</h3>
-	
+
       <p><strong>Les <a href="../../fr/09-disposability/processes">processus</a> des applications 12 facteurs sont <em>jetables</em>, c'est à dire qu'ils peuvent être démarrés ou stoppés en un instant.</strong> Cela simplifie un rapide grossissement vertical, le déploiement rapide du <a href="../../fr/09-disposability/codebase">code</a> ou de changements dans la <a href="../../fr/09-disposability/config">configuration</a>, ainsi que la robustesse des déploiements de production.</p>
 <p>Les processus doivent viser à <strong>minimiser le temps de démarrage</strong>. Idéalement, un processus prend quelques secondes entre le moment où une commande le lance et celui où il est en marche et prêt à recevoir des requêtes ou du travail. Un court temps de démarrage rend plus agile les processus de <a href="../../fr/09-disposability/build-release-run">release</a> et de scalabilité verticale; il aide également à la robustesse, car les gestionnaires de processus peuvent plus facilement déplacer des processus vers de nouvelles machines physiques lorsque c'est nécessaire.</p>
 <p>Les processus <strong>s'éteignent gracieusement lorsqu'ils reçoivent un signal <a href="https://fr.wikipedia.org/wiki/SIGTERM">SIGTERM (fr)</a></strong> du gestionnaire de processus. Pour un processus web, s'éteindre en douceur se fait en arrêtant d'écouter sur le port de service (refusant, par la même occasion, toute nouvelle requête), en permettant à la requête courante de se terminer, et en quittant ensuite. Ce qui est implicite dans ce modèle, c'est que les requêtes sont courtes (pas plus de quelques secondes), ou dans le cas de longues requêtes, les clients doivent pouvoir tenter de se reconnecter sans problèmes lorsque la connection est perdue.</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

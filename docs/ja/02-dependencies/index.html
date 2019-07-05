@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../ja/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>II. 依存関係</h2>
 
       <h3>依存関係を明示的に宣言し分離する</h3>
-	
+
       <p>ほとんどのプログラミング言語は、サポートライブラリを配布するためのパッケージ管理システムを提供している。例えば、Perlにおける<a href="http://www.cpan.org/">CPAN</a>やRubyにおける<a href="http://rubygems.org/">Rubygems</a>などである。パッケージ管理システムでインストールされるライブラリは、システム全体（“site packages”と言われる）にインストールされる場合と、アプリケーションを含むディレクトリのスコープ（“vendoring”または“bundling”と言われる）にインストールされる場合がある。</p>
 <p><strong>Twelve-Factor Appは、システム全体にインストールされるパッケージが暗黙的に存在することに決して依存しない。</strong> すべての依存関係を <em>依存関係宣言</em> マニフェストで完全かつ厳密に宣言する。さらに、実行時には <em>依存関係分離</em> ツールを使って、取り囲んでいるシステムから暗黙の依存関係が“漏れ出ない”ことを保証する。完全かつ明示的な依存関係の指定は、本番環境と開発環境の両方に対して同様に適用される。</p>
 <p>例えば、Rubyで使われる<a href="http://gembundler.com/">Gem Bundler</a> は、依存関係宣言のためのマニフェストのフォーマットである<code>Gemfile</code>と依存関係分離のための<code>bundle exec</code>を提供している。Pythonではこれらのステップで2つの別々のツールが使われる -- <a href="http://www.pip-installer.org/en/latest/">Pip</a>が宣言のために使われ、<a href="http://www.virtualenv.org/en/latest/">Virtualenv</a>が分離のために使われる。C言語でも<a href="http://www.gnu.org/s/autoconf/">Autoconf</a>で依存関係を宣言し、静的リンクで依存関係を分離することができる。ツールが何であれ、依存関係の宣言と分離は常に一緒に使わなければならない -- どちらか片方だけではTwelve-Factorを満足するのに不十分である。</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>XI. Logs</h2>
 
       <h3>Treat logs as event streams</h3>
-	
+
       <p><em>Logs</em> provide visibility into the behavior of a running app.  In server-based environments they are commonly written to a file on disk (a "logfile"); but this is only an output format.</p>
 <p>Logs are the <a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/">stream</a> of aggregated, time-ordered events collected from the output streams of all running processes and backing services.  Logs in their raw form are typically a text format with one event per line (though backtraces from exceptions may span multiple lines).  Logs have no fixed beginning or end, but flow continuously as long as the app is operating.</p>
 <p><strong>A twelve-factor app never concerns itself with routing or storage of its output stream.</strong>  It should not attempt to write to or manage logfiles.  Instead, each running process writes its event stream, unbuffered, to <code>stdout</code>.  During local development, the developer will view this stream in the foreground of their terminal to observe the app's behavior.</p>
@@ -32,7 +32,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -80,7 +80,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -120,7 +120,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

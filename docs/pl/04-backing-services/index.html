@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../pl/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IV. Usługi wspierające</h2>
 
       <h3>Traktuj usługi wspierające jako przydzielone zasoby</h3>
-	
+
       <p>Usługą wspierającą jest każda, z której aplikacja korzysta przez sieć jako część normalnego działania. Zaliczamy do nich np. magazyny danych (takie jak <a href="http://dev.mysql.com/">MySQL</a> albo <a href="http://couchdb.apache.org/">CouchDB</a>), systemy wysyłania/kolejkowania wiadomości (takie jak <a href="http://www.rabbitmq.com/">RabbitMQ</a> czy <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), usługi SMTP do zewnętrznej wysyłki emaili (np. <a href="http://www.postfix.org/">Postfix</a>) oraz systemy cachowania pamięci (np. <a href="http://memcached.org/">Memcached</a>).</p>
 <p>Usługa wspierająca taka jak baza danych jest zazwyczaj zarządzana przez tych samych programistów, którzy zajmują się wdrażaniem aplikacji. Dodatkowo aplikacja może również korzystać z usług oferowanych przez osoby trzecie. Do przykładów zaliczają się usługi SMTP (<a href="http://postmarkapp.com/">Postmark</a>),usługi zbierające metryki (<a href="http://newrelic.com/">New Relic</a> czy <a href="http://www.loggly.com/">Loggly</a>), usługi przechowywania danych (takie jak <a href="http://aws.amazon.com/s3/">Amazon S3</a>), czy również usługi dostępne przez publiczne API (jak np. <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, lub <a href="http://www.last.fm/api">Last.fm</a>).</p>
 <p><strong>Aplikacje 12factor nie rozróżniają usług lokalnych od zewnętrznych.</strong> Dla aplikacji wszystkie są załączonymi zasobami, dostepnymi przez adres URL lub inny standard zdefiniowany w <a href="../../pl/04-backing-services/config">konfiguracji</a>. Przy <a href="../../pl/04-backing-services/codebase">wdrożeniu</a> aplikacji nie może być problemów ze zmianą lokalnej bazy MySQL na oferowaną przez zewnętrznego usługodawcę (np. <a href="http://aws.amazon.com/rds/">Amazon RDS</a>) bez żadnych zmian w kodzie aplikacji. Podobnie lokalny serwer SMTP może być zamieniony na zewnętrzną usługę SMTP (taką jak Postmark) bez zmian kodu. W obu przypadkach zmiana powinna wystąpić jedynie w konfiguracji aplikacji.</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

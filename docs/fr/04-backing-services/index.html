@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../fr/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IV. Services externes</h2>
 
       <h3>Traitez les services externes comme des ressources attachées</h3>
-	
+
       <p>Un <em>service externe</em> (backing service) correspond à tout service que l'application utilise à travers le réseau pour son fonctionnement nominal. Cela concerne par exemple les bases de données (tel que <a href="http://dev.mysql.com/">MySQL</a> ou <a href="http://couchdb.apache.org/">CouchDB</a>), les systèmes de messages/files (tel que <a href="http://www.rabbitmq.com/">RabbitMQ</a> ou <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), les services SMTP pour l'envoi d'email (comme <a href="http://www.postfix.org/">Postfix</a>), ainsi que les systèmes de cache (comme <a href="http://memcached.org/">Memcached</a>).</p>
 <p>Les <em>services externes</em> comme la base de données sont le plus souvent gérés par les mêmes administrateurs réseau que ceux qui gèrent l'application de production. En plus de ces services gérés localement, l'application peut également avoir besoin de services gérés par des tiers. Cela concerne par exemple les services SMTP (comme <a href="http://postmarkapp.com/">Postmark</a>), les services de gestion de métriques (comme <a href="http://newrelic.com/">New Relic</a> ou <a href="http://www.loggly.com/">Loggly</a>), les services de ressources binaires (comme <a href="http://aws.amazon.com/s3/">Amazon S3</a>), et même les services que l'on peut consommer à travers une API (comme <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, ou <a href="http://www.last.fm/api">Last.fm</a>).</p>
 <p><strong>Le code d'une application 12 facteurs ne fait pas de distinction entre les services locaux et les services tiers</strong>. Pour l'application, ce sont tous les deux des ressources attachées, accessibles via une URL ou un autre système de localisation et d'authentification stockée dans la <a href="../../fr/04-backing-services/config">configuration</a>. Un <a href="../../fr/04-backing-services/codebase">déploiement</a> d'une application 12 facteurs doit pouvoir remplacer une base de données MySQL locale par une autre gérée par des tiers (<a href="http://aws.amazon.com/rds/">Amazon RDS</a>, par exemple) sans le moindre changement dans le code de l'application. De la même manière, un serveur SMTP local doit pouvoir être remplacé par un service tiers (Postmark, par exemple) sans changements dans le code. Dans les deux cas, seules les informations de configurations doivent changer.</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../es/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>II. Dependencias</h2>
 
       <h3>Declarar y aislar explícitamente las dependencias</h3>
-	
+
       <p>La mayoría de los lenguajes de programación tienen un sistema de gestión de paquetes para distribuir sus librerías, como <a href="http://www.cpan.org/">CPAN</a> en Perl o <a href="http://rubygems.org/">Rubygems</a> en Ruby. Las librerías instaladas a través de estos sistemas se pueden instalar en el sistema (también conocido como "site packages") o limitarse al directorio que contiene la aplicación (también conocido como "vendoring" o "bundling").</p>
 <p><strong>Una aplicación "twelve-factor" no depende nunca de la existencia explícita de paquetes instalados en el sistema.</strong>  Declara todas sus dependencias, completamente y explícitamente, mediante un manifiesto de <em>declaración de dependencias</em>.  Además, usa herramientas de <em>aislamiento de dependencias</em> durante la ejecución para asegurar que las dependencias, implícitamente, no afectan al resto del sistema. La especificación de dependencias completa y explícita se aplica de la misma manera tanto en producción como en desarrollo.</p>
 <p>Por ejemplo, la <a href="http://gembundler.com/">gema Bundler</a> de Ruby tiene el formato de su manifiesto <code>Gemfile</code> para declarar sus dependencias y <code>bundle exec</code> para aislar sus dependencias. En Python existen dos herramientas independientes para estas tareas -- <a href="http://www.pip-installer.org/en/latest/">Pip</a> se usa para la declaración de dependencias y <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> para el aislamiento. Incluso C tiene <a href="http://www.gnu.org/s/autoconf/">Autoconf</a> para la declaración de sus dependencias, y el enlace estático proporciona aislamiento de sus dependencias. No importa qué conjunto de herramientas se use, la declaración y el aislamiento de dependencias se deben usar siempre juntas, usar solo una o la otra no es suficiente para satisfacer las condiciones de "twelve-factor".</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

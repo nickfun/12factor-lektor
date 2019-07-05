@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../it/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>II. Dipendenze</h2>
 
       <h3>Dipendenze dichiarate ed isolate</h3>
-	
+
       <p>Molti linguaggi di programmazione offrono dei sistemi di packaging per la distribuzione delle proprie librerie, come <a href="http://www.cpan.org/">CPAN</a> per Perl o <a href="http://rubygems.org/">Rubygems</a> per Ruby. Le librerie installate attraverso questi sistemi, inoltre, possono essere identificate come "system-wide" (attive a livello di sistema), oppure posizionate nella directory della singola applicazione (in questo caso si parla di "vendoring" o "bundling").</p>
 <p><strong>Un'applicazione che aderisce alla twelve-factor non si basa mai sull'esistenza implicita di librerie system-wide</strong>. Le dipendenze vengono tutte dichiarate, tramite un manifest dedicato. Inoltre, viene contemplato anche l'uso di un tool di <em>isolamento delle dipendenze</em> durante l'esecuzione, in modo tale da assicurarsi che non ci siano delle "dipendenze implicite" che creino interferenze nel sistema in cui ci si trova. La specifica completa ed esplicita delle dipendenze si applica in modo uniforme: sia in production che in sviluppo.</p>
 <p>Ad esempio, <a href="http://gembundler.com/">Gem Bundler</a> per Ruby offre il supporto di un file-manifesto <code>Gemfile</code> da usare per la dichiarazione delle dipendenze e <code>bundle exec</code> per il loro isolamento. In Python invece troviamo altri due tool per questi scopi -- <a href="http://www.pip-installer.org/en/latest/">Pip</a> viene usato per la dichiarazione e <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> per l'isolamento. Anche C ha <a href="http://www.gnu.org/s/autoconf/">Autoconf</a> per la dichiarazione di dipendenze, mentre lo static linking si occupa dell'isolamento. Non importa quale sia il toolchain usato, le operazioni di dichiarazione ed isolamento vanno sempre effettuate. In caso contrario, l'applicazione non aderisce più alla metodologia.</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

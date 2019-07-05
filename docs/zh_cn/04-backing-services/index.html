@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../zh_cn/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IV. 后端服务</h2>
 
       <h3>把后端服务(*backing services*)当作附加资源</h3>
-	
+
       <p><em>后端服务</em>是指程序运行所需要的通过网络调用的各种服务，如数据库（<a href="http://dev.mysql.com/">MySQL</a>，<a href="http://couchdb.apache.org/">CouchDB</a>），消息/队列系统（<a href="http://www.rabbitmq.com/">RabbitMQ</a>，<a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>），SMTP 邮件发送服务（<a href="http://www.postfix.org/"> Postfix</a>），以及缓存系统（<a href="http://memcached.org/">Memcached</a>）。</p>
 <p>类似数据库的后端服务，通常由部署应用程序的系统管理员一起管理。除了本地服务之外，应用程序有可能使用了第三方发布和管理的服务。示例包括 SMTP（例如 <a href="http://postmarkapp.com/">Postmark</a>），数据收集服务（例如 <a href="http://newrelic.com/">New Relic</a> 或 <a href="http://www.loggly.com/">Loggly</a>），数据存储服务（如 <a href="http://http://aws.amazon.com/s3/">Amazon S3</a>），以及使用 API 访问的服务（例如 <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, <a href="http://www.last.fm/api">Last.fm</a>）。</p>
 <p><strong>12-Factor 应用不会区别对待本地或第三方服务。</strong> 对应用程序而言，两种都是附加资源，通过一个 url 或是其他存储在 <a href="../../zh_cn/04-backing-services/config">配置</a> 中的服务定位/服务证书来获取数据。12-Factor 应用的任意 <a href="../../zh_cn/04-backing-services/codebase">部署</a> ，都应该可以在不进行任何代码改动的情况下，将本地 MySQL 数据库换成第三方服务（例如 <a href="http://aws.amazon.com/rds/">Amazon RDS</a>）。类似的，本地 SMTP 服务应该也可以和第三方 SMTP 服务（例如 Postmark ）互换。上述 2 个例子中，仅需修改配置中的资源地址。</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

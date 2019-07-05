@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../zh_cn/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>XI. 日志</h2>
 
       <h3>把日志当作事件流</h3>
-	
+
       <p><em>日志</em> 使得应用程序运行的动作变得透明。在基于服务器的环境中，日志通常被写在硬盘的一个文件里，但这只是一种输出格式。</p>
 <p>日志应该是 <a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/">事件流</a> 的汇总，将所有运行中进程和后端服务的输出流按照时间顺序收集起来。尽管在回溯问题时可能需要看很多行，日志最原始的格式确实是一个事件一行。日志没有确定开始和结束，但随着应用在运行会持续的增加。</p>
 <p><strong>12-factor应用本身从不考虑存储自己的输出流。</strong> 不应该试图去写或者管理日志文件。相反，每一个运行的进程都会直接的标准输出（<code>stdout</code>）事件流。开发环境中，开发人员可以通过这些数据流，实时在终端看到应用的活动。</p>
@@ -32,7 +32,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -80,7 +80,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -120,7 +120,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../ru/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IV. Сторонние службы (Backing Services)</h2>
 
       <h3>Считайте сторонние службы (backing services) подключаемыми ресурсами</h3>
-	
+
       <p><em>Сторонняя служба</em>-- это любая служба, которая доступна приложению по сети и необходима как часть его нормальной работы. Например, хранилища данных (например, <a href="http://dev.mysql.com/">MySQL</a> и <a href="http://couchdb.apache.org/">CouchDB</a>), системы очередей сообщений (например, <a href="http://www.rabbitmq.com/">RabbitMQ</a> и <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), службы SMTP для исходящей электронной почты (например, <a href="http://www.postfix.org/">Postfix</a>) и кэширующие системы (например, <a href="http://memcached.org/">Memcached</a>).</p>
 <p>Традиционно, сторонние службы, такие как базы данных, поддерживаются тем же самым системным администратором, который разворачивает приложение. Помимо локальных сервисов приложение может использовать сервисы, предоставленные и управляемые третьей стороной. Примеры включают в себя SMTP сервисы (например <a href="http://postmarkapp.com/">Postmark</a>), сервисы сбора метрик (такие как <a href="http://newrelic.com/">New Relic</a> и <a href="http://www.loggly.com/">Loggly</a>), хранилища бинарных данных (например, <a href="http://aws.amazon.com/s3/">Amazon S3</a>), а также использование API различных сервисов (таких как <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a> и <a href="http://www.last.fm/api">Last.fm</a>).</p>
 <p><strong>Код приложения двенадцати факторов не делает различий между локальными и сторонними сервисами.</strong> Для приложения каждый из них является подключаемым ресурсом, доступным по URL-адресу или по другой паре расположение/учётные данные, хранящимися в <a href="../../ru/04-backing-services/config">конфигурации</a>. Каждое <a href="../../ru/04-backing-services/codebase">развертывание</a> приложения двенадцати факторов должно иметь возможность заменить локальную базу данных MySQL на любую управляемую третьей стороной (например <a href="http://aws.amazon.com/rds/">Amazon RDS</a>) без каких либо изменений кода приложения. Аналогичным образом, локальный SMTP сервер может быть заменён сторонним (например Postmark) без изменения кода. В обоих случаях необходимо изменить только идентификатор ресурса в конфигурации.</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

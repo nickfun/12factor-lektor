@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="{{ '/'|url }}">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,13 +16,13 @@
       <h2>{{this.title}}</h2>
 
       <h3>{{this.subtitle}}</h3>
-	
+
       {{ this.body }}
     </article>
   </section>
 
   {% set siblings = this.get_siblings() %}
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -40,7 +40,7 @@
       {% endif %}
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       {% set langLookup = bag('languages') %}

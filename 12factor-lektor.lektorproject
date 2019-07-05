@@ -1,6 +1,6 @@
 [project]
 name = 12factor-lektor
-url = /docs
+url = /12factor-lektor
 url_style = relative
 
 [alternatives.en]

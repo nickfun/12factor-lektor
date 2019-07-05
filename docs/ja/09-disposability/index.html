@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../ja/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IX. 廃棄容易性</h2>
 
       <h3>高速な起動とグレースフルシャットダウンで堅牢性を最大化する</h3>
-	
+
       <p><strong>Twelve-Factor Appの <a href="../../ja/09-disposability/processes">プロセス</a> は <em>廃棄容易</em> である、すなわち即座に起動・終了することができる。</strong> この性質が、素早く柔軟なスケールと、<a href="../../ja/09-disposability/codebase">コード</a> や <a href="../../ja/09-disposability/config">設定</a> に対する変更の素早いデプロイを容易にし、本番デプロイの堅牢性を高める。</p>
 <p>プロセスは、 <strong>起動時間を最小化する</strong> よう努力するべきである。理想的には、1つのプロセスは、起動コマンドが実行されてから数秒間でリクエストやジョブを受け取れるようになるべきである。起動時間が短いと、<a href="../../ja/09-disposability/build-release-run">リリース</a>作業やスケールアップのアジリティが高くなる。さらに、プロセスマネージャーが必要に応じてプロセスを新しい物理マシンに簡単に移動できるようになるため、堅牢性も高くなる。</p>
 <p>プロセスは、プロセスマネージャーから <strong><a href="http://en.wikipedia.org/wiki/SIGTERM">SIGTERM</a>シグナルを受け取ったときに、グレースフルにシャットダウンする。</strong> Webプロセスの場合、グレースフルシャットダウンは、サービスポートのリッスンを中止し（従って新しいリクエストを拒み）、処理中のリクエストが終了するまで待ち、シャットダウンすることで実現される。このモデルでは暗黙的にHTTPリクエストが短い（せいぜい数秒）ことを仮定している。ロングポーリングの場合、クライアントはコネクションが失われたときに途切れなく再接続を試みるべきである。</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

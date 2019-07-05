@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../pl/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>II. Dependencies</h2>
 
       <h3>Jawnie zadeklaruj i wydziel zależności</h3>
-	
+
       <p>Większość języków programowania oferuje narzędzia do dystrybucji dodatkowych bibliotek, takie jak <a href="http://www.cpan.org/">CPAN</a> dla Perla lub <a href="http://rubygems.org/">Rubygems</a> dla języka Ruby. Biblioteki zainstalowane w ten sposób mogą być dostępne dla całego systemu (określane jako "site packages") lub zakres ich działania może być ograniczony dla pojedynczego projektu lub aplikacji (określane jako "vendoring" lub "bundling").</p>
 <p><strong>Aplikacja 12factor nigdy nie jest zależna od bibliotek zainstalowanych dla całego systemu.</strong> Wszystkie zależności są dokładnie określone przez dokument zawierający ich kompletną listę (<em>dependency declaration manifest</em>). Ponadto taka aplikacja korzysta   z narzędzia służącego do izolacji tych zależności podczas działania aplikacji. W ten sposób ma się pewność, że np. jakaś biblioteka nie jest przypadkiem jedną z tych zainstalowanych w zewnętrznym środowisku, w którym działa aplikacja. Inaczej podobna sytuacja mogłaby uniemożliwiać poprawne działanie aplikacji w innym środowisku, gdzie takiej biblioteki by brakowało. Pełna i dokładna specyfikacja bibliotek używanych przez aplikację jest identyczna dla zarówno środowiska developerskiego jak i produkcyjnego.</p>
 <p>Np. <a href="http://gembundler.com/">Gem Bundler</a> dla Ruby'ego używa pliku <code>Gemfile</code> dla deklaracji bibliotek z których korzysta aplikacja oraz komendę <code>bundle exec</code> do izolacji tych zależności. W Pythonie istnieją dwa oddzielne narzędzia dla tych zadań -- <a href="http://www.pip-installer.org/en/latest/">Pip</a> jest używany do deklaracji oraz <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> do izolacji. Nawet język C posiada narzędzie <a href="http://www.gnu.org/s/autoconf/">Autoconf</a> do deklaracji zależności, a statyczne wiązania mogą zapewnić izolację zalenożności. Bez względu na użyte narzędzia, deklaracja i izolacja zależności muszą być zawsze stosowane razem. Użycie tylko jednej z nich nie jest wystarczające by spełnić wymogi 12factor.</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

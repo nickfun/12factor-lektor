@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../es/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>XI. Historiales</h2>
 
       <h3>Tratar los historiales como una transmisión de eventos</h3>
-	
+
       <p>Los <em>historiales</em> permiten observar el comportamiento de la aplicación durante su ejecución. En entornos basados en servidores es muy común escribir un fichero en disco (un "fichero de histórico") pero este, es tan solo un posible formato de salida.</p>
 <p>Los historiales son la <a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/">transmisión</a> de un conjunto de eventos ordenados y capturados de la salida de todos los procesos en ejecución y de los "backing services". En bruto, los historiales suelen estar en formato texto y tienen un evento por línea (aunque las trazas de excepciones suelen estar en varias líneas). Los historiales no tienen un principio y un final fijo, sino que fluyen continuamente mientras la aplicación está en funcionamiento.</p>
 <p><strong>Una aplicación "twelve-factor" nunca se preocupa del direccionamiento o el almacenamiento de sus transmisiones de salida.</strong> No debería intentar escribir o gestionar ficheros de historial. En su lugar, cada proceso en ejecución escribe sus eventos a la <code>salida estándar</code> (o <code>stdout</code>). Durante el desarrollo, los desarrolladores verán el flujo en su terminal para observar el comportamiento de la aplicación.</p>
@@ -32,7 +32,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -80,7 +80,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -120,7 +120,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

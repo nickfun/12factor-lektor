@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../it/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>XI. Log</h2>
 
       <h3>Tratta i log come stream di eventi</h3>
-	
+
       <p>I <em>log</em> offrono una maggiore chiarezza riguardo un comportamento di un'app in esecuzione. In ambienti basati su server, questi sono tendenzialmente scritti su un file su disco (logfile). Ad ogni modo, è solo un formato.</p>
 <p>Un log può essere definito infatti come uno <a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/">stream</a> di eventi aggregati ed ordinati cronologicamente. Tali eventi vengono presi da tutti i vari output stream presenti di tutti i processi attivi, oltre che dai vari backing service. Nella loro forma grezza, i log i presentano come un file di testo con un evento per ogni linea (con le dovute eccezioni). Non hanno un inizio o una fine ben definiti, ma un continuo di informazioni fin quando l'applicazione è al lavoro.</p>
 <p><strong>Un'applicazione twelve-factor non dovrebbe preoccuparsi di lavorare con il proprio output stream.</strong> Non dovrebbe lavorare o comunque gestire i vari logfile. Dovrebbe, invece, fare in modo che ogni processo si occupi di scrivere il proprio stream di eventi su "<code>stdout</code>". Durante lo sviluppo in locale, quindi, lo sviluppatore potrà visionare lo stream in modo completo direttamente dal terminale, per capire meglio il comportamento della sua applicazione.</p>
@@ -32,7 +32,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -80,7 +80,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -120,7 +120,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

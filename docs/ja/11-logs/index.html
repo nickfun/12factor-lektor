@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../ja/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>XI. ログ</h2>
 
       <h3>ログをイベントストリームとして扱う</h3>
-	
+
       <p><em>ログ</em> は実行中のアプリケーションの挙動を可視化する。サーバーベースの環境では、ログは一般的にディスク上のファイル（“ログファイル”）に書き込まれる。しかしこれは出力フォーマットの一つに過ぎない。</p>
 <p>ログは、すべての実行中のプロセスとバックエンドサービスの出力ストリームから収集されたイベントが、集約されて時刻順に並べられた<a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/">ストリーム</a>である。生の状態のログは、通常1行が1つのイベントを表すテキストフォーマットである（例外のバックトレースは複数行に渡る場合もあるが）。ログには固定の始まりと終わりはなく、アプリケーションが稼動している限り流れ続ける。</p>
 <p><strong>Twelve-Factor Appはアプリケーションの出力ストリームの送り先やストレージについて一切関知しない。</strong> アプリケーションはログファイルに書き込んだり管理しようとするべきではない。代わりに、それぞれの実行中のプロセスはイベントストリームを<code>stdout</code>（標準出力）にバッファリングせずに書きだす。ローカルでの開発中、開発者はこのストリームをターミナルのフォアグラウンドで見ることで、アプリケーションの挙動を観察する。</p>
@@ -32,7 +32,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -80,7 +80,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -120,7 +120,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

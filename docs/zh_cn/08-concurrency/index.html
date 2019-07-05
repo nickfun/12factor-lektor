@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../zh_cn/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>VIII. 并发</h2>
 
       <h3>通过进程模型进行扩展</h3>
-	
+
       <p>任何计算机程序，一旦启动，就会生成一个或多个进程。互联网应用采用多种进程运行方式。例如，PHP 进程作为 Apache 的子进程存在，随请求按需启动。Java 进程则采取了相反的方式，在程序启动之初 JVM 就提供了一个超级进程储备了大量的系统资源(CPU 和内存)，并通过多线程实现内部的并发管理。上述 2 个例子中，进程是开发人员可以操作的最小单位。</p>
 <p><img src="../../images/process-types.png" alt="扩展表现为运行中的进程，工作多样性表现为进程类型。"></p>
 <p><strong>在 12-factor 应用中，进程是一等公民。</strong>12-Factor 应用的进程主要借鉴于 <a href="http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/">unix 守护进程模型</a> 。开发人员可以运用这个模型去设计应用架构，将不同的工作分配给不同的 <em>进程类型</em> 。例如，HTTP 请求可以交给 web 进程来处理，而常驻的后台工作则交由 worker 进程负责。</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../pl/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>XI. Logi</h2>
 
       <h3>Traktuj logi jako strumień zdarzeń</h3>
-	
+
       <p><em>Logi</em> zapewniają wgląd w zachowanie działającej aplikacji. W środowiskach korzystających z serwera zazwyczaj są zapisywane na dysku (plik "logfile"); jednak jest to tylko wybrany format zapisu.</p>
 <p>Logi są listą zaagregowanych i uporządkowanych w czasie <a href="https://adam.herokuapp.com/past/2011/4/1/logs_are_streams_not_files/">zdarzeń</a> zebranych ze strumieni wyjściowych wszystkich uruchomionych procesów i usług wspierających. Logi w swojej pierwotnej formie występują zazwyczaj w formacie tekstowym, gdzie jedno zdarzenie zajmuje jedną linię w pliku (wyjątkiem jest jednak <a href="https://en.wikipedia.org/wiki/Stack_trace">backtrace</a>, który może zajmować wiele linii). Logi nie mają określonego początku ani końca, napływają nieustannie podczas działania aplikacji.</p>
 <p><strong>Aplikacja 12factor nie odpowiada za przekierowywanie i zapis swojego strumienia wyjściowego.</strong> Nie powinna też zapisywać czy zarządzać plikami logów. Zamiast tego, każdy działający proces zapisuje swój niebuforowany strumień zdarzeń do <code>stdout</code>. Podczas pracy w lokalnym środowisku developer może obserwować zachowanie aplikacji przeglądając strumień w oknie terminala</p>
@@ -32,7 +32,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -80,7 +80,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -120,7 +120,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

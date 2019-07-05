@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../it/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IV. Backing Service</h2>
 
       <h3>Tratta i backing service come &#34;risorse&#34;</h3>
-	
+
       <p>Un "backing service" è un qualsiasi servizio che l'applicazione consuma attraverso la rete durante la sua esecuzione. Alcuni esempi includono i database (come <a href="http://dev.mysql.com/">MySQL</a> o <a href="http://couchdb.apache.org/">CouchDB</a>), servizi di messaging/code (come <a href="http://www.rabbitmq.com/">RabbitMQ</a> oppure <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), servizi SMTP per la posta (come <a href="http://www.postfix.org/">Postfix</a>) e sistemi di cache (come <a href="http://memcached.org/">Memcached</a>).</p>
 <p>Un backing service (prendiamo ad esempio un database) è tradizionalmente gestito dallo stesso amministratore di sistema, al deploy dell'applicazione. In aggiunta a questi servizi gestiti in locale potrebbero esserne presenti altri, forniti da terze parti. Parliamo di servizi SMTP (come <a href="http://postmarkapp.com/">Postmark</a>), servizi di raccolta metriche (come <a href="http://newrelic.com/">New Relic</a> o <a href="http://www.loggly.com/">Loggly</a>), servizi per asset (come <a href="http://aws.amazon.com/s3/">Amazon S3</a>), ed anche servizi accessibili via API (come <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, o <a href="http://www.last.fm/api">Last.fm</a>).</p>
 <p><strong>Il codice di un'app twelve-factor non fa distinzioni tra servizi in locale o third party</strong>. Per l'applicazione, entrambi sono risorse connesse, accessibili via URL (o tramite un altro locator) e credenziali memorizzate nell'opportuno file di <a href="../../it/04-backing-services/config">configurazione</a>.  Ad un qualsiasi <a href="../../it/04-backing-services/codebase">deploy</a> di un'applicazione twelve-factor si deve poter permettere di passare velocemente da un database MySQL locale ad uno third party (come <a href="http://aws.amazon.com/rds/">Amazon RDS</a>) senza alcuna modifica al codice. Allo stesso modo, un server SMTP locale dovrebbe poter essere cambiato con uno third party (come Postmark). In entrambi i casi, a cambiare dovrebbero essere <strong>solo</strong> i file di configurazione necessari.</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

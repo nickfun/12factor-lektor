@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../de/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IV. Unterstützende Dienste</h2>
 
       <h3>Unterstützende Dienste als angehängte Ressourcen behandeln</h3>
-	
+
       <p>Ein <em>unterstützender Dienst</em> ist jeder Dienst, den die App über das Netzwerk im Rahmen ihrer normalen Arbeit konsumiert. Beispiele sind Datenspeicher  (wie <a href="http://dev.mysql.com/">MySQL</a> oder <a href="http://couchdb.apache.org/">CouchDB</a>), Messaging/Queueing-Systeme (wie <a href="http://www.rabbitmq.com/">RabbitMQ</a> oder <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>), SMTP-Dienste für das Senden von Mail (wie <a href="http://www.postfix.org/">Postfix</a>), und Cache-Systeme (wie <a href="http://memcached.org/">Memcached</a>).</p>
 <p>Unterstützende Dienste wie Datenbanken werden traditionell von denselben Systemadministratoren verwaltet, die die App deployen. Außer diesen intern verwalteten Diensten können der App auch von Dritten verwaltete Dienste zur Verfügung stehen. Dazu gehören SMTP-Dienste (wie <a href="http://postmarkapp.com/">Postmark</a>), Metrik-Sammler (wie <a href="http://newrelic.com/">New Relic</a> oder <a href="http://www.loggly.com/">Loggly</a>), Binary-Asset-Dienste (wie <a href="http://aws.amazon.com/s3/">Amazon S3</a>), und auch über eine API zugängliche Dienste (wie <a href="http://dev.twitter.com/">Twitter</a>, <a href="http://code.google.com/apis/maps/index.html">Google Maps</a>, oder <a href="http://www.last.fm/api">Last.fm</a>).</p>
 <p><strong>Der Code einer Zwölf-Faktor-App macht keinen Unterschied zwischen lokalen Diensten und solchen von Dritten.</strong> Für die App sind sie beide unterstützende Dienste, zugreifbar über eine URL oder andere Lokatoren/Credentials, die in der <a href="../../de/04-backing-services/config">Konfiguration</a> gespeichert sind. Ein <a href="../../de/04-backing-services/codebase">Deploy</a> einer Zwölf-Faktoren-App könnte eine lokale MySQL-Datenbank durch eine von Dritten zur Verfügung gestellten ersetzen (wie <a href="http://aws.amazon.com/rds/">Amazon RDS</a>). Genauso ohne Codeänderung kann ein lokaler SMTP-Server durch einen von Dritten zur Verfügung gestellten SMTP-Dienst ersetzt werden. In beiden Fällen muss sich nur der Resource-Handle in der Konfiguration ändern.</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

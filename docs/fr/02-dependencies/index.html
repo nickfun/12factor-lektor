@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../fr/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>II. Dépendances</h2>
 
       <h3>Déclarez explicitement et isolez les dépendances</h3>
-	
+
       <p>La plupart des languages de programmation offrent des systèmes pour créer des paquets à partir de bibliothèques afin de les distribuer, tel que <a href="http://www.cpan.org/">CPAN</a> pour Perl ou <a href="http://rubygems.org/">Rubygems</a> pour Ruby. Les bibliothèques installées à travers un système de packaging peuvent être installés à travers tout le système, ou bien limités au répertoire contenant l'application (que l'on appelle les "vendor" ou "bundles")</p>
 <p><strong>Une application 12 facteurs ne dépend jamais de l'existence implicite de packages au niveau du système</strong>. Elle déclare toutes ses dépendances, complètement et exactement, à travers un manifeste de <em>déclaration de dépendances</em>. De plus, elle utilise un outil d'isolation des dépendances durant l'exécution afin d'assurer qu'aucune dépendances implicite ne s'introduise depuis le système environnant. Les spécifications complètes et explicites sont appliquées uniformément en développement comme en production.</p>
 <p>Par exemple, <a href="http://gembundler.com/">Gem Bundler</a> pour Ruby fournit le format de manifeste <code>Gemfile</code> pour la déclaration des dépendances, ainsi que la commande <code>bundle exec</code> pour l'isolation des dépendances. En python, il y a deux outils séparés pour ces étapes -- <a href="http://www.pip-installer.org/en/latest/">Pip</a> est utilisé pour la déclaration et <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> pour l'isolation. Même le C dispose d'<a href="http://www.gnu.org/s/autoconf/">Autoconf</a> pour les déclarations de dépendances, et la liaison statique peut fournir l'isolation des dépendances. Peut importe la chaine d'outils, la déclaration et l'isolation des dépendances doivent toujours être utilisées ensemble -- seulement l'un ou l'autre ne suffit pas à satisfaire les 12 facteurs.</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

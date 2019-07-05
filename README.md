@@ -11,7 +11,7 @@ Reimplent the [12factor website](https://github.com/heroku/12factor) in [Lektor]
 
 ## Notes
 
-Currently building with Lektor v2.3
+Currently building with Lektor v3.1.3
 
 ## On github pages
 

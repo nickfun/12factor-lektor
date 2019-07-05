@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../ja/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IV. バックエンドサービス</h2>
 
       <h3>バックエンドサービスをアタッチされたリソースとして扱う</h3>
-	
+
       <p><em>バックエンドサービス</em> はアプリケーションが通常の動作の中でネットワーク越しに利用するすべてのサービスを言う。例としては、データストア（例：<a href="http://dev.mysql.com/">MySQL</a> や <a href="http://couchdb.apache.org/">CouchDB</a>）、メッセージキューイングシステム（例：<a href="http://www.rabbitmq.com/">RabbitMQ</a> や <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>）、電子メールを送信するためのSMTPサービス（例：<a href="http://www.postfix.org/">Postfix</a>）、キャッシュシステム（例：<a href="http://memcached.org/">Memcached</a>）などがある。</p>
 <p>従来、データストアなどのバックエンドサービスは、デプロイされたアプリケーションと同じシステム管理者によって管理されていた。このようなローカルで管理されるサービスに加えて、サードパーティによって提供、管理されるサービスを利用することもある。例としては、SMTP サービス（例：<a href="http://postmarkapp.com/">Postmark</a>）、メトリクス収集システム（例：<a href="http://newrelic.com/">New Relic</a> や <a href="http://www.loggly.com/">Loggly</a>）、ストレージサービス（例：<a href="http://aws.amazon.com/s3/">Amazon S3</a>）、APIアクセス可能な消費者向けサービス（例：<a href="http://dev.twitter.com/">Twitter</a>や<a href="http://code.google.com/apis/maps/index.html">Google Maps</a>、<a href="http://www.last.fm/api">Last.fm</a>）などがある。</p>
 <p><strong>Twelve-Factor Appのコードは、ローカルサービスとサードパーティサービスを区別しない。</strong> アプリケーションにとっては、どちらもアタッチされたリソースであり、<a href="../../ja/04-backing-services/config">設定</a>に格納されたURLやその他のロケーター、認証情報でアクセスする。Twelve-Factor Appの<a href="../../ja/04-backing-services/codebase">デプロイ</a>は、アプリケーションのコードに変更を加えることなく、ローカルで管理されるMySQLデータベースをサードパーティに管理されるサービス（<a href="http://aws.amazon.com/rds/">Amazon RDS</a>など）に切り替えることができるべきである。同様に、ローカルのSMTPサーバーも、コードを変更することなくサードパーティのSMTPサービス（Postmarkなど）に切り替えることができるべきである。どちらの場合も、変更が必要なのは設定の中のリソースハンドルのみである。</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../de/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>VIII. Nebenläufigkeit</h2>
 
       <h3>Mit dem Prozess-Modell skalieren</h3>
-	
+
       <p>Jedes Computerprogramm wird, wenn es läuft, repräsentiert durch einen oder mehrere Prozesse. Webapps nutzen verschiedenste Arten der Prozess-Ausführung. Zum Beispiel laufen PHP-Prozesse als Kind-Prozesse von Apache und werden nach Bedarf gestartet, wenn Requests kommen. Java-Prozesse gehen anders vor: die JVM stellt einen massiven Über-Prozess zur Verfügung der große Mengen an Systemresourcen (Speicher und CPU) reserviert und die Nebenläufigkeit wird intern über Threads verwaltet. In beiden Fällen sind die laufenden Prozesse für die Entwickler der App nur minimal zu sehen.</p>
 <p><img src="../../images/process-types.png" alt="Die Skalierung wird dargestellt als laufende Prozesse, die Diversität der Workload wird dargestellt als Prozesstypen."></p>
 <p><strong>In der Zwölf-Faktor-App sind Prozesse First Class Citizens.</strong> Die Prozesse der Zwölf-Faktor-App orientieren sich am <a href="http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/">Unix-Prozess-Modell für Service Daemons</a>. Mit diesem Model können Entwickler ihre App für die Bearbeitung verschienster Aufgaben konzipieren indem sie jeder Aufgabe einen <em>Prozesstyp</em> zuweisen. Zum Beispiel können HTTP Requests durch einen Web-Prozess bedient werden und langlaufende Hintergrundarbeiten durch einen Worker Prozess.</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

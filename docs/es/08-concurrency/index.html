@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../es/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>VIII. Concurrencia</h2>
 
       <h3>Escalar mediante el modelo de procesos</h3>
-	
+
       <p>Todo programa de ordenador, al ejecutarse, se encuentra representado en memoria por uno o más procesos. Las aplicaciones web se pueden ejecutar de diferentes formas desde el punto de vista del modelo de procesos que usan. Por ejemplo, los procesos PHP se ejecutan como procesos pesados (o simplemente procesos), hijos del proceso Apache, creándolos bajo demanda a causa de la cantidad de peticiones si es necesario. Los procesos Java funcionan de forma distinta, la Máquina Virtual de Java (JVM) proporciona un conjunto de procesos que reservan al principio una gran cantidad de recursos del sistema (CPU y memoria), gestionando la concurrencia internamente mediante procesos ligeros (threads). En ambos casos, los procesos en ejecución son prácticamente transparentes para los desarrolladores de la aplicación.</p>
 <p><img src="../../images/process-types.png" alt="La escalabilidad está representada por el número de procesos en ejecución, mientras que la diversidad de carga de trabajo lo está por los tipos de procesos."></p>
 <p><strong>En las aplicaciones "twelve-factor", los procesos son ciudadanos de primera clase.</strong> Los procesos de las aplicaciones "twelve-factor" se inspiran en <a href="http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/">el modelo de procesos de unix para ejecutar demonios</a>. Usando este modelo, el desarrollador puede distribuir la ejecución de su aplicación para gestionar diversas cargas de trabajo asignando cada tipo de trabajo a un <em>tipo de proceso</em>. Por ejemplo, las peticiones HTTP se pueden procesar con un proceso y las tareas con mucha carga de trabajo con hilos.</p>
@@ -28,7 +28,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -76,7 +76,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -116,7 +116,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>

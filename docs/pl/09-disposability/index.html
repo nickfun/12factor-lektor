@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">The Twelve-Factor App</a>
+      <a href="../../pl/">The Twelve-Factor App</a>
     </h1>
   </header>
 
@@ -16,7 +16,7 @@
       <h2>IX. Zbywalność</h2>
 
       <h3>Zwiększ elastyczność aplikacji przez szybki start i bezproblemowe zamknięcie</h3>
-	
+
       <p><strong><a href="../../pl/09-disposability/processes">Procesy</a> aplikacji 12factor są <em>jednorazowe</em>, znaczy to, że mogą być wystartowane lub zatrzymane w dowolnym momencie.</strong> Ułatwia to elastyczne skalowanie i szybkie wdrożenia <a href="../../pl/09-disposability/codebase">kodu</a>, zmianę <a href="../../pl/09-disposability/config">konfiguracji</a> oraz zapewnia większą stabilność przy wdrożeniu na produkcję.</p>
 <p>Procesy powinny dążyć do <strong>minimalizowania czasu swojego rozruchu</strong>. W idealnej sytuacji proces powinien potrzebować kilku sekund na to aby wystartować i być gotowym na przyjmowanie zapytań. Dzięki krótkiemu czasowi startu można szybciej wykonywać kolejne <a href="../../pl/09-disposability/build-release-run">wdrożenia</a> oraz łatwiej skalować aplikację. Zwiększa to również zdolności aplikacji do radzenia sobie z problemami, ponieważ <code>process manager</code> może bezproblemowo przenieść je na nową maszynę fizyczną, gdy zajdzie taka potrzeba.</p>
 <p>Procesy <strong>zamykają się gdy otrzymają sygnał <a href="http://en.wikipedia.org/wiki/SIGTERM">SIGTERM</a></strong> od managera procesów. Dla procesów sieciowych poprawne zamknięcie polega na zakończeniu nasłuchiwania na porcie usługi (skutkiem czego jest odrzucanie nowych zapytań), zakończenie obecnych, a ostatecznie zaprzestaniu działania. Wynika z tego, że zapytania HTTP są krótkie (trwają nie więcej niż kilka sekund), lub w przypadku <code>long poolingu</code> i utraty połączenia klient powinien bezproblemowo spróbować połączyć się ponownie.</p>
@@ -27,7 +27,7 @@
   </section>
 
   
-  
+
   <section class="concrete">
     <nav>
       <div id="locales">
@@ -75,7 +75,7 @@
       
     </nav>
   </section>
-  
+
   <footer>
     <div id="locales">
       
@@ -115,7 +115,7 @@
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Jul  5 15:26:54 PDT 2019</div>
+    <div>Last updated Fri Jul  5 15:33:30 PDT 2019</div>
     <div>Source code</div>
     <div>Download epub book</div>
     <div>Privacy Policy</div>
