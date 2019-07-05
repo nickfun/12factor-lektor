@@ -14,22 +14,22 @@
   <section class="abstract">
     <article>
       
-      <h1>Introduction</h1>
-<p>In the modern era, software is commonly delivered as a service: called <em>web apps</em>, or <em>software-as-a-service</em>.  The twelve-factor app is a methodology for building software-as-a-service apps that:</p>
+      <h1>Introducción</h1>
+<p>En estos tiempos, el software se está distribuyendo como un servicio: se le denomina <em>web apps</em>, o <em>software as a service</em> (SaaS). "The twelve-factor app" es una metodología para construir aplicaciones SaaS que:</p>
 <ul>
-<li>Use <strong>declarative</strong> formats for setup automation, to minimize time and cost for new developers joining the project;</li>
-<li>Have a <strong>clean contract</strong> with the underlying operating system, offering <strong>maximum portability</strong> between execution environments;</li>
-<li>Are suitable for <strong>deployment</strong> on modern <strong>cloud platforms</strong>, obviating the need for servers and systems administration;</li>
-<li><strong>Minimize divergence</strong> between development and production, enabling <strong>continuous deployment</strong> for maximum agility;</li>
-<li>And can <strong>scale up</strong> without significant changes to tooling, architecture, or development practices.</li>
+<li>Usan formatos <strong>declarativos</strong> para la automatización de la configuración, para minimizar el tiempo y el coste que supone que nuevos desarrolladores se unan al proyecto;</li>
+<li>Tienen un <strong>contrato claro</strong> con el sistema operativo sobre el que trabajan, ofreciendo la <strong>máxima portabilidad</strong> entre los diferentes entornos de ejecución;</li>
+<li>Son apropiadas para <strong>desplegarse</strong> en modernas <strong>plataformas en la nube</strong>, obviando la necesidad de servidores y administración de sistemas;</li>
+<li><strong>Minimizan las diferencias</strong> entre los entornos de desarrollo y producción, posibilitando un <strong>despliegue continuo</strong> para conseguir la máxima agilidad;</li>
+<li>Y pueden <strong>escalar</strong> sin cambios significativos para las herramientas, la arquitectura o las prácticas de desarrollo.</li>
 </ul>
-<p>The twelve-factor methodology can be applied to apps written in any programming language, and which use any combination of backing services (database, queue, memory cache, etc).</p>
-<h1>Background</h1>
-<p>The contributors to this document have been directly involved in the development and deployment of hundreds of apps, and indirectly witnessed the development, operation, and scaling of hundreds of thousands of apps via our work on the <a href="http://www.heroku.com/">Heroku</a> platform.</p>
-<p>This document synthesizes all of our experience and observations on a wide variety of software-as-a-service apps in the wild.  It is a triangulation on ideal practices for app development, paying particular attention to the dynamics of the organic growth of an app over time, the dynamics of collaboration between developers working on the app's codebase, and <a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">avoiding the cost of software erosion</a>.</p>
-<p>Our motivation is to raise awareness of some systemic problems we've seen in modern application development, to provide a shared vocabulary for discussing those problems, and to offer a set of broad conceptual solutions to those problems with accompanying terminology.  The format is inspired by Martin Fowler's books <em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture</a></em> and <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring</a></em>.</p>
-<h1>Who should read this document?</h1>
-<p>Any developer building applications which run as a service.  Ops engineers who deploy or manage such applications.</p>
+<p>La metodología "twelve-factor" puede ser aplicada a aplicaciones escritas en cualquier lenguaje de programación, y cualquier combinación de 'backing services' (bases de datos, colas, memoria cache, etc).</p>
+<h1>Contexto</h1>
+<p>Los colaboradores de este documento han estado involucrados directamente en el desarrollo y despliegue de cientos de aplicaciones, y han sido testigos indirectos del desarrollo, las operaciones y el escalado de cientos de miles de aplicaciones mediante nuestro trabajo en la plataforma <a href="http://www.heroku.com/">Heroku</a>.</p>
+<p>Este documento sintetiza toda nuestra experiencia y observaciones en una amplia variedad de aplicaciones SaaS. Es la triangulación entre practicas ideales para el desarrollo de aplicaciones, prestando especial atención a las dinámicas del crecimiento natural de una aplicación a lo largo del tiempo, las dinámicas de colaboración entre desarrolladores que trabajan en el código base de las aplicaciones y <a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">evitando el coste de la entropía del software</a>.</p>
+<p>Nuestra motivación es mejorar la concienciación sobre algunos problemas sistémicos que hemos observado en el desarrollo de las aplicaciones modernas, aportar un vocabulario común que sirva para discutir sobre estos problemas, y ofrecer un conjunto de soluciones conceptualmente robustas para esos problemas acompañados de su correspondiente terminología. El formato está inspirado en los libros de Martin Fowler <em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture</a></em> y <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring</a></em>.</p>
+<h1>¿Quién debería leer este documento?</h1>
+<p>Cualquier desarrollador que construya aplicaciones y las ejecute como un servicio. Ingenieros de operaciones que desplieguen y gestionen dichas aplicaciones.</p>
 
     </article>
   </section>
@@ -38,84 +38,117 @@
     <article>
       <h1 id="the_twelve_factors">The Twelve Factors</h1>
       
-	<h2><a href="01-codebase">I. Código base (Codebase)</a></h2>
-	<h3>Un código base sobre el que hacer el control de versiones y multiples despliegues</h3>
+        <h2><a href="01-codebase">I. Código base (Codebase) [01-codebase]</a></h2>
+        <h3>Un código base sobre el que hacer el control de versiones y multiples despliegues</h3>
       
-	<h2><a href="02-dependencies">II. Dependencias</a></h2>
-	<h3>Declarar y aislar explícitamente las dependencias</h3>
+        <h2><a href="02-dependencies">II. Dependencias [02-dependencies]</a></h2>
+        <h3>Declarar y aislar explícitamente las dependencias</h3>
       
-	<h2><a href="03-config">III. Configuración</a></h2>
-	<h3>Guardar la configuración en el entorno</h3>
+        <h2><a href="03-config">III. Configuración [03-config]</a></h2>
+        <h3>Guardar la configuración en el entorno</h3>
       
-	<h2><a href="04-backing-services">IV. Backing services</a></h2>
-	<h3>Tratar a los &#34;backing services&#34; como recursos conectables</h3>
+        <h2><a href="04-backing-services">IV. Backing services [04-backing-services]</a></h2>
+        <h3>Tratar a los &#34;backing services&#34; como recursos conectables</h3>
       
-	<h2><a href="05-build-release-run">V. Construir, distribuir, ejecutar</a></h2>
-	<h3>Separar completamente la etapa de construcción de la etapa de ejecución</h3>
+        <h2><a href="05-build-release-run">V. Construir, distribuir, ejecutar [05-build-release-run]</a></h2>
+        <h3>Separar completamente la etapa de construcción de la etapa de ejecución</h3>
       
-	<h2><a href="06-processes">VI. Procesos</a></h2>
-	<h3>Ejecutar la aplicación como uno o más procesos sin estado</h3>
+        <h2><a href="06-processes">VI. Procesos [06-processes]</a></h2>
+        <h3>Ejecutar la aplicación como uno o más procesos sin estado</h3>
       
-	<h2><a href="07-port-binding">VII. Asignación de puertos</a></h2>
-	<h3>Publicar servicios mediante asignación de puertos</h3>
+        <h2><a href="07-port-binding">VII. Asignación de puertos [07-port-binding]</a></h2>
+        <h3>Publicar servicios mediante asignación de puertos</h3>
       
-	<h2><a href="08-concurrency">VIII. Concurrencia</a></h2>
-	<h3>Escalar mediante el modelo de procesos</h3>
+        <h2><a href="08-concurrency">VIII. Concurrencia [08-concurrency]</a></h2>
+        <h3>Escalar mediante el modelo de procesos</h3>
       
-	<h2><a href="09-disposability">IX. Disponibilidad</a></h2>
-	<h3>Hacer el sistema más robusto intentando conseguir inicios rápidos y finalizaciones seguras</h3>
+        <h2><a href="09-disposability">IX. Disponibilidad [09-disposability]</a></h2>
+        <h3>Hacer el sistema más robusto intentando conseguir inicios rápidos y finalizaciones seguras</h3>
       
-	<h2><a href="10-dev-prod-parity">X. Igualdad entre desarrollo y producción</a></h2>
-	<h3>Mantener desarrollo, preproducción y producción tan parecidos como sea posible</h3>
+        <h2><a href="10-dev-prod-parity">X. Igualdad entre desarrollo y producción [10-dev-prod-parity]</a></h2>
+        <h3>Mantener desarrollo, preproducción y producción tan parecidos como sea posible</h3>
       
-	<h2><a href="11-logs">XI. Historiales</a></h2>
-	<h3>Tratar los historiales como una transmisión de eventos</h3>
+        <h2><a href="11-logs">XI. Historiales [11-logs]</a></h2>
+        <h3>Tratar los historiales como una transmisión de eventos</h3>
       
-	<h2><a href="12-admin-processes">XII. Administración de procesos</a></h2>
-	<h3>Ejecutar las tareas de gestión/administración como procesos que solo se ejecutan una vez</h3>
+        <h2><a href="12-admin-processes">XII. Administración de procesos [12-admin-processes]</a></h2>
+        <h3>Ejecutar las tareas de gestión/administración como procesos que solo se ejecutan una vez</h3>
       
     </article>
   </section>
-	
+
   <footer>
     <div id="locales">
       
-	<a href="de">Deutsch (de)</a>
-	 | 
+        
+          
+        
+        <a href="/de">Deutsch (de)</a>
+         | 
       
-	<a href="en">English (en)</a>
-	 | 
+        
+          
+        
+        <a href="/">English (en)</a>
+         | 
       
-	<a href="es">Español (es)</a>
-	 | 
+        
+          
+        
+        <a href="/es">Español (es)</a>
+         | 
       
-	<a href="fr">Français (fr)</a>
-	 | 
+        
+          
+        
+        <a href="/fr">Français (fr)</a>
+         | 
       
-	<a href="it">Italiano (it)</a>
-	 | 
+        
+          
+        
+        <a href="/it">Italiano (it)</a>
+         | 
       
-	<a href="ja">日本語 (ja)</a>
-	 | 
+        
+          
+        
+        <a href="/ja">日本語 (ja)</a>
+         | 
       
-	<a href="ko">한국어 (ko)</a>
-	 | 
+        
+          
+        
+        <a href="/ko">한국어 (ko)</a>
+         | 
       
-	<a href="pl">Polski (pl)</a>
-	 | 
+        
+          
+        
+        <a href="/pl">Polski (pl)</a>
+         | 
       
-	<a href="pt_br">Brazilian Portuguese (pt_br)</a>
-	 | 
+        
+          
+        
+        <a href="/pt_br">Brazilian Portuguese (pt_br)</a>
+         | 
       
-	<a href="ru">Русский (ru)</a>
-	 | 
+        
+          
+        
+        <a href="/ru">Русский (ru)</a>
+         | 
       
-	<a href="zh_cn">简体中文 (zh_cn)</a>
-	
+        
+          
+        
+        <a href="/zh_cn">简体中文 (zh_cn)</a>
+        
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Dec 30 11:03:26 PST 2016</div>
+    <div>Last updated Fri Jul  5 15:24:48 PDT 2019</div>
     <div><a href="https://github.com/nickfun/12factor-lektor">Source code</a></div>
     <div>Privacy Policy</div>
     <div>Converted to Lektor by Nicholas Funnell</div>

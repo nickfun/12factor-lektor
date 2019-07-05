@@ -14,22 +14,22 @@
   <section class="abstract">
     <article>
       
-      <h1>Introduction</h1>
-<p>In the modern era, software is commonly delivered as a service: called <em>web apps</em>, or <em>software-as-a-service</em>.  The twelve-factor app is a methodology for building software-as-a-service apps that:</p>
+      <h1>Einführung</h1>
+<p>Heute wird Software oft als Dienst geliefert - auch <em>Web App</em> oder <em>Software-As-A-Service</em> genannt. Die Zwölf-Faktoren-App ist eine Methode um Software-As-A-Service Apps zu bauen die:</p>
 <ul>
-<li>Use <strong>declarative</strong> formats for setup automation, to minimize time and cost for new developers joining the project;</li>
-<li>Have a <strong>clean contract</strong> with the underlying operating system, offering <strong>maximum portability</strong> between execution environments;</li>
-<li>Are suitable for <strong>deployment</strong> on modern <strong>cloud platforms</strong>, obviating the need for servers and systems administration;</li>
-<li><strong>Minimize divergence</strong> between development and production, enabling <strong>continuous deployment</strong> for maximum agility;</li>
-<li>And can <strong>scale up</strong> without significant changes to tooling, architecture, or development practices.</li>
+<li><strong>deklarative</strong> Formate benutzen für die Automatisierung der Konfiguration, um Zeit und Kosten für neue Entwickler im Projekt zu minimieren;</li>
+<li>einen <strong>sauberen Vertrag</strong> mit dem zugrundeliegenden Betriebssystem haben, <strong>maximale Portierbarkeit</strong> zwischen Ausführungsumgebungen bieten;</li>
+<li>sich für das <strong>Deployment</strong> auf modernen <strong>Cloud-Plattformen</strong> eignen, die Notwendigkeit von Servern und Serveradministration vermeiden;</li>
+<li>die <strong>Abweichung minimieren</strong> zwischen Entwicklung und Produktion, um <strong>Continuous Deployment</strong> für maximale Agilität ermöglichen;</li>
+<li>und <strong>skalieren</strong> können ohne wesentliche Änderungen im Tooling, in der Architektur oder in den Entwicklungsverfahren.</li>
 </ul>
-<p>The twelve-factor methodology can be applied to apps written in any programming language, and which use any combination of backing services (database, queue, memory cache, etc).</p>
-<h1>Background</h1>
-<p>The contributors to this document have been directly involved in the development and deployment of hundreds of apps, and indirectly witnessed the development, operation, and scaling of hundreds of thousands of apps via our work on the <a href="http://www.heroku.com/">Heroku</a> platform.</p>
-<p>This document synthesizes all of our experience and observations on a wide variety of software-as-a-service apps in the wild.  It is a triangulation on ideal practices for app development, paying particular attention to the dynamics of the organic growth of an app over time, the dynamics of collaboration between developers working on the app's codebase, and <a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">avoiding the cost of software erosion</a>.</p>
-<p>Our motivation is to raise awareness of some systemic problems we've seen in modern application development, to provide a shared vocabulary for discussing those problems, and to offer a set of broad conceptual solutions to those problems with accompanying terminology.  The format is inspired by Martin Fowler's books <em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture</a></em> and <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring</a></em>.</p>
-<h1>Who should read this document?</h1>
-<p>Any developer building applications which run as a service.  Ops engineers who deploy or manage such applications.</p>
+<p>Die Zwölf-Faktoren-Methode kann auf Apps angewendet werden, die in einer beliebigen Programmiersprache geschrieben sind, und die eine beliebige Kombination von unterstützenden Diensten benutzen (Datenbank, Queue, Cache, ...)</p>
+<h1>Hintergrund</h1>
+<p>Die Mitwirkenden an diesem Dokument waren direkt beteiligt an der Entwicklung und dem Deployment von hunderten von Apps und wurden Zeugen bei der Entwicklung, beim Betrieb und der Skalierung von hunderttausenden von Apps im Rahmen unserer Arbeit an der <a href="http://www.heroku.com/">Heroku</a>-Plattform.</p>
+<p>Dieses Dokument ist eine Synthese all unserer Erfahrungen und der Beobachtungen einer großen Bandbreite von Software-As-A-Service Apps. Es ist eine Bestimmung der idealen Praktiken bei der App-Entwicklung mit besonderem Augenmerk auf die Dynamik des organischen Wachstums einer App über die Zeit, die Dynamik der Zusammenarbeit zwischen den Entwicklern die an einer Codebase zusammenarbeiten und der <a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">Vermeidung der Kosten von Software-Erosion</a>.</p>
+<p>Unsere Motivation ist, das Bewusstsein zu schärfen für systembedingte Probleme in der aktuellen Applikationsentwicklung, ein gemeinsames Vokabular zur Diskussion dieser Probleme zu liefern und ein Lösungsportfolio zu diesen Problemen mit einer zugehörigen Terminologie anzubieten. Das Format ist angelehnt an Martin Fowlers Bücher <em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture</a></em> und <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring</a></em>.</p>
+<h1>Wer sollte dieses Dokument lesen?</h1>
+<p>Jeder Entwickler der Apps baut, die als Dienst laufen. Administratoren, die solche Apps managen oder deployen.</p>
 
     </article>
   </section>
@@ -38,84 +38,117 @@
     <article>
       <h1 id="the_twelve_factors">The Twelve Factors</h1>
       
-	<h2><a href="01-codebase">I. Codebase</a></h2>
-	<h3>Eine im Versionsmanagementsystem verwaltete Codebase, viele Deployments</h3>
+        <h2><a href="01-codebase">I. Codebase [01-codebase]</a></h2>
+        <h3>Eine im Versionsmanagementsystem verwaltete Codebase, viele Deployments</h3>
       
-	<h2><a href="02-dependencies">II. Abhängigkeiten</a></h2>
-	<h3>Abhängigkeiten explizit deklarieren und isolieren</h3>
+        <h2><a href="02-dependencies">II. Abhängigkeiten [02-dependencies]</a></h2>
+        <h3>Abhängigkeiten explizit deklarieren und isolieren</h3>
       
-	<h2><a href="03-config">III. Konfiguration</a></h2>
-	<h3>Die Konfiguration in Umgebungsvariablen ablegen</h3>
+        <h2><a href="03-config">III. Konfiguration [03-config]</a></h2>
+        <h3>Die Konfiguration in Umgebungsvariablen ablegen</h3>
       
-	<h2><a href="04-backing-services">IV. Unterstützende Dienste</a></h2>
-	<h3>Unterstützende Dienste als angehängte Ressourcen behandeln</h3>
+        <h2><a href="04-backing-services">IV. Unterstützende Dienste [04-backing-services]</a></h2>
+        <h3>Unterstützende Dienste als angehängte Ressourcen behandeln</h3>
       
-	<h2><a href="05-build-release-run">V. Build, release, run</a></h2>
-	<h3>Build- und Run-Phase strikt trennen</h3>
+        <h2><a href="05-build-release-run">V. Build, release, run [05-build-release-run]</a></h2>
+        <h3>Build- und Run-Phase strikt trennen</h3>
       
-	<h2><a href="06-processes">VI. Prozesse</a></h2>
-	<h3>Die App als einen oder mehrere Prozesse ausführen</h3>
+        <h2><a href="06-processes">VI. Prozesse [06-processes]</a></h2>
+        <h3>Die App als einen oder mehrere Prozesse ausführen</h3>
       
-	<h2><a href="07-port-binding">VII. Bindung an Ports</a></h2>
-	<h3>Dienste durch das Binden von Ports exportieren</h3>
+        <h2><a href="07-port-binding">VII. Bindung an Ports [07-port-binding]</a></h2>
+        <h3>Dienste durch das Binden von Ports exportieren</h3>
       
-	<h2><a href="08-concurrency">VIII. Nebenläufigkeit</a></h2>
-	<h3>Mit dem Prozess-Modell skalieren</h3>
+        <h2><a href="08-concurrency">VIII. Nebenläufigkeit [08-concurrency]</a></h2>
+        <h3>Mit dem Prozess-Modell skalieren</h3>
       
-	<h2><a href="09-disposability">IX. Einweggebrauch</a></h2>
-	<h3>Robuster mit schnellem Start und problemlosen Stopp</h3>
+        <h2><a href="09-disposability">IX. Einweggebrauch [09-disposability]</a></h2>
+        <h3>Robuster mit schnellem Start und problemlosen Stopp</h3>
       
-	<h2><a href="10-dev-prod-parity"></a></h2>
-	<h3>Entwicklung, Staging und Produktion so ähnlich wie möglich halten</h3>
+        <h2><a href="10-dev-prod-parity"> [10-dev-prod-parity]</a></h2>
+        <h3>Entwicklung, Staging und Produktion so ähnlich wie möglich halten</h3>
       
-	<h2><a href="11-logs">XI. Logs</a></h2>
-	<h3>Logs als Strom von Ereignissen behandeln</h3>
+        <h2><a href="11-logs">XI. Logs [11-logs]</a></h2>
+        <h3>Logs als Strom von Ereignissen behandeln</h3>
       
-	<h2><a href="12-admin-processes">XII. Admin-Prozesse</a></h2>
-	<h3>Admin/Management-Aufgaben als einmalige Vorgänge behandeln</h3>
+        <h2><a href="12-admin-processes">XII. Admin-Prozesse [12-admin-processes]</a></h2>
+        <h3>Admin/Management-Aufgaben als einmalige Vorgänge behandeln</h3>
       
     </article>
   </section>
-	
+
   <footer>
     <div id="locales">
       
-	<a href="de">Deutsch (de)</a>
-	 | 
+        
+          
+        
+        <a href="/de">Deutsch (de)</a>
+         | 
       
-	<a href="en">English (en)</a>
-	 | 
+        
+          
+        
+        <a href="/">English (en)</a>
+         | 
       
-	<a href="es">Español (es)</a>
-	 | 
+        
+          
+        
+        <a href="/es">Español (es)</a>
+         | 
       
-	<a href="fr">Français (fr)</a>
-	 | 
+        
+          
+        
+        <a href="/fr">Français (fr)</a>
+         | 
       
-	<a href="it">Italiano (it)</a>
-	 | 
+        
+          
+        
+        <a href="/it">Italiano (it)</a>
+         | 
       
-	<a href="ja">日本語 (ja)</a>
-	 | 
+        
+          
+        
+        <a href="/ja">日本語 (ja)</a>
+         | 
       
-	<a href="ko">한국어 (ko)</a>
-	 | 
+        
+          
+        
+        <a href="/ko">한국어 (ko)</a>
+         | 
       
-	<a href="pl">Polski (pl)</a>
-	 | 
+        
+          
+        
+        <a href="/pl">Polski (pl)</a>
+         | 
       
-	<a href="pt_br">Brazilian Portuguese (pt_br)</a>
-	 | 
+        
+          
+        
+        <a href="/pt_br">Brazilian Portuguese (pt_br)</a>
+         | 
       
-	<a href="ru">Русский (ru)</a>
-	 | 
+        
+          
+        
+        <a href="/ru">Русский (ru)</a>
+         | 
       
-	<a href="zh_cn">简体中文 (zh_cn)</a>
-	
+        
+          
+        
+        <a href="/zh_cn">简体中文 (zh_cn)</a>
+        
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Dec 30 11:03:26 PST 2016</div>
+    <div>Last updated Fri Jul  5 15:24:48 PDT 2019</div>
     <div><a href="https://github.com/nickfun/12factor-lektor">Source code</a></div>
     <div>Privacy Policy</div>
     <div>Converted to Lektor by Nicholas Funnell</div>

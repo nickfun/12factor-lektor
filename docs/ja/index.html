@@ -14,22 +14,22 @@
   <section class="abstract">
     <article>
       
-      <h1>Introduction</h1>
-<p>In the modern era, software is commonly delivered as a service: called <em>web apps</em>, or <em>software-as-a-service</em>.  The twelve-factor app is a methodology for building software-as-a-service apps that:</p>
+      <h1>はじめに</h1>
+<p>現代では、ソフトウェアは一般にサービスとして提供され、<em>Webアプリケーション</em> や <em>Software as a Service</em> と呼ばれる。Twelve-Factor Appは、次のようなSoftware as a Serviceを作り上げるための方法論である。</p>
 <ul>
-<li>Use <strong>declarative</strong> formats for setup automation, to minimize time and cost for new developers joining the project;</li>
-<li>Have a <strong>clean contract</strong> with the underlying operating system, offering <strong>maximum portability</strong> between execution environments;</li>
-<li>Are suitable for <strong>deployment</strong> on modern <strong>cloud platforms</strong>, obviating the need for servers and systems administration;</li>
-<li><strong>Minimize divergence</strong> between development and production, enabling <strong>continuous deployment</strong> for maximum agility;</li>
-<li>And can <strong>scale up</strong> without significant changes to tooling, architecture, or development practices.</li>
+<li>セットアップ自動化のために <strong>宣言的な</strong> フォーマットを使い、プロジェクトに新しく加わった開発者が要する時間とコストを最小化する。</li>
+<li>下層のOSへの <strong>依存関係を明確化</strong> し、実行環境間での <strong>移植性を最大化</strong> する。</li>
+<li>モダンな <strong>クラウドプラットフォーム</strong> 上への <strong>デプロイ</strong> に適しており、サーバー管理やシステム管理を不要なものにする。</li>
+<li>開発環境と本番環境の <strong>差異を最小限</strong> にし、アジリティを最大化する <strong>継続的デプロイ</strong> を可能にする。</li>
+<li>ツール、アーキテクチャ、開発プラクティスを大幅に変更することなく <strong>スケールアップ</strong> できる。</li>
 </ul>
-<p>The twelve-factor methodology can be applied to apps written in any programming language, and which use any combination of backing services (database, queue, memory cache, etc).</p>
-<h1>Background</h1>
-<p>The contributors to this document have been directly involved in the development and deployment of hundreds of apps, and indirectly witnessed the development, operation, and scaling of hundreds of thousands of apps via our work on the <a href="http://www.heroku.com/">Heroku</a> platform.</p>
-<p>This document synthesizes all of our experience and observations on a wide variety of software-as-a-service apps in the wild.  It is a triangulation on ideal practices for app development, paying particular attention to the dynamics of the organic growth of an app over time, the dynamics of collaboration between developers working on the app's codebase, and <a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">avoiding the cost of software erosion</a>.</p>
-<p>Our motivation is to raise awareness of some systemic problems we've seen in modern application development, to provide a shared vocabulary for discussing those problems, and to offer a set of broad conceptual solutions to those problems with accompanying terminology.  The format is inspired by Martin Fowler's books <em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture</a></em> and <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring</a></em>.</p>
-<h1>Who should read this document?</h1>
-<p>Any developer building applications which run as a service.  Ops engineers who deploy or manage such applications.</p>
+<p>Twelve-Factorの方法論は、どのようなプログラミング言語で書かれたアプリケーションにでも適用できる。また、どのようなバックエンドサービス（データベース、メッセージキュー、メモリキャッシュなど）の組み合わせを使っていても適用できる。</p>
+<h1>背景</h1>
+<p>このドキュメントへの寄稿者は、何百ものアプリケーションの開発とデプロイに直接関わり、<a href="http://www.heroku.com/">Heroku</a>プラットフォーム上での仕事を通して、何百何千ものアプリケーションの開発・運用・スケールに間接的に立ち会った。</p>
+<p>このドキュメントは、多種多様なSaaSアプリケーション開発現場での私たちの経験と観察をすべてまとめたものである。これは、アプリケーション開発における理想的なプラクティスを見出すための三角測量である。特に、アプリケーションが時間と共に有機的に成長する力学、アプリケーションのコードベースに取り組む開発者間のコラボレーションの力学、そして<a href="http://blog.heroku.com/archives/2011/6/28/the_new_heroku_4_erosion_resistance_explicit_contracts/">ソフトウェア腐敗によるコストの回避</a>に注目している。</p>
+<p>私たちの動機は、私たちがモダンなアプリケーション開発で見てきたある種のシステム的な問題への関心を高めること、この問題を議論するための共通の語彙を提供すること、そしてこの問題に対する広い概念的な解決策と専門用語を提供することである。フォーマットはMartin Fowlerの書籍、<em><a href="http://books.google.com/books/about/Patterns_of_enterprise_application_archi.html?id=FyWZt5DdvFkC">Patterns of Enterprise Application Architecture</a></em> および <em><a href="http://books.google.com/books/about/Refactoring.html?id=1MsETFPD3I0C">Refactoring</a></em> に着想を得ている。</p>
+<h1>このドキュメントの対象者</h1>
+<p>サービスとして動くアプリケーションを開発しているすべての開発者。およびそのようなアプリケーションをデプロイまたは管理しているインフラエンジニア。</p>
 
     </article>
   </section>
@@ -38,84 +38,117 @@
     <article>
       <h1 id="the_twelve_factors">The Twelve Factors</h1>
       
-	<h2><a href="01-codebase">I. コードベース</a></h2>
-	<h3>バージョン管理されている1つのコードベースと複数のデプロイ</h3>
+        <h2><a href="01-codebase">I. コードベース [01-codebase]</a></h2>
+        <h3>バージョン管理されている1つのコードベースと複数のデプロイ</h3>
       
-	<h2><a href="02-dependencies">II. 依存関係</a></h2>
-	<h3>依存関係を明示的に宣言し分離する</h3>
+        <h2><a href="02-dependencies">II. 依存関係 [02-dependencies]</a></h2>
+        <h3>依存関係を明示的に宣言し分離する</h3>
       
-	<h2><a href="03-config">III. 設定</a></h2>
-	<h3>設定を環境変数に格納する</h3>
+        <h2><a href="03-config">III. 設定 [03-config]</a></h2>
+        <h3>設定を環境変数に格納する</h3>
       
-	<h2><a href="04-backing-services">IV. バックエンドサービス</a></h2>
-	<h3>バックエンドサービスをアタッチされたリソースとして扱う</h3>
+        <h2><a href="04-backing-services">IV. バックエンドサービス [04-backing-services]</a></h2>
+        <h3>バックエンドサービスをアタッチされたリソースとして扱う</h3>
       
-	<h2><a href="05-build-release-run">V. ビルド、リリース、実行</a></h2>
-	<h3>ビルド、リリース、実行の3つのステージを厳密に分離する</h3>
+        <h2><a href="05-build-release-run">V. ビルド、リリース、実行 [05-build-release-run]</a></h2>
+        <h3>ビルド、リリース、実行の3つのステージを厳密に分離する</h3>
       
-	<h2><a href="06-processes">VI. プロセス</a></h2>
-	<h3>アプリケーションを1つもしくは複数のステートレスなプロセスとして実行する</h3>
+        <h2><a href="06-processes">VI. プロセス [06-processes]</a></h2>
+        <h3>アプリケーションを1つもしくは複数のステートレスなプロセスとして実行する</h3>
       
-	<h2><a href="07-port-binding">VII. ポートバインディング</a></h2>
-	<h3>ポートバインディングを通してサービスを公開する</h3>
+        <h2><a href="07-port-binding">VII. ポートバインディング [07-port-binding]</a></h2>
+        <h3>ポートバインディングを通してサービスを公開する</h3>
       
-	<h2><a href="08-concurrency">VIII. 並行性</a></h2>
-	<h3>プロセスモデルによってスケールアウトする</h3>
+        <h2><a href="08-concurrency">VIII. 並行性 [08-concurrency]</a></h2>
+        <h3>プロセスモデルによってスケールアウトする</h3>
       
-	<h2><a href="09-disposability">IX. 廃棄容易性</a></h2>
-	<h3>高速な起動とグレースフルシャットダウンで堅牢性を最大化する</h3>
+        <h2><a href="09-disposability">IX. 廃棄容易性 [09-disposability]</a></h2>
+        <h3>高速な起動とグレースフルシャットダウンで堅牢性を最大化する</h3>
       
-	<h2><a href="10-dev-prod-parity">X. 開発/本番一致</a></h2>
-	<h3>開発、ステージング、本番環境をできるだけ一致させた状態を保つ</h3>
+        <h2><a href="10-dev-prod-parity">X. 開発/本番一致 [10-dev-prod-parity]</a></h2>
+        <h3>開発、ステージング、本番環境をできるだけ一致させた状態を保つ</h3>
       
-	<h2><a href="11-logs">XI. ログ</a></h2>
-	<h3>ログをイベントストリームとして扱う</h3>
+        <h2><a href="11-logs">XI. ログ [11-logs]</a></h2>
+        <h3>ログをイベントストリームとして扱う</h3>
       
-	<h2><a href="12-admin-processes">XII. 管理プロセス</a></h2>
-	<h3>管理タスクを1回限りのプロセスとして実行する</h3>
+        <h2><a href="12-admin-processes">XII. 管理プロセス [12-admin-processes]</a></h2>
+        <h3>管理タスクを1回限りのプロセスとして実行する</h3>
       
     </article>
   </section>
-	
+
   <footer>
     <div id="locales">
       
-	<a href="de">Deutsch (de)</a>
-	 | 
+        
+          
+        
+        <a href="/de">Deutsch (de)</a>
+         | 
       
-	<a href="en">English (en)</a>
-	 | 
+        
+          
+        
+        <a href="/">English (en)</a>
+         | 
       
-	<a href="es">Español (es)</a>
-	 | 
+        
+          
+        
+        <a href="/es">Español (es)</a>
+         | 
       
-	<a href="fr">Français (fr)</a>
-	 | 
+        
+          
+        
+        <a href="/fr">Français (fr)</a>
+         | 
       
-	<a href="it">Italiano (it)</a>
-	 | 
+        
+          
+        
+        <a href="/it">Italiano (it)</a>
+         | 
       
-	<a href="ja">日本語 (ja)</a>
-	 | 
+        
+          
+        
+        <a href="/ja">日本語 (ja)</a>
+         | 
       
-	<a href="ko">한국어 (ko)</a>
-	 | 
+        
+          
+        
+        <a href="/ko">한국어 (ko)</a>
+         | 
       
-	<a href="pl">Polski (pl)</a>
-	 | 
+        
+          
+        
+        <a href="/pl">Polski (pl)</a>
+         | 
       
-	<a href="pt_br">Brazilian Portuguese (pt_br)</a>
-	 | 
+        
+          
+        
+        <a href="/pt_br">Brazilian Portuguese (pt_br)</a>
+         | 
       
-	<a href="ru">Русский (ru)</a>
-	 | 
+        
+          
+        
+        <a href="/ru">Русский (ru)</a>
+         | 
       
-	<a href="zh_cn">简体中文 (zh_cn)</a>
-	
+        
+          
+        
+        <a href="/zh_cn">简体中文 (zh_cn)</a>
+        
       
     </div>
     <div>Written by Adam Wiggins</div>
-    <div>Last updated Fri Dec 30 11:03:26 PST 2016</div>
+    <div>Last updated Fri Jul  5 15:24:48 PDT 2019</div>
     <div><a href="https://github.com/nickfun/12factor-lektor">Source code</a></div>
     <div>Privacy Policy</div>
     <div>Converted to Lektor by Nicholas Funnell</div>
